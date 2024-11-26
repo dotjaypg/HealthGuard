@@ -24,11 +24,12 @@ Partial Class AdminParent
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminParent))
         pnl_NavBar = New Panel()
-        btn_Logout = New Button()
+        tlp_NavTable = New TableLayoutPanel()
         btn_Schedules = New Button()
         btn_Accounts = New Button()
         btn_Patients = New Button()
         btn_Home = New Button()
+        btn_Logout = New Button()
         pnl_NavHeader = New Panel()
         pb_Logo = New PictureBox()
         Label2 = New Label()
@@ -39,6 +40,7 @@ Partial Class AdminParent
         txt_homeSearch = New TextBox()
         pnl_MainPage = New Panel()
         pnl_NavBar.SuspendLayout()
+        tlp_NavTable.SuspendLayout()
         pnl_NavHeader.SuspendLayout()
         CType(pb_Logo, ComponentModel.ISupportInitialize).BeginInit()
         pnl_MainHeader.SuspendLayout()
@@ -48,11 +50,8 @@ Partial Class AdminParent
         ' 
         pnl_NavBar.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
         pnl_NavBar.BorderStyle = BorderStyle.FixedSingle
+        pnl_NavBar.Controls.Add(tlp_NavTable)
         pnl_NavBar.Controls.Add(btn_Logout)
-        pnl_NavBar.Controls.Add(btn_Schedules)
-        pnl_NavBar.Controls.Add(btn_Accounts)
-        pnl_NavBar.Controls.Add(btn_Patients)
-        pnl_NavBar.Controls.Add(btn_Home)
         pnl_NavBar.Controls.Add(pnl_NavHeader)
         pnl_NavBar.Dock = DockStyle.Left
         pnl_NavBar.Location = New Point(0, 0)
@@ -60,6 +59,97 @@ Partial Class AdminParent
         pnl_NavBar.Name = "pnl_NavBar"
         pnl_NavBar.Size = New Size(336, 861)
         pnl_NavBar.TabIndex = 0
+        ' 
+        ' tlp_NavTable
+        ' 
+        tlp_NavTable.AutoSize = True
+        tlp_NavTable.ColumnCount = 1
+        tlp_NavTable.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        tlp_NavTable.Controls.Add(btn_Schedules, 0, 3)
+        tlp_NavTable.Controls.Add(btn_Accounts, 0, 2)
+        tlp_NavTable.Controls.Add(btn_Patients, 0, 1)
+        tlp_NavTable.Controls.Add(btn_Home, 0, 0)
+        tlp_NavTable.Dock = DockStyle.Fill
+        tlp_NavTable.Location = New Point(0, 172)
+        tlp_NavTable.Margin = New Padding(0)
+        tlp_NavTable.Name = "tlp_NavTable"
+        tlp_NavTable.Padding = New Padding(10)
+        tlp_NavTable.RowCount = 4
+        tlp_NavTable.RowStyles.Add(New RowStyle())
+        tlp_NavTable.RowStyles.Add(New RowStyle())
+        tlp_NavTable.RowStyles.Add(New RowStyle())
+        tlp_NavTable.RowStyles.Add(New RowStyle())
+        tlp_NavTable.Size = New Size(334, 637)
+        tlp_NavTable.TabIndex = 0
+        ' 
+        ' btn_Schedules
+        ' 
+        btn_Schedules.Anchor = AnchorStyles.Top
+        btn_Schedules.FlatStyle = FlatStyle.Flat
+        btn_Schedules.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btn_Schedules.Image = My.Resources.Resources.icon_schedules
+        btn_Schedules.ImageAlign = ContentAlignment.MiddleLeft
+        btn_Schedules.Location = New Point(13, 174)
+        btn_Schedules.Margin = New Padding(3, 2, 3, 2)
+        btn_Schedules.Name = "btn_Schedules"
+        btn_Schedules.Padding = New Padding(13, 0, 0, 0)
+        btn_Schedules.Size = New Size(308, 50)
+        btn_Schedules.TabIndex = 2
+        btn_Schedules.Text = "Schedules"
+        btn_Schedules.TextImageRelation = TextImageRelation.ImageBeforeText
+        btn_Schedules.UseVisualStyleBackColor = True
+        ' 
+        ' btn_Accounts
+        ' 
+        btn_Accounts.Anchor = AnchorStyles.Top
+        btn_Accounts.FlatStyle = FlatStyle.Flat
+        btn_Accounts.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btn_Accounts.Image = My.Resources.Resources.icon_accounts
+        btn_Accounts.ImageAlign = ContentAlignment.MiddleLeft
+        btn_Accounts.Location = New Point(13, 120)
+        btn_Accounts.Margin = New Padding(3, 2, 3, 2)
+        btn_Accounts.Name = "btn_Accounts"
+        btn_Accounts.Padding = New Padding(13, 0, 0, 0)
+        btn_Accounts.Size = New Size(308, 50)
+        btn_Accounts.TabIndex = 2
+        btn_Accounts.Text = "Accounts"
+        btn_Accounts.TextImageRelation = TextImageRelation.ImageBeforeText
+        btn_Accounts.UseVisualStyleBackColor = True
+        ' 
+        ' btn_Patients
+        ' 
+        btn_Patients.Anchor = AnchorStyles.Top
+        btn_Patients.FlatStyle = FlatStyle.Flat
+        btn_Patients.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btn_Patients.Image = My.Resources.Resources.icon_patientlist
+        btn_Patients.ImageAlign = ContentAlignment.MiddleLeft
+        btn_Patients.Location = New Point(13, 66)
+        btn_Patients.Margin = New Padding(3, 2, 3, 2)
+        btn_Patients.Name = "btn_Patients"
+        btn_Patients.Padding = New Padding(13, 0, 0, 0)
+        btn_Patients.Size = New Size(308, 50)
+        btn_Patients.TabIndex = 2
+        btn_Patients.Text = "Patients"
+        btn_Patients.TextImageRelation = TextImageRelation.ImageBeforeText
+        btn_Patients.UseVisualStyleBackColor = True
+        ' 
+        ' btn_Home
+        ' 
+        btn_Home.Anchor = AnchorStyles.Top
+        btn_Home.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+        btn_Home.FlatStyle = FlatStyle.Flat
+        btn_Home.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btn_Home.Image = My.Resources.Resources.icon_home
+        btn_Home.ImageAlign = ContentAlignment.MiddleLeft
+        btn_Home.Location = New Point(13, 12)
+        btn_Home.Margin = New Padding(3, 2, 3, 2)
+        btn_Home.Name = "btn_Home"
+        btn_Home.Padding = New Padding(13, 0, 0, 0)
+        btn_Home.Size = New Size(308, 50)
+        btn_Home.TabIndex = 2
+        btn_Home.Text = "Home"
+        btn_Home.TextImageRelation = TextImageRelation.ImageBeforeText
+        btn_Home.UseVisualStyleBackColor = False
         ' 
         ' btn_Logout
         ' 
@@ -77,70 +167,6 @@ Partial Class AdminParent
         btn_Logout.Text = "Logout"
         btn_Logout.TextImageRelation = TextImageRelation.ImageBeforeText
         btn_Logout.UseVisualStyleBackColor = True
-        ' 
-        ' btn_Schedules
-        ' 
-        btn_Schedules.FlatStyle = FlatStyle.Flat
-        btn_Schedules.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_Schedules.Image = My.Resources.Resources.icon_schedules
-        btn_Schedules.ImageAlign = ContentAlignment.MiddleLeft
-        btn_Schedules.Location = New Point(10, 345)
-        btn_Schedules.Margin = New Padding(3, 2, 3, 2)
-        btn_Schedules.Name = "btn_Schedules"
-        btn_Schedules.Padding = New Padding(13, 0, 0, 0)
-        btn_Schedules.Size = New Size(313, 50)
-        btn_Schedules.TabIndex = 2
-        btn_Schedules.Text = "Schedules"
-        btn_Schedules.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Schedules.UseVisualStyleBackColor = True
-        ' 
-        ' btn_Accounts
-        ' 
-        btn_Accounts.FlatStyle = FlatStyle.Flat
-        btn_Accounts.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_Accounts.Image = My.Resources.Resources.icon_accounts
-        btn_Accounts.ImageAlign = ContentAlignment.MiddleLeft
-        btn_Accounts.Location = New Point(10, 290)
-        btn_Accounts.Margin = New Padding(3, 2, 3, 2)
-        btn_Accounts.Name = "btn_Accounts"
-        btn_Accounts.Padding = New Padding(13, 0, 0, 0)
-        btn_Accounts.Size = New Size(313, 50)
-        btn_Accounts.TabIndex = 2
-        btn_Accounts.Text = "Accounts"
-        btn_Accounts.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Accounts.UseVisualStyleBackColor = True
-        ' 
-        ' btn_Patients
-        ' 
-        btn_Patients.FlatStyle = FlatStyle.Flat
-        btn_Patients.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_Patients.Image = My.Resources.Resources.icon_patientlist
-        btn_Patients.ImageAlign = ContentAlignment.MiddleLeft
-        btn_Patients.Location = New Point(10, 236)
-        btn_Patients.Margin = New Padding(3, 2, 3, 2)
-        btn_Patients.Name = "btn_Patients"
-        btn_Patients.Padding = New Padding(13, 0, 0, 0)
-        btn_Patients.Size = New Size(313, 50)
-        btn_Patients.TabIndex = 2
-        btn_Patients.Text = "Patients"
-        btn_Patients.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Patients.UseVisualStyleBackColor = True
-        ' 
-        ' btn_Home
-        ' 
-        btn_Home.FlatStyle = FlatStyle.Flat
-        btn_Home.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_Home.Image = My.Resources.Resources.icon_home
-        btn_Home.ImageAlign = ContentAlignment.MiddleLeft
-        btn_Home.Location = New Point(10, 181)
-        btn_Home.Margin = New Padding(3, 2, 3, 2)
-        btn_Home.Name = "btn_Home"
-        btn_Home.Padding = New Padding(13, 0, 0, 0)
-        btn_Home.Size = New Size(313, 50)
-        btn_Home.TabIndex = 2
-        btn_Home.Text = "Home"
-        btn_Home.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Home.UseVisualStyleBackColor = True
         ' 
         ' pnl_NavHeader
         ' 
@@ -239,7 +265,6 @@ Partial Class AdminParent
         ' pnl_MainPage
         ' 
         pnl_MainPage.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
-        pnl_MainPage.Dock = DockStyle.Fill
         pnl_MainPage.Location = New Point(336, 69)
         pnl_MainPage.Margin = New Padding(3, 2, 3, 2)
         pnl_MainPage.Name = "pnl_MainPage"
@@ -259,6 +284,8 @@ Partial Class AdminParent
         StartPosition = FormStartPosition.CenterScreen
         Text = " HealthGuard Management"
         pnl_NavBar.ResumeLayout(False)
+        pnl_NavBar.PerformLayout()
+        tlp_NavTable.ResumeLayout(False)
         pnl_NavHeader.ResumeLayout(False)
         pnl_NavHeader.PerformLayout()
         CType(pb_Logo, ComponentModel.ISupportInitialize).EndInit()
@@ -282,5 +309,6 @@ Partial Class AdminParent
     Friend WithEvents btn_Patients As Button
     Friend WithEvents pnl_MainPage As Panel
     Friend WithEvents btn_Logout As Button
+    Friend WithEvents tlp_NavTable As TableLayoutPanel
 
 End Class

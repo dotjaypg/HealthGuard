@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.HealthGuard.HomeParent
+            Me.MainForm = Global.HealthGuard.AdminParent
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
