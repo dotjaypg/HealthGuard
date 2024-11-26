@@ -1,14 +1,27 @@
 ﻿Imports System.Windows.Forms
 Imports System.Drawing
+Imports HomeTab
+Imports PatientTab
+Imports AccountTab
+Imports ScheduleTab
 
 Public Class AdminParent
     ' Class-level variable to store the last pressed button
     Private lastPressedButton As Button = Nothing
 
-    Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Initially set the first button (btn_Home) as "pressed"
-        btn_Home.BackColor = ColorTranslator.FromHtml("#2d9364") ' Set the pressed color
-        lastPressedButton = btn_Home ' Mark btn_Home as the last pressed button
+    ' Method to show a child form in the pnl_MainPage panel
+    Private Sub ShowChildForm(childForm As Form)
+        ' Clear any existing controls from the panel
+        pnl_MainPage.Controls.Clear()
+
+        ' Set the child form's properties to display within the panel
+        childForm.TopLevel = False
+        childForm.FormBorderStyle = FormBorderStyle.None
+        childForm.Dock = DockStyle.Fill
+
+        ' Add the child form to the panel and display it
+        pnl_MainPage.Controls.Add(childForm)
+        childForm.Show()
     End Sub
 
     ' Method to handle button clicks and change the background color
@@ -26,20 +39,33 @@ Public Class AdminParent
         lastPressedButton = clickedButton
     End Sub
 
+    ' Event handlers for the buttons
     Private Sub btn_Home_Click(sender As Object, e As EventArgs) Handles btn_Home.Click
         Button_Click(sender, e)
+        ShowChildForm(New HomeTab.cf_Home()) ' Show the Home child form
     End Sub
 
-    Private Sub btn_Patients_Click(sender As Object, e As EventArgs) Handles btn_Patients.Click
+    Private Sub btn_Patient_Click(sender As Object, e As EventArgs) Handles btn_Patient.Click
         Button_Click(sender, e)
+        ShowChildForm(New PatientTab.cf_PatientList()) ' Show the Patient List child form
     End Sub
 
-    Private Sub btn_Accounts_Click(sender As Object, e As EventArgs) Handles btn_Accounts.Click
+    Private Sub btn_Account_Click(sender As Object, e As EventArgs) Handles btn_Account.Click
         Button_Click(sender, e)
+        ShowChildForm(New AccountTab.cf_AccList()) ' Show the Account List child form
     End Sub
 
-    Private Sub btn_Schedules_Click(sender As Object, e As EventArgs) Handles btn_Schedules.Click
+    Private Sub btn_Schedule_Click(sender As Object, e As EventArgs) Handles btn_Schedule.Click
         Button_Click(sender, e)
+        ShowChildForm(New ScheduleTab.cf_ApmntWeek()) ' Show the Schedule Week View child form
+    End Sub
+
+    ' Load event to set the initial button state
+    Private Sub AdminParent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Initially set the first button (btn_Home) as "pressed"
+        btn_Home.BackColor = ColorTranslator.FromHtml("#2d9364") ' Set the pressed color
+        lastPressedButton = btn_Home ' Mark btn_Home as the last pressed button
+        ShowChildForm(New HomeTab.cf_Home()) ' Show the Home child form by default
     End Sub
 
 End Class
