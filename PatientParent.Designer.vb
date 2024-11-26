@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Home
+Partial Class PatientParent
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Home
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Home))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PatientParent))
         pnl_NavBar = New Panel()
         btn_Logout = New Button()
         btn_Schedules = New Button()
@@ -35,10 +35,8 @@ Partial Class Home
         Label3 = New Label()
         Label4 = New Label()
         Label1 = New Label()
-        Label6 = New Label()
         pnl_MainHeader = New Panel()
         txt_homeSearch = New TextBox()
-        lbl_homeDateTime = New Label()
         pnl_MainPage = New Panel()
         pnl_NavBar.SuspendLayout()
         pnl_NavHeader.SuspendLayout()
@@ -114,6 +112,7 @@ Partial Class Home
         ' 
         ' btn_Patients
         ' 
+        btn_Patients.BackColor = Color.FromArgb(CByte(45), CByte(147), CByte(100))
         btn_Patients.FlatStyle = FlatStyle.Flat
         btn_Patients.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_Patients.Image = My.Resources.Resources.icon_patientlist
@@ -126,7 +125,7 @@ Partial Class Home
         btn_Patients.TabIndex = 2
         btn_Patients.Text = "Patients"
         btn_Patients.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Patients.UseVisualStyleBackColor = True
+        btn_Patients.UseVisualStyleBackColor = False
         ' 
         ' btn_Home
         ' 
@@ -215,23 +214,10 @@ Partial Class Home
         Label1.TabIndex = 1
         Label1.Text = "Logged in as:"
         ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.ForeColor = Color.White
-        Label6.Location = New Point(13, 14)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(285, 44)
-        Label6.TabIndex = 1
-        Label6.Text = "Welcome, Here’s an overview " & vbCrLf & "of your tasks for today."
-        ' 
         ' pnl_MainHeader
         ' 
         pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-        pnl_MainHeader.Controls.Add(Label6)
         pnl_MainHeader.Controls.Add(txt_homeSearch)
-        pnl_MainHeader.Controls.Add(lbl_homeDateTime)
         pnl_MainHeader.Dock = DockStyle.Top
         pnl_MainHeader.Location = New Point(336, 0)
         pnl_MainHeader.Margin = New Padding(3, 2, 3, 2)
@@ -251,18 +237,6 @@ Partial Class Home
         txt_homeSearch.Size = New Size(493, 29)
         txt_homeSearch.TabIndex = 2
         ' 
-        ' lbl_homeDateTime
-        ' 
-        lbl_homeDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lbl_homeDateTime.AutoSize = True
-        lbl_homeDateTime.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_homeDateTime.ForeColor = Color.White
-        lbl_homeDateTime.Location = New Point(1114, 14)
-        lbl_homeDateTime.Name = "lbl_homeDateTime"
-        lbl_homeDateTime.Size = New Size(108, 44)
-        lbl_homeDateTime.TabIndex = 1
-        lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
-        ' 
         ' pnl_MainPage
         ' 
         pnl_MainPage.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
@@ -273,7 +247,7 @@ Partial Class Home
         pnl_MainPage.Size = New Size(1248, 792)
         pnl_MainPage.TabIndex = 2
         ' 
-        ' Home
+        ' PatientParent
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -282,7 +256,8 @@ Partial Class Home
         Controls.Add(pnl_MainHeader)
         Controls.Add(pnl_NavBar)
         Margin = New Padding(3, 2, 3, 2)
-        Name = "Home"
+        Name = "PatientParent"
+        StartPosition = FormStartPosition.CenterScreen
         Text = " HealthGuard Management"
         pnl_NavBar.ResumeLayout(False)
         pnl_NavHeader.ResumeLayout(False)
@@ -302,8 +277,6 @@ Partial Class Home
     Friend WithEvents Label4 As Label
     Friend WithEvents pnl_MainHeader As Panel
     Friend WithEvents txt_homeSearch As TextBox
-    Friend WithEvents lbl_homeDateTime As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents btn_Home As Button
     Friend WithEvents btn_Schedules As Button
     Friend WithEvents btn_Accounts As Button

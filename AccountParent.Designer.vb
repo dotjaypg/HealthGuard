@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class AdminParent
+Partial Class AccountParent
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class AdminParent
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminParent))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AccountParent))
         pnl_NavBar = New Panel()
         btn_Logout = New Button()
         btn_Schedules = New Button()
@@ -96,6 +96,7 @@ Partial Class AdminParent
         ' 
         ' btn_Accounts
         ' 
+        btn_Accounts.BackColor = Color.FromArgb(CByte(45), CByte(147), CByte(100))
         btn_Accounts.FlatStyle = FlatStyle.Flat
         btn_Accounts.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_Accounts.Image = My.Resources.Resources.icon_accounts
@@ -108,7 +109,7 @@ Partial Class AdminParent
         btn_Accounts.TabIndex = 2
         btn_Accounts.Text = "Accounts"
         btn_Accounts.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Accounts.UseVisualStyleBackColor = True
+        btn_Accounts.UseVisualStyleBackColor = False
         ' 
         ' btn_Patients
         ' 
@@ -246,7 +247,7 @@ Partial Class AdminParent
         pnl_MainPage.Size = New Size(1248, 792)
         pnl_MainPage.TabIndex = 2
         ' 
-        ' AdminParent
+        ' AccountParent
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -255,7 +256,7 @@ Partial Class AdminParent
         Controls.Add(pnl_MainHeader)
         Controls.Add(pnl_NavBar)
         Margin = New Padding(3, 2, 3, 2)
-        Name = "AdminParent"
+        Name = "AccountParent"
         StartPosition = FormStartPosition.CenterScreen
         Text = " HealthGuard Management"
         pnl_NavBar.ResumeLayout(False)

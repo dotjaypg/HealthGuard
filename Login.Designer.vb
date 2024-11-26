@@ -28,8 +28,9 @@ Partial Class Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(802, 511)
+        ClientSize = New Size(994, 640)
         Name = "Login"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Login"
         ResumeLayout(False)
     End Sub

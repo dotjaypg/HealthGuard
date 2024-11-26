@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class AdminParent
+Partial Class ScheduleParent
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class AdminParent
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdminParent))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ScheduleParent))
         pnl_NavBar = New Panel()
         btn_Logout = New Button()
         btn_Schedules = New Button()
@@ -80,6 +80,7 @@ Partial Class AdminParent
         ' 
         ' btn_Schedules
         ' 
+        btn_Schedules.BackColor = Color.FromArgb(CByte(45), CByte(147), CByte(100))
         btn_Schedules.FlatStyle = FlatStyle.Flat
         btn_Schedules.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_Schedules.Image = My.Resources.Resources.icon_schedules
@@ -92,7 +93,7 @@ Partial Class AdminParent
         btn_Schedules.TabIndex = 2
         btn_Schedules.Text = "Schedules"
         btn_Schedules.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_Schedules.UseVisualStyleBackColor = True
+        btn_Schedules.UseVisualStyleBackColor = False
         ' 
         ' btn_Accounts
         ' 
@@ -246,7 +247,7 @@ Partial Class AdminParent
         pnl_MainPage.Size = New Size(1248, 792)
         pnl_MainPage.TabIndex = 2
         ' 
-        ' AdminParent
+        ' ScheduleParent
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -255,7 +256,7 @@ Partial Class AdminParent
         Controls.Add(pnl_MainHeader)
         Controls.Add(pnl_NavBar)
         Margin = New Padding(3, 2, 3, 2)
-        Name = "AdminParent"
+        Name = "ScheduleParent"
         StartPosition = FormStartPosition.CenterScreen
         Text = " HealthGuard Management"
         pnl_NavBar.ResumeLayout(False)
