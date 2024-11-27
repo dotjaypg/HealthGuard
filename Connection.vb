@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class DBConnection
-    ReadOnly Connector As New MySqlConnection("Server=localhost; user=root; password=;database=db_gradecalc")
+    ReadOnly Connector As New MySqlConnection("Server=localhost; user=root; password=;database=db_healthguard")
     Public Function Open() As MySqlConnection
         Try
             Connector.Open()
