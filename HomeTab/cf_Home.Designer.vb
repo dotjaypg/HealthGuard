@@ -31,16 +31,22 @@
             lbl_homeDateTime = New Label()
             Panel1 = New Panel()
             Panel3 = New Panel()
+            lbl_UpAp = New Label()
             Panel2 = New Panel()
             Panel5 = New Panel()
+            lbl_PenReq = New Label()
             Panel4 = New Panel()
             Panel6 = New Panel()
-            TableLayoutPanel1 = New TableLayoutPanel()
+            Label4 = New Label()
+            pnl_MainContent = New TableLayoutPanel()
             pnl_MainHeader.SuspendLayout()
             Panel1.SuspendLayout()
+            Panel3.SuspendLayout()
             Panel2.SuspendLayout()
+            Panel5.SuspendLayout()
             Panel4.SuspendLayout()
-            TableLayoutPanel1.SuspendLayout()
+            Panel6.SuspendLayout()
+            pnl_MainContent.SuspendLayout()
             SuspendLayout()
             ' 
             ' Label1
@@ -85,11 +91,12 @@
             lbl_DateTimeDisplay.AutoSize = True
             lbl_DateTimeDisplay.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             lbl_DateTimeDisplay.ForeColor = Color.White
-            lbl_DateTimeDisplay.Location = New Point(1095, 14)
+            lbl_DateTimeDisplay.Location = New Point(1115, 11)
             lbl_DateTimeDisplay.Name = "lbl_DateTimeDisplay"
-            lbl_DateTimeDisplay.Size = New Size(108, 44)
+            lbl_DateTimeDisplay.Size = New Size(86, 44)
             lbl_DateTimeDisplay.TabIndex = 3
-            lbl_DateTimeDisplay.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
+            lbl_DateTimeDisplay.Text = "Loading" & vbCrLf & "."
+            lbl_DateTimeDisplay.TextAlign = ContentAlignment.MiddleRight
             ' 
             ' Label6
             ' 
@@ -121,21 +128,35 @@
             Panel1.BorderStyle = BorderStyle.FixedSingle
             Panel1.Controls.Add(Panel3)
             Panel1.Dock = DockStyle.Fill
-            Panel1.Location = New Point(3, 3)
+            Panel1.Location = New Point(10, 10)
+            Panel1.Margin = New Padding(10)
             Panel1.Name = "Panel1"
-            TableLayoutPanel1.SetRowSpan(Panel1, 2)
-            Panel1.Size = New Size(610, 724)
+            pnl_MainContent.SetRowSpan(Panel1, 2)
+            Panel1.Size = New Size(596, 710)
             Panel1.TabIndex = 3
             ' 
             ' Panel3
             ' 
             Panel3.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             Panel3.BorderStyle = BorderStyle.FixedSingle
+            Panel3.Controls.Add(lbl_UpAp)
             Panel3.Dock = DockStyle.Top
             Panel3.Location = New Point(0, 0)
             Panel3.Name = "Panel3"
-            Panel3.Size = New Size(608, 71)
+            Panel3.Size = New Size(594, 67)
             Panel3.TabIndex = 0
+            ' 
+            ' lbl_UpAp
+            ' 
+            lbl_UpAp.Dock = DockStyle.Fill
+            lbl_UpAp.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            lbl_UpAp.ForeColor = Color.White
+            lbl_UpAp.Location = New Point(0, 0)
+            lbl_UpAp.Name = "lbl_UpAp"
+            lbl_UpAp.Size = New Size(592, 65)
+            lbl_UpAp.TabIndex = 1
+            lbl_UpAp.Text = "Upcoming Appointments"
+            lbl_UpAp.TextAlign = ContentAlignment.MiddleCenter
             ' 
             ' Panel2
             ' 
@@ -144,20 +165,34 @@
             Panel2.BorderStyle = BorderStyle.FixedSingle
             Panel2.Controls.Add(Panel5)
             Panel2.Dock = DockStyle.Fill
-            Panel2.Location = New Point(619, 3)
+            Panel2.Location = New Point(616, 10)
+            Panel2.Margin = New Padding(0, 10, 10, 5)
             Panel2.Name = "Panel2"
-            Panel2.Size = New Size(610, 359)
+            Panel2.Size = New Size(606, 350)
             Panel2.TabIndex = 3
             ' 
             ' Panel5
             ' 
             Panel5.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             Panel5.BorderStyle = BorderStyle.FixedSingle
+            Panel5.Controls.Add(lbl_PenReq)
             Panel5.Dock = DockStyle.Top
             Panel5.Location = New Point(0, 0)
             Panel5.Name = "Panel5"
-            Panel5.Size = New Size(608, 71)
+            Panel5.Size = New Size(604, 67)
             Panel5.TabIndex = 1
+            ' 
+            ' lbl_PenReq
+            ' 
+            lbl_PenReq.Dock = DockStyle.Fill
+            lbl_PenReq.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            lbl_PenReq.ForeColor = Color.White
+            lbl_PenReq.Location = New Point(0, 0)
+            lbl_PenReq.Name = "lbl_PenReq"
+            lbl_PenReq.Size = New Size(602, 65)
+            lbl_PenReq.TabIndex = 1
+            lbl_PenReq.Text = "Pending Requests"
+            lbl_PenReq.TextAlign = ContentAlignment.MiddleCenter
             ' 
             ' Panel4
             ' 
@@ -166,38 +201,52 @@
             Panel4.BorderStyle = BorderStyle.FixedSingle
             Panel4.Controls.Add(Panel6)
             Panel4.Dock = DockStyle.Fill
-            Panel4.Location = New Point(619, 368)
+            Panel4.Location = New Point(616, 370)
+            Panel4.Margin = New Padding(0, 5, 10, 10)
             Panel4.Name = "Panel4"
-            Panel4.Size = New Size(610, 359)
+            Panel4.Size = New Size(606, 350)
             Panel4.TabIndex = 3
             ' 
             ' Panel6
             ' 
             Panel6.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             Panel6.BorderStyle = BorderStyle.FixedSingle
+            Panel6.Controls.Add(Label4)
             Panel6.Dock = DockStyle.Top
             Panel6.Location = New Point(0, 0)
             Panel6.Name = "Panel6"
-            Panel6.Size = New Size(608, 71)
+            Panel6.Size = New Size(604, 67)
             Panel6.TabIndex = 1
             ' 
-            ' TableLayoutPanel1
+            ' Label4
             ' 
-            TableLayoutPanel1.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
-            TableLayoutPanel1.ColumnCount = 2
-            TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-            TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-            TableLayoutPanel1.Controls.Add(Panel1, 0, 0)
-            TableLayoutPanel1.Controls.Add(Panel4, 1, 1)
-            TableLayoutPanel1.Controls.Add(Panel2, 1, 0)
-            TableLayoutPanel1.Dock = DockStyle.Fill
-            TableLayoutPanel1.Location = New Point(0, 69)
-            TableLayoutPanel1.Name = "TableLayoutPanel1"
-            TableLayoutPanel1.RowCount = 2
-            TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-            TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-            TableLayoutPanel1.Size = New Size(1232, 730)
-            TableLayoutPanel1.TabIndex = 4
+            Label4.Dock = DockStyle.Fill
+            Label4.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            Label4.ForeColor = Color.White
+            Label4.Location = New Point(0, 0)
+            Label4.Name = "Label4"
+            Label4.Size = New Size(602, 65)
+            Label4.TabIndex = 1
+            Label4.Text = "Upcoming Appointments"
+            Label4.TextAlign = ContentAlignment.MiddleCenter
+            ' 
+            ' pnl_MainContent
+            ' 
+            pnl_MainContent.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
+            pnl_MainContent.ColumnCount = 2
+            pnl_MainContent.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+            pnl_MainContent.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+            pnl_MainContent.Controls.Add(Panel1, 0, 0)
+            pnl_MainContent.Controls.Add(Panel4, 1, 1)
+            pnl_MainContent.Controls.Add(Panel2, 1, 0)
+            pnl_MainContent.Dock = DockStyle.Fill
+            pnl_MainContent.Location = New Point(0, 69)
+            pnl_MainContent.Name = "pnl_MainContent"
+            pnl_MainContent.RowCount = 2
+            pnl_MainContent.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+            pnl_MainContent.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+            pnl_MainContent.Size = New Size(1232, 730)
+            pnl_MainContent.TabIndex = 4
             ' 
             ' cf_Home
             ' 
@@ -205,7 +254,7 @@
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             ClientSize = New Size(1232, 799)
-            Controls.Add(TableLayoutPanel1)
+            Controls.Add(pnl_MainContent)
             Controls.Add(pnl_MainHeader)
             Controls.Add(Label1)
             Name = "cf_Home"
@@ -213,10 +262,13 @@
             pnl_MainHeader.ResumeLayout(False)
             pnl_MainHeader.PerformLayout()
             Panel1.ResumeLayout(False)
+            Panel3.ResumeLayout(False)
             Panel2.ResumeLayout(False)
+            Panel5.ResumeLayout(False)
             Panel4.ResumeLayout(False)
-            TableLayoutPanel1.ResumeLayout(False)
-            TableLayoutPanel1.PerformLayout()
+            Panel6.ResumeLayout(False)
+            pnl_MainContent.ResumeLayout(False)
+            pnl_MainContent.PerformLayout()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -231,8 +283,11 @@
         Friend WithEvents Panel2 As Panel
         Friend WithEvents Panel3 As Panel
         Friend WithEvents Panel4 As Panel
-        Friend WithEvents Panel5 As Panel
+        Friend WithEvents pnl_MainContent As TableLayoutPanel
+        Friend WithEvents lbl_UpAp As Label
         Friend WithEvents Panel6 As Panel
-        Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+        Friend WithEvents Label4 As Label
+        Friend WithEvents Panel5 As Panel
+        Friend WithEvents lbl_PenReq As Label
     End Class
 End Namespace
