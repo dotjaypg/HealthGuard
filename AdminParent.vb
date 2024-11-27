@@ -40,10 +40,7 @@ Public Class AdminParent
     End Sub
 
     ' Method to handle button clicks and dynamically load forms
-    Private Sub Button_Click(sender As Object, e As EventArgs) Handles _
-        btn_Home.Click, btn_PatientList.Click, btn_OutList.Click, btn_AdmitList.Click,
-        btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click,
-        btn_ApmntDay.Click, btn_ApmntReq.Click
+    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btn_Home.Click, btn_PatientList.Click, btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click, btn_ApmntDay.Click, btn_ApmntReq.Click
 
         ' If there is a previously pressed button, reset its background color
         If lastPressedButton IsNot Nothing Then
@@ -51,16 +48,16 @@ Public Class AdminParent
         End If
 
         ' Change the background color of the clicked button
-        Dim clickedButton As Button = CType(sender, Button)
+        Dim clickedButton = CType(sender, Button)
         clickedButton.BackColor = ColorTranslator.FromHtml("#2d9364") ' Color when pressed
 
         ' Update the last pressed button to the current one
         lastPressedButton = clickedButton
 
         ' Determine the form to load using the button's Tag property
-        Dim formType As Type = CType(clickedButton.Tag, Type)
+        Dim formType = CType(clickedButton.Tag, Type)
         If formType IsNot Nothing Then
-            Dim childForm As Form = CType(Activator.CreateInstance(formType), Form)
+            Dim childForm = CType(Activator.CreateInstance(formType), Form)
             ShowChildForm(childForm)
         End If
     End Sub

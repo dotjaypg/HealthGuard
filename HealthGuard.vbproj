@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 9.1\MySql.Data.dll</HintPath>
     </Reference>
@@ -32,8 +36,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="PatientTab\cf_AdmitList.vb" />
-    <Compile Update="PatientTab\cf_OutList.vb" />
     <Compile Update="ScheduleTab\cf_ApmntDay.vb" />
     <Compile Update="ScheduleTab\cf_ApmntList.vb" />
     <Compile Update="ScheduleTab\cf_ApmntReq.vb" />

@@ -227,7 +227,7 @@
             Label4.Name = "Label4"
             Label4.Size = New Size(602, 65)
             Label4.TabIndex = 1
-            Label4.Text = "Upcoming Appointments"
+            Label4.Text = "Notifications"
             Label4.TextAlign = ContentAlignment.MiddleCenter
             ' 
             ' pnl_MainContent

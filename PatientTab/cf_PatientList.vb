@@ -1,5 +1,9 @@
 ﻿Namespace PatientTab
     Public Class cf_PatientList
         Inherits Form
+
+        Private Sub cf_PatientList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        End Sub
     End Class
 End Namespace

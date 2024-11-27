@@ -30,8 +30,6 @@ Partial Class AdminParent
         btn_ApmntDay = New Button()
         btn_ApmntWeek = New Button()
         btn_AccReq = New Button()
-        btn_OutList = New Button()
-        btn_AdmitList = New Button()
         btn_PatientList = New Button()
         btn_Home = New Button()
         btn_Logout = New Button()
@@ -57,8 +55,6 @@ Partial Class AdminParent
         pnl_NavBar.Controls.Add(btn_ApmntDay)
         pnl_NavBar.Controls.Add(btn_ApmntWeek)
         pnl_NavBar.Controls.Add(btn_AccReq)
-        pnl_NavBar.Controls.Add(btn_OutList)
-        pnl_NavBar.Controls.Add(btn_AdmitList)
         pnl_NavBar.Controls.Add(btn_PatientList)
         pnl_NavBar.Controls.Add(btn_Home)
         pnl_NavBar.Controls.Add(btn_Logout)
@@ -77,7 +73,7 @@ Partial Class AdminParent
         btn_ApmntList.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_ApmntList.Image = My.Resources.Resources.icon_schedules
         btn_ApmntList.ImageAlign = ContentAlignment.MiddleLeft
-        btn_ApmntList.Location = New Point(12, 432)
+        btn_ApmntList.Location = New Point(12, 372)
         btn_ApmntList.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntList.Name = "btn_ApmntList"
         btn_ApmntList.Padding = New Padding(13, 0, 0, 0)
@@ -94,7 +90,7 @@ Partial Class AdminParent
         btn_AccList.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_AccList.Image = My.Resources.Resources.icon_accounts
         btn_AccList.ImageAlign = ContentAlignment.MiddleLeft
-        btn_AccList.Location = New Point(12, 348)
+        btn_AccList.Location = New Point(12, 288)
         btn_AccList.Margin = New Padding(3, 2, 3, 2)
         btn_AccList.Name = "btn_AccList"
         btn_AccList.Padding = New Padding(13, 0, 0, 0)
@@ -109,7 +105,7 @@ Partial Class AdminParent
         btn_ApmntReq.Anchor = AnchorStyles.Top
         btn_ApmntReq.FlatStyle = FlatStyle.Flat
         btn_ApmntReq.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntReq.Location = New Point(12, 545)
+        btn_ApmntReq.Location = New Point(12, 485)
         btn_ApmntReq.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntReq.Name = "btn_ApmntReq"
         btn_ApmntReq.Padding = New Padding(66, 0, 0, 0)
@@ -125,7 +121,7 @@ Partial Class AdminParent
         btn_ApmntDay.Anchor = AnchorStyles.Top
         btn_ApmntDay.FlatStyle = FlatStyle.Flat
         btn_ApmntDay.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntDay.Location = New Point(12, 516)
+        btn_ApmntDay.Location = New Point(12, 456)
         btn_ApmntDay.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntDay.Name = "btn_ApmntDay"
         btn_ApmntDay.Padding = New Padding(66, 0, 0, 0)
@@ -141,7 +137,7 @@ Partial Class AdminParent
         btn_ApmntWeek.Anchor = AnchorStyles.Top
         btn_ApmntWeek.FlatStyle = FlatStyle.Flat
         btn_ApmntWeek.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntWeek.Location = New Point(12, 486)
+        btn_ApmntWeek.Location = New Point(12, 426)
         btn_ApmntWeek.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntWeek.Name = "btn_ApmntWeek"
         btn_ApmntWeek.Padding = New Padding(66, 0, 0, 0)
@@ -157,7 +153,7 @@ Partial Class AdminParent
         btn_AccReq.Anchor = AnchorStyles.Top
         btn_AccReq.FlatStyle = FlatStyle.Flat
         btn_AccReq.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_AccReq.Location = New Point(12, 402)
+        btn_AccReq.Location = New Point(12, 342)
         btn_AccReq.Margin = New Padding(3, 2, 3, 2)
         btn_AccReq.Name = "btn_AccReq"
         btn_AccReq.Padding = New Padding(66, 0, 0, 0)
@@ -167,38 +163,6 @@ Partial Class AdminParent
         btn_AccReq.TextAlign = ContentAlignment.MiddleLeft
         btn_AccReq.TextImageRelation = TextImageRelation.ImageBeforeText
         btn_AccReq.UseVisualStyleBackColor = True
-        ' 
-        ' btn_OutList
-        ' 
-        btn_OutList.Anchor = AnchorStyles.Top
-        btn_OutList.FlatStyle = FlatStyle.Flat
-        btn_OutList.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_OutList.Location = New Point(12, 318)
-        btn_OutList.Margin = New Padding(3, 2, 3, 2)
-        btn_OutList.Name = "btn_OutList"
-        btn_OutList.Padding = New Padding(66, 0, 0, 0)
-        btn_OutList.Size = New Size(308, 25)
-        btn_OutList.TabIndex = 2
-        btn_OutList.Text = "> Outpatients"
-        btn_OutList.TextAlign = ContentAlignment.TopLeft
-        btn_OutList.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_OutList.UseVisualStyleBackColor = True
-        ' 
-        ' btn_AdmitList
-        ' 
-        btn_AdmitList.Anchor = AnchorStyles.Top
-        btn_AdmitList.FlatStyle = FlatStyle.Flat
-        btn_AdmitList.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_AdmitList.Location = New Point(12, 289)
-        btn_AdmitList.Margin = New Padding(3, 2, 3, 2)
-        btn_AdmitList.Name = "btn_AdmitList"
-        btn_AdmitList.Padding = New Padding(66, 0, 0, 0)
-        btn_AdmitList.Size = New Size(308, 25)
-        btn_AdmitList.TabIndex = 2
-        btn_AdmitList.Text = "> Admitted Patients"
-        btn_AdmitList.TextAlign = ContentAlignment.TopLeft
-        btn_AdmitList.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_AdmitList.UseVisualStyleBackColor = True
         ' 
         ' btn_PatientList
         ' 
@@ -363,10 +327,8 @@ Partial Class AdminParent
     Friend WithEvents btn_Logout As Button
     Friend WithEvents btn_ApmntList As Button
     Friend WithEvents btn_AccList As Button
-    Friend WithEvents btn_AdmitList As Button
     Friend WithEvents btn_PatientList As Button
     Friend WithEvents btn_Home As Button
-    Friend WithEvents btn_OutList As Button
     Friend WithEvents btn_AccReq As Button
     Friend WithEvents btn_ApmntReq As Button
     Friend WithEvents btn_ApmntDay As Button

@@ -40,7 +40,6 @@
             LastName = New DataGridViewTextBoxColumn()
             Sex = New DataGridViewTextBoxColumn()
             DateOfBirth = New DataGridViewTextBoxColumn()
-            Status = New DataGridViewTextBoxColumn()
             Actions = New DataGridViewTextBoxColumn()
             pnl_MainHeader.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
@@ -135,7 +134,7 @@
             dgv_PatientTable.AllowUserToResizeRows = False
             dgv_PatientTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             dgv_PatientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            dgv_PatientTable.Columns.AddRange(New DataGridViewColumn() {PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth, Status, Actions})
+            dgv_PatientTable.Columns.AddRange(New DataGridViewColumn() {PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth, Actions})
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle1.BackColor = SystemColors.Window
             DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -196,12 +195,6 @@
             DateOfBirth.HeaderText = "Date of Birth"
             DateOfBirth.Name = "DateOfBirth"
             ' 
-            ' Status
-            ' 
-            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            Status.HeaderText = "Status"
-            Status.Name = "Status"
-            ' 
             ' Actions
             ' 
             Actions.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -241,7 +234,6 @@
         Friend WithEvents LastName As DataGridViewTextBoxColumn
         Friend WithEvents Sex As DataGridViewTextBoxColumn
         Friend WithEvents DateOfBirth As DataGridViewTextBoxColumn
-        Friend WithEvents Status As DataGridViewTextBoxColumn
         Friend WithEvents Actions As DataGridViewTextBoxColumn
     End Class
 End Namespace
