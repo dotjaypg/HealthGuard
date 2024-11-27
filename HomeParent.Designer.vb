@@ -38,7 +38,7 @@ Partial Class HomeParent
         Label6 = New Label()
         pnl_MainHeader = New Panel()
         txt_homeSearch = New TextBox()
-        lbl_homeDateTime = New Label()
+        asdhjafksd = New Label()
         pnl_MainPage = New Panel()
         Panel4 = New Panel()
         Panel6 = New Panel()
@@ -242,7 +242,7 @@ Partial Class HomeParent
         pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
         pnl_MainHeader.Controls.Add(Label6)
         pnl_MainHeader.Controls.Add(txt_homeSearch)
-        pnl_MainHeader.Controls.Add(lbl_homeDateTime)
+        pnl_MainHeader.Controls.Add(asdhjafksd)
         pnl_MainHeader.Dock = DockStyle.Top
         pnl_MainHeader.Location = New Point(336, 0)
         pnl_MainHeader.Margin = New Padding(3, 2, 3, 2)
@@ -262,17 +262,17 @@ Partial Class HomeParent
         txt_homeSearch.Size = New Size(493, 29)
         txt_homeSearch.TabIndex = 2
         ' 
-        ' lbl_homeDateTime
+        ' asdhjafksd
         ' 
-        lbl_homeDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lbl_homeDateTime.AutoSize = True
-        lbl_homeDateTime.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_homeDateTime.ForeColor = Color.White
-        lbl_homeDateTime.Location = New Point(1114, 14)
-        lbl_homeDateTime.Name = "lbl_homeDateTime"
-        lbl_homeDateTime.Size = New Size(108, 44)
-        lbl_homeDateTime.TabIndex = 1
-        lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
+        asdhjafksd.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        asdhjafksd.AutoSize = True
+        asdhjafksd.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        asdhjafksd.ForeColor = Color.White
+        asdhjafksd.Location = New Point(1114, 14)
+        asdhjafksd.Name = "asdhjafksd"
+        asdhjafksd.Size = New Size(108, 44)
+        asdhjafksd.TabIndex = 1
+        asdhjafksd.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
         ' 
         ' pnl_MainPage
         ' 
@@ -378,7 +378,7 @@ Partial Class HomeParent
     Friend WithEvents Label4 As Label
     Friend WithEvents pnl_MainHeader As Panel
     Friend WithEvents txt_homeSearch As TextBox
-    Friend WithEvents lbl_homeDateTime As Label
+    Friend WithEvents asdhjafksd As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents btn_Home As Button
     Friend WithEvents btn_Schedules As Button

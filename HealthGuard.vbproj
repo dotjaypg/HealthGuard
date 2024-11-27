@@ -29,7 +29,7 @@
     <Compile Update="PatientTab\cf_AdmitList.vb" />
     <Compile Update="PatientTab\cf_OutList.vb" />
     <Compile Update="ScheduleTab\cf_ApmntDay.vb" />
-    <Compile Update="ScheduleTab\cf_ApmntCalendar.vb" />
+    <Compile Update="ScheduleTab\cf_ApmntList.vb" />
     <Compile Update="ScheduleTab\cf_ApmntReq.vb" />
   </ItemGroup>
 

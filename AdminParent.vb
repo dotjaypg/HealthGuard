@@ -6,6 +6,10 @@ Imports AccountTab
 Imports ScheduleTab
 
 Public Class AdminParent
+
+    ' Timer for updating date and time
+    Private WithEvents timer As New Timer()
+
     ' Class-level variable to store the last pressed button
     Private lastPressedButton As Button = Nothing
 
@@ -24,8 +28,23 @@ Public Class AdminParent
         childForm.Show()
     End Sub
 
-    ' Method to handle button clicks and change the background color
-    Private Sub Button_Click(sender As Object, e As EventArgs)
+    ' Timer tick event to update date and time
+    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+        If pnl_MainPage.Controls.Count > 0 Then
+            Dim activeForm = pnl_MainPage.Controls(0)
+            If TypeOf activeForm Is HomeTab.cf_Home Then
+                Dim homeForm As HomeTab.cf_Home = CType(activeForm, HomeTab.cf_Home)
+                homeForm.UpdateDateTime()
+            End If
+        End If
+    End Sub
+
+    ' Method to handle button clicks and dynamically load forms
+    Private Sub Button_Click(sender As Object, e As EventArgs) Handles _
+        btn_Home.Click, btn_PatientList.Click, btn_OutList.Click, btn_AdmitList.Click,
+        btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click,
+        btn_ApmntDay.Click, btn_ApmntReq.Click
+
         ' If there is a previously pressed button, reset its background color
         If lastPressedButton IsNot Nothing Then
             lastPressedButton.BackColor = ColorTranslator.FromHtml("#13c18e") ' Default color
@@ -37,31 +56,33 @@ Public Class AdminParent
 
         ' Update the last pressed button to the current one
         lastPressedButton = clickedButton
-    End Sub
 
-    ' Event handlers for the buttons
-    Private Sub btn_Home_Click(sender As Object, e As EventArgs) Handles btn_Home.Click
-        Button_Click(sender, e)
-        ShowChildForm(New HomeTab.cf_Home()) ' Show the Home child form
-    End Sub
-
-    Private Sub btn_Patient_Click(sender As Object, e As EventArgs) Handles btn_Patient.Click
-        Button_Click(sender, e)
-        ShowChildForm(New PatientTab.cf_PatientList()) ' Show the Patient List child form
-    End Sub
-
-    Private Sub btn_Account_Click(sender As Object, e As EventArgs) Handles btn_Account.Click
-        Button_Click(sender, e)
-        ShowChildForm(New AccountTab.cf_AccList()) ' Show the Account List child form
-    End Sub
-
-    Private Sub btn_Schedule_Click(sender As Object, e As EventArgs) Handles btn_Schedule.Click
-        Button_Click(sender, e)
-        ShowChildForm(New ScheduleTab.cf_ApmntWeek()) ' Show the Schedule Week View child form
+        ' Determine the form to load using the button's Tag property
+        Dim formType As Type = CType(clickedButton.Tag, Type)
+        If formType IsNot Nothing Then
+            Dim childForm As Form = CType(Activator.CreateInstance(formType), Form)
+            ShowChildForm(childForm)
+        End If
     End Sub
 
     ' Load event to set the initial button state
     Private Sub AdminParent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Assign child forms to button Tags
+        btn_Home.Tag = GetType(HomeTab.cf_Home)
+        btn_PatientList.Tag = GetType(PatientTab.cf_PatientList)
+        btn_OutList.Tag = GetType(PatientTab.cf_OutList)
+        btn_AdmitList.Tag = GetType(PatientTab.cf_AdmitList)
+        btn_AccList.Tag = GetType(AccountTab.cf_AccList)
+        btn_AccReq.Tag = GetType(AccountTab.cf_AccReq)
+        btn_ApmntList.Tag = GetType(ScheduleTab.cf_ApmntList)
+        btn_ApmntWeek.Tag = GetType(ScheduleTab.cf_ApmntWeek)
+        btn_ApmntDay.Tag = GetType(ScheduleTab.cf_ApmntDay)
+        btn_ApmntReq.Tag = GetType(ScheduleTab.cf_ApmntReq)
+
+        ' Start the timer for date and time updates
+        timer.Interval = 1000 ' 1 second
+        timer.Start()
+
         ' Initially set the first button (btn_Home) as "pressed"
         btn_Home.BackColor = ColorTranslator.FromHtml("#2d9364") ' Set the pressed color
         lastPressedButton = btn_Home ' Mark btn_Home as the last pressed button

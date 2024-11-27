@@ -112,9 +112,9 @@
             Label6.ForeColor = Color.White
             Label6.Location = New Point(12, 21)
             Label6.Name = "Label6"
-            Label6.Size = New Size(145, 22)
+            Label6.Size = New Size(137, 22)
             Label6.TabIndex = 1
-            Label6.Text = "User Accounts"
+            Label6.Text = "Accounts List"
             ' 
             ' lbl_homeDateTime
             ' 
