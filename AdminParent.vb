@@ -1,9 +1,5 @@
 ﻿Imports System.Windows.Forms
 Imports System.Drawing
-Imports HomeTab
-Imports PatientTab
-Imports AccountTab
-Imports ScheduleTab
 
 Public Class AdminParent
 
@@ -67,12 +63,10 @@ Public Class AdminParent
         ' Assign child forms to button Tags
         btn_Home.Tag = GetType(HomeTab.cf_Home)
         btn_PatientList.Tag = GetType(PatientTab.cf_PatientList)
-        btn_OutList.Tag = GetType(PatientTab.cf_OutList)
-        btn_AdmitList.Tag = GetType(PatientTab.cf_AdmitList)
         btn_AccList.Tag = GetType(AccountTab.cf_AccList)
         btn_AccReq.Tag = GetType(AccountTab.cf_AccReq)
         btn_ApmntList.Tag = GetType(ScheduleTab.cf_ApmntList)
-        btn_ApmntWeek.Tag = GetType(ScheduleTab.cf_ApmntWeek)
+        btn_ApmntWeek.Tag = GetType(ScheduleTab.cf_Template)
         btn_ApmntDay.Tag = GetType(ScheduleTab.cf_ApmntDay)
         btn_ApmntReq.Tag = GetType(ScheduleTab.cf_ApmntReq)
 

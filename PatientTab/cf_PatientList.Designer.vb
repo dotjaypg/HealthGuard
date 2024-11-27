@@ -25,6 +25,9 @@
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
             Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
             btn_patientAddNew = New Button()
             txt_homeSearch = New TextBox()
@@ -34,13 +37,6 @@
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
-            PatientId = New DataGridViewTextBoxColumn()
-            FirstName = New DataGridViewTextBoxColumn()
-            MiddleName = New DataGridViewTextBoxColumn()
-            LastName = New DataGridViewTextBoxColumn()
-            Sex = New DataGridViewTextBoxColumn()
-            DateOfBirth = New DataGridViewTextBoxColumn()
-            Actions = New DataGridViewTextBoxColumn()
             pnl_MainHeader.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             CType(dgv_PatientTable, ComponentModel.ISupportInitialize).BeginInit()
@@ -129,24 +125,48 @@
             ' 
             dgv_PatientTable.AllowUserToAddRows = False
             dgv_PatientTable.AllowUserToDeleteRows = False
-            dgv_PatientTable.AllowUserToOrderColumns = True
             dgv_PatientTable.AllowUserToResizeColumns = False
             dgv_PatientTable.AllowUserToResizeRows = False
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+            dgv_PatientTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            dgv_PatientTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            dgv_PatientTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
             dgv_PatientTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
+            dgv_PatientTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             dgv_PatientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            dgv_PatientTable.Columns.AddRange(New DataGridViewColumn() {PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth, Actions})
-            DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle1.BackColor = SystemColors.Window
-            DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-            DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-            DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
-            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle1
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = SystemColors.Window
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle3.Padding = New Padding(5)
+            DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
+            DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle3
             dgv_PatientTable.Dock = DockStyle.Fill
-            dgv_PatientTable.Location = New Point(30, 30)
+            dgv_PatientTable.EditMode = DataGridViewEditMode.EditProgrammatically
+            dgv_PatientTable.EnableHeadersVisualStyles = False
+            dgv_PatientTable.Location = New Point(20, 20)
             dgv_PatientTable.Name = "dgv_PatientTable"
-            dgv_PatientTable.Size = New Size(1172, 670)
+            dgv_PatientTable.ReadOnly = True
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+            dgv_PatientTable.RowTemplate.ReadOnly = True
+            dgv_PatientTable.Size = New Size(1192, 690)
             dgv_PatientTable.TabIndex = 4
             ' 
             ' pnl_PatientList
@@ -155,51 +175,9 @@
             pnl_PatientList.Dock = DockStyle.Fill
             pnl_PatientList.Location = New Point(0, 69)
             pnl_PatientList.Name = "pnl_PatientList"
-            pnl_PatientList.Padding = New Padding(30)
+            pnl_PatientList.Padding = New Padding(20)
             pnl_PatientList.Size = New Size(1232, 730)
             pnl_PatientList.TabIndex = 5
-            ' 
-            ' PatientId
-            ' 
-            PatientId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            PatientId.HeaderText = "Patient ID"
-            PatientId.Name = "PatientId"
-            ' 
-            ' FirstName
-            ' 
-            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            FirstName.HeaderText = "First Name"
-            FirstName.Name = "FirstName"
-            ' 
-            ' MiddleName
-            ' 
-            MiddleName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            MiddleName.HeaderText = "Middle Name"
-            MiddleName.Name = "MiddleName"
-            ' 
-            ' LastName
-            ' 
-            LastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            LastName.HeaderText = "Last Name"
-            LastName.Name = "LastName"
-            ' 
-            ' Sex
-            ' 
-            Sex.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            Sex.HeaderText = "Sex"
-            Sex.Name = "Sex"
-            ' 
-            ' DateOfBirth
-            ' 
-            DateOfBirth.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            DateOfBirth.HeaderText = "Date of Birth"
-            DateOfBirth.Name = "DateOfBirth"
-            ' 
-            ' Actions
-            ' 
-            Actions.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            Actions.HeaderText = "Actions"
-            Actions.Name = "Actions"
             ' 
             ' cf_PatientList
             ' 
@@ -228,12 +206,5 @@
         Friend WithEvents DBConnectionBindingSource As BindingSource
         Friend WithEvents dgv_PatientTable As DataGridView
         Friend WithEvents pnl_PatientList As Panel
-        Friend WithEvents PatientId As DataGridViewTextBoxColumn
-        Friend WithEvents FirstName As DataGridViewTextBoxColumn
-        Friend WithEvents MiddleName As DataGridViewTextBoxColumn
-        Friend WithEvents LastName As DataGridViewTextBoxColumn
-        Friend WithEvents Sex As DataGridViewTextBoxColumn
-        Friend WithEvents DateOfBirth As DataGridViewTextBoxColumn
-        Friend WithEvents Actions As DataGridViewTextBoxColumn
     End Class
 End Namespace

@@ -1,4 +1,4 @@
-﻿Namespace ScheduleTab
+﻿Namespace PatientTab
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class cf_Template
         Inherits System.Windows.Forms.Form
@@ -153,4 +153,5 @@
         Friend WithEvents lbl_homeDateTime As Label
         Friend WithEvents Button1 As Button
     End Class
+
 End Namespace

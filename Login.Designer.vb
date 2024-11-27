@@ -188,6 +188,7 @@ Partial Class Login
         ' PictureBox1
         ' 
         PictureBox1.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
+        PictureBox1.BorderStyle = BorderStyle.FixedSingle
         PictureBox1.Dock = DockStyle.Top
         PictureBox1.Image = My.Resources.Resources.logo_flat
         PictureBox1.Location = New Point(0, 0)
