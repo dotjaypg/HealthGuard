@@ -78,5 +78,13 @@ Namespace PatientTab
                 dgv_PatientTable.DataSource = Nothing ' No matches found
             End If
         End Sub
+
+        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
+
+        End Sub
+
+        Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
+
+        End Sub
     End Class
 End Namespace

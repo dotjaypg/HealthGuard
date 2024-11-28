@@ -137,8 +137,6 @@
             ' 
             dgv_AccTable.AllowUserToAddRows = False
             dgv_AccTable.AllowUserToDeleteRows = False
-            dgv_AccTable.AllowUserToResizeColumns = False
-            dgv_AccTable.AllowUserToResizeRows = False
             DataGridViewCellStyle1.BackColor = Color.WhiteSmoke
             dgv_AccTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             dgv_AccTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
@@ -147,7 +145,7 @@
             dgv_AccTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
             DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
             DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
             DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -156,7 +154,7 @@
             dgv_AccTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
             DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle3.BackColor = SystemColors.Window
-            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
             DataGridViewCellStyle3.Padding = New Padding(5)
             DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
@@ -171,7 +169,7 @@
             dgv_AccTable.ReadOnly = True
             DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9.0F)
             DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
             DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
             DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText

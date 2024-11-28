@@ -74,5 +74,13 @@ Namespace AccountTab
                 dgv_AccTable.DataSource = Nothing
             End If
         End Sub
+
+        Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+        End Sub
+
+        Private Sub pnl_MainHeader_Paint(sender As Object, e As PaintEventArgs) Handles pnl_MainHeader.Paint
+
+        End Sub
     End Class
 End Namespace
