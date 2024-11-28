@@ -10,6 +10,9 @@ Namespace PatientTab
         ' The full DataTable to store all the patient data
         Private patientTable As DataTable
 
+        ' Stores the PatientID of the currently selected tuple
+        Private selectedPatientID As String
+
         Private Sub cf_PatientList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Load data into the DataGridView on form load
             LoadPatientData()
@@ -79,12 +82,39 @@ Namespace PatientTab
             End If
         End Sub
 
-        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
-
+        ''' <summary>
+        ''' Handles row selection in the DataGridView.
+        ''' Updates the selectedPatientID variable with the ID of the selected row.
+        ''' </summary>
+        Private Sub dgv_PatientTable_SelectionChanged(sender As Object, e As EventArgs) Handles dgv_PatientTable.SelectionChanged
+            If dgv_PatientTable.CurrentRow IsNot Nothing AndAlso dgv_PatientTable.CurrentRow.Index >= 0 Then
+                Dim row As DataGridViewRow = dgv_PatientTable.CurrentRow
+                selectedPatientID = row.Cells("PatientId").Value.ToString()
+            Else
+                selectedPatientID = Nothing ' No row selected
+            End If
         End Sub
 
-        Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
+        ''' <summary>
+        ''' Displays patient data of the selected row when the View button is clicked.
+        ''' </summary>
+        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
+            If Not String.IsNullOrEmpty(selectedPatientID) Then
+                MessageBox.Show($"PATIENT DATA: {selectedPatientID}", "View Patient", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("No patient selected. Please select a patient to view.", "View Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End Sub
 
+        ''' <summary>
+        ''' Deletes patient data of the selected row when the Delete button is clicked.
+        ''' </summary>
+        Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
+            If Not String.IsNullOrEmpty(selectedPatientID) Then
+                MessageBox.Show($"DELETED DATA: {selectedPatientID}", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                MessageBox.Show("No patient selected. Please select a patient to delete.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         End Sub
     End Class
 End Namespace

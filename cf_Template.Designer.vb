@@ -1,22 +1,23 @@
 ﻿
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class cf_Template
-        Inherits System.Windows.Forms.Form
+Partial Class cf_Template
 
-        'Form overrides dispose to clean up the component list.
-        <System.Diagnostics.DebuggerNonUserCode()>
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            Try
-                If disposing AndAlso components IsNot Nothing Then
-                    components.Dispose()
-                End If
-            Finally
-                MyBase.Dispose(disposing)
-            End Try
-        End Sub
+    Inherits System.Windows.Forms.Form
 
-        'Required by the Windows Form Designer
-        Private components As System.ComponentModel.IContainer
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -146,10 +147,10 @@
 
     Friend WithEvents Label1 As Label
     Friend WithEvents pnl_MainHeader As Panel
-        Friend WithEvents btn_patientAddNew As Button
-        Friend WithEvents txt_homeSearch As TextBox
-        Friend WithEvents Label2 As Label
-        Friend WithEvents Label6 As Label
-        Friend WithEvents lbl_homeDateTime As Label
-        Friend WithEvents Button1 As Button
+    Friend WithEvents btn_patientAddNew As Button
+    Friend WithEvents txt_homeSearch As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lbl_homeDateTime As Label
+    Friend WithEvents Button1 As Button
 End Class

@@ -24,11 +24,13 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle13 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle14 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
+            btn_Delete = New Button()
+            btn_View = New Button()
             txt_Search = New TextBox()
             Label2 = New Label()
             Label6 = New Label()
@@ -36,8 +38,6 @@
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
-            btn_View = New Button()
-            btn_Delete = New Button()
             pnl_MainHeader.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             CType(dgv_PatientTable, ComponentModel.ISupportInitialize).BeginInit()
@@ -60,6 +60,34 @@
             pnl_MainHeader.Name = "pnl_MainHeader"
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 3
+            ' 
+            ' btn_Delete
+            ' 
+            btn_Delete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_Delete.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
+            btn_Delete.FlatAppearance.BorderColor = Color.White
+            btn_Delete.FlatStyle = FlatStyle.Flat
+            btn_Delete.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Delete.Location = New Point(1115, 16)
+            btn_Delete.Name = "btn_Delete"
+            btn_Delete.Size = New Size(101, 34)
+            btn_Delete.TabIndex = 6
+            btn_Delete.Text = "Delete"
+            btn_Delete.UseVisualStyleBackColor = False
+            ' 
+            ' btn_View
+            ' 
+            btn_View.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_View.BackColor = Color.Silver
+            btn_View.FlatAppearance.BorderColor = Color.White
+            btn_View.FlatStyle = FlatStyle.Flat
+            btn_View.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_View.Location = New Point(1000, 16)
+            btn_View.Name = "btn_View"
+            btn_View.Size = New Size(101, 34)
+            btn_View.TabIndex = 6
+            btn_View.Text = "View"
+            btn_View.UseVisualStyleBackColor = False
             ' 
             ' txt_Search
             ' 
@@ -118,44 +146,44 @@
             dgv_PatientTable.AllowUserToDeleteRows = False
             dgv_PatientTable.AllowUserToResizeColumns = False
             dgv_PatientTable.AllowUserToResizeRows = False
-            DataGridViewCellStyle13.BackColor = Color.WhiteSmoke
-            dgv_PatientTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+            DataGridViewCellStyle1.BackColor = Color.WhiteSmoke
+            dgv_PatientTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             dgv_PatientTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             dgv_PatientTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
             dgv_PatientTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             dgv_PatientTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
-            DataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle14.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle14.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle14.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle14.SelectionBackColor = Color.DimGray
-            DataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle14.WrapMode = DataGridViewTriState.True
-            dgv_PatientTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             dgv_PatientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle15.BackColor = SystemColors.Window
-            DataGridViewCellStyle15.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            DataGridViewCellStyle15.ForeColor = SystemColors.ControlText
-            DataGridViewCellStyle15.Padding = New Padding(5)
-            DataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
-            DataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle15.WrapMode = DataGridViewTriState.False
-            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle15
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = SystemColors.Window
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle3.Padding = New Padding(5)
+            DataGridViewCellStyle3.SelectionBackColor = Color.Silver
+            DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle3
             dgv_PatientTable.Dock = DockStyle.Fill
             dgv_PatientTable.EditMode = DataGridViewEditMode.EditProgrammatically
             dgv_PatientTable.EnableHeadersVisualStyles = False
             dgv_PatientTable.Location = New Point(20, 20)
             dgv_PatientTable.Name = "dgv_PatientTable"
             dgv_PatientTable.ReadOnly = True
-            DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle16.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle16.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle16.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle16.SelectionBackColor = Color.Transparent
-            DataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle16.WrapMode = DataGridViewTriState.True
-            dgv_PatientTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle16
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
             dgv_PatientTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
             dgv_PatientTable.RowTemplate.ReadOnly = True
             dgv_PatientTable.Size = New Size(1192, 690)
@@ -170,34 +198,6 @@
             pnl_PatientList.Padding = New Padding(20)
             pnl_PatientList.Size = New Size(1232, 730)
             pnl_PatientList.TabIndex = 5
-            ' 
-            ' btn_View
-            ' 
-            btn_View.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_View.BackColor = Color.Silver
-            btn_View.FlatAppearance.BorderSize = 2
-            btn_View.FlatStyle = FlatStyle.Flat
-            btn_View.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            btn_View.Location = New Point(1000, 16)
-            btn_View.Name = "btn_View"
-            btn_View.Size = New Size(101, 34)
-            btn_View.TabIndex = 6
-            btn_View.Text = "View"
-            btn_View.UseVisualStyleBackColor = False
-            ' 
-            ' btn_Delete
-            ' 
-            btn_Delete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_Delete.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
-            btn_Delete.FlatAppearance.BorderSize = 2
-            btn_Delete.FlatStyle = FlatStyle.Flat
-            btn_Delete.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            btn_Delete.Location = New Point(1115, 16)
-            btn_Delete.Name = "btn_Delete"
-            btn_Delete.Size = New Size(101, 34)
-            btn_Delete.TabIndex = 6
-            btn_Delete.Text = "Delete"
-            btn_Delete.UseVisualStyleBackColor = False
             ' 
             ' cf_PatientList
             ' 

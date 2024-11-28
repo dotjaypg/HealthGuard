@@ -1,4 +1,4 @@
 ﻿
-Public Class cf_Template
+Public Class cf_PatientData
         Inherits Form
     End Class
