@@ -24,10 +24,10 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             components = New ComponentModel.Container()
-            Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
             btn_AddPatient = New Button()
             txt_homeSearch = New TextBox()
@@ -37,6 +37,7 @@
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
+            pnl_Popup = New Panel()
             pnl_MainHeader.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             CType(dgv_PatientTable, ComponentModel.ISupportInitialize).BeginInit()
@@ -127,50 +128,51 @@
             dgv_PatientTable.AllowUserToDeleteRows = False
             dgv_PatientTable.AllowUserToResizeColumns = False
             dgv_PatientTable.AllowUserToResizeRows = False
-            DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-            dgv_PatientTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+            DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+            dgv_PatientTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             dgv_PatientTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             dgv_PatientTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
             dgv_PatientTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             dgv_PatientTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
-            DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle10.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle10.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle10.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle10.SelectionBackColor = Color.DimGray
-            DataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
-            dgv_PatientTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             dgv_PatientTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle11.BackColor = SystemColors.Window
-            DataGridViewCellStyle11.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            DataGridViewCellStyle11.ForeColor = SystemColors.ControlText
-            DataGridViewCellStyle11.Padding = New Padding(5)
-            DataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
-            DataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle11.WrapMode = DataGridViewTriState.False
-            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle11
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = SystemColors.Window
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle3.Padding = New Padding(5)
+            DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
+            DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+            dgv_PatientTable.DefaultCellStyle = DataGridViewCellStyle3
             dgv_PatientTable.Dock = DockStyle.Fill
             dgv_PatientTable.EditMode = DataGridViewEditMode.EditProgrammatically
             dgv_PatientTable.EnableHeadersVisualStyles = False
             dgv_PatientTable.Location = New Point(20, 20)
             dgv_PatientTable.Name = "dgv_PatientTable"
             dgv_PatientTable.ReadOnly = True
-            DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle12.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle12.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle12.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle12.SelectionBackColor = Color.Transparent
-            DataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle12.WrapMode = DataGridViewTriState.True
-            dgv_PatientTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            dgv_PatientTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
             dgv_PatientTable.RowTemplate.ReadOnly = True
             dgv_PatientTable.Size = New Size(1192, 690)
             dgv_PatientTable.TabIndex = 4
             ' 
             ' pnl_PatientList
             ' 
+            pnl_PatientList.Controls.Add(pnl_Popup)
             pnl_PatientList.Controls.Add(dgv_PatientTable)
             pnl_PatientList.Dock = DockStyle.Fill
             pnl_PatientList.Location = New Point(0, 69)
@@ -178,6 +180,13 @@
             pnl_PatientList.Padding = New Padding(20)
             pnl_PatientList.Size = New Size(1232, 730)
             pnl_PatientList.TabIndex = 5
+            ' 
+            ' pnl_Popup
+            ' 
+            pnl_Popup.Location = New Point(0, -69)
+            pnl_Popup.Name = "pnl_Popup"
+            pnl_Popup.Size = New Size(1232, 799)
+            pnl_Popup.TabIndex = 5
             ' 
             ' cf_PatientList
             ' 
@@ -206,5 +215,6 @@
         Friend WithEvents DBConnectionBindingSource As BindingSource
         Friend WithEvents dgv_PatientTable As DataGridView
         Friend WithEvents pnl_PatientList As Panel
+        Friend WithEvents pnl_Popup As Panel
     End Class
 End Namespace
