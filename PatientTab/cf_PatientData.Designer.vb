@@ -26,12 +26,12 @@
         Private Sub InitializeComponent()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
-            Button2 = New Button()
-            Button1 = New Button()
-            btn_View = New Button()
+            btn_ResetData = New Button()
+            btn_SaveData = New Button()
+            btn_Back = New Button()
             btn_patientAddNew = New Button()
             Label2 = New Label()
-            lbl_PatientData = New Label()
+            lbl_PatientID = New Label()
             lbl_homeDateTime = New Label()
             pnl_PatientData = New Panel()
             pnl_MainHeader.SuspendLayout()
@@ -50,12 +50,12 @@
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             pnl_MainHeader.BorderStyle = BorderStyle.FixedSingle
-            pnl_MainHeader.Controls.Add(Button2)
-            pnl_MainHeader.Controls.Add(Button1)
-            pnl_MainHeader.Controls.Add(btn_View)
+            pnl_MainHeader.Controls.Add(btn_ResetData)
+            pnl_MainHeader.Controls.Add(btn_SaveData)
+            pnl_MainHeader.Controls.Add(btn_Back)
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
             pnl_MainHeader.Controls.Add(Label2)
-            pnl_MainHeader.Controls.Add(lbl_PatientData)
+            pnl_MainHeader.Controls.Add(lbl_PatientID)
             pnl_MainHeader.Controls.Add(lbl_homeDateTime)
             pnl_MainHeader.Dock = DockStyle.Top
             pnl_MainHeader.Location = New Point(0, 0)
@@ -64,48 +64,44 @@
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 4
             ' 
-            ' Button2
+            ' btn_ResetData
             ' 
-            Button2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            Button2.BackColor = Color.Silver
-            Button2.FlatAppearance.BorderSize = 2
-            Button2.FlatStyle = FlatStyle.Flat
-            Button2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            Button2.Location = New Point(1153, 16)
-            Button2.Name = "Button2"
-            Button2.Size = New Size(65, 34)
-            Button2.TabIndex = 7
-            Button2.Text = "Reset"
-            Button2.UseVisualStyleBackColor = False
+            btn_ResetData.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_ResetData.BackColor = Color.Silver
+            btn_ResetData.FlatStyle = FlatStyle.Flat
+            btn_ResetData.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_ResetData.Location = New Point(1153, 16)
+            btn_ResetData.Name = "btn_ResetData"
+            btn_ResetData.Size = New Size(65, 34)
+            btn_ResetData.TabIndex = 7
+            btn_ResetData.Text = "Reset"
+            btn_ResetData.UseVisualStyleBackColor = False
             ' 
-            ' Button1
+            ' btn_SaveData
             ' 
-            Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            Button1.BackColor = Color.Silver
-            Button1.FlatAppearance.BorderSize = 2
-            Button1.FlatStyle = FlatStyle.Flat
-            Button1.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            Button1.Location = New Point(1021, 16)
-            Button1.Name = "Button1"
-            Button1.Size = New Size(126, 34)
-            Button1.TabIndex = 7
-            Button1.Text = "Save Changes"
-            Button1.UseVisualStyleBackColor = False
+            btn_SaveData.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_SaveData.BackColor = Color.Silver
+            btn_SaveData.FlatStyle = FlatStyle.Flat
+            btn_SaveData.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_SaveData.Location = New Point(1021, 16)
+            btn_SaveData.Name = "btn_SaveData"
+            btn_SaveData.Size = New Size(126, 34)
+            btn_SaveData.TabIndex = 7
+            btn_SaveData.Text = "Save Changes"
+            btn_SaveData.UseVisualStyleBackColor = False
             ' 
-            ' btn_View
+            ' btn_Back
             ' 
-            btn_View.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_View.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
-            btn_View.FlatAppearance.BorderSize = 2
-            btn_View.FlatStyle = FlatStyle.Flat
-            btn_View.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            btn_View.ForeColor = Color.Black
-            btn_View.Location = New Point(15, 16)
-            btn_View.Name = "btn_View"
-            btn_View.Size = New Size(37, 34)
-            btn_View.TabIndex = 7
-            btn_View.Text = "X"
-            btn_View.UseVisualStyleBackColor = False
+            btn_Back.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
+            btn_Back.FlatStyle = FlatStyle.Flat
+            btn_Back.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Back.ForeColor = Color.Black
+            btn_Back.Location = New Point(15, 16)
+            btn_Back.Name = "btn_Back"
+            btn_Back.Size = New Size(37, 34)
+            btn_Back.TabIndex = 7
+            btn_Back.Text = "X"
+            btn_Back.UseVisualStyleBackColor = False
             ' 
             ' btn_patientAddNew
             ' 
@@ -130,16 +126,16 @@
             Label2.TabIndex = 3
             Label2.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
-            ' lbl_PatientData
+            ' lbl_PatientID
             ' 
-            lbl_PatientData.AutoSize = True
-            lbl_PatientData.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            lbl_PatientData.ForeColor = Color.Black
-            lbl_PatientData.Location = New Point(69, 22)
-            lbl_PatientData.Name = "lbl_PatientData"
-            lbl_PatientData.Size = New Size(78, 22)
-            lbl_PatientData.TabIndex = 1
-            lbl_PatientData.Text = "P00000"
+            lbl_PatientID.AutoSize = True
+            lbl_PatientID.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            lbl_PatientID.ForeColor = Color.Black
+            lbl_PatientID.Location = New Point(63, 22)
+            lbl_PatientID.Name = "lbl_PatientID"
+            lbl_PatientID.Size = New Size(78, 22)
+            lbl_PatientID.TabIndex = 1
+            lbl_PatientID.Text = "P00000"
             ' 
             ' lbl_homeDateTime
             ' 
@@ -155,6 +151,7 @@
             ' 
             ' pnl_PatientData
             ' 
+            pnl_PatientData.BorderStyle = BorderStyle.FixedSingle
             pnl_PatientData.Dock = DockStyle.Fill
             pnl_PatientData.Location = New Point(0, 69)
             pnl_PatientData.Name = "pnl_PatientData"
@@ -183,11 +180,11 @@
         Friend WithEvents pnl_MainHeader As Panel
         Friend WithEvents btn_patientAddNew As Button
         Friend WithEvents Label2 As Label
-        Friend WithEvents lbl_PatientData As Label
+        Friend WithEvents lbl_PatientID As Label
         Friend WithEvents lbl_homeDateTime As Label
-        Friend WithEvents btn_View As Button
-        Friend WithEvents Button2 As Button
-        Friend WithEvents Button1 As Button
+        Friend WithEvents btn_Back As Button
+        Friend WithEvents btn_ResetData As Button
+        Friend WithEvents btn_SaveData As Button
         Friend WithEvents pnl_PatientData As Panel
     End Class
 End Namespace
