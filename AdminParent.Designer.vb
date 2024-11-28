@@ -69,7 +69,7 @@ Partial Class AdminParent
         btn_ApmntList.Font = New Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btn_ApmntList.Image = My.Resources.Resources.icon_schedules
         btn_ApmntList.ImageAlign = ContentAlignment.MiddleLeft
-        btn_ApmntList.Location = New Point(11, 317)
+        btn_ApmntList.Location = New Point(11, 321)
         btn_ApmntList.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntList.Name = "btn_ApmntList"
         btn_ApmntList.Padding = New Padding(13, 0, 0, 0)
@@ -101,11 +101,11 @@ Partial Class AdminParent
         btn_ApmntReq.Anchor = AnchorStyles.Top
         btn_ApmntReq.FlatStyle = FlatStyle.Flat
         btn_ApmntReq.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntReq.Location = New Point(11, 430)
+        btn_ApmntReq.Location = New Point(11, 409)
         btn_ApmntReq.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntReq.Name = "btn_ApmntReq"
         btn_ApmntReq.Padding = New Padding(66, 0, 0, 0)
-        btn_ApmntReq.Size = New Size(308, 25)
+        btn_ApmntReq.Size = New Size(308, 30)
         btn_ApmntReq.TabIndex = 2
         btn_ApmntReq.Text = "> Appointment Requests"
         btn_ApmntReq.TextAlign = ContentAlignment.TopLeft
@@ -117,11 +117,11 @@ Partial Class AdminParent
         btn_ApmntDay.Anchor = AnchorStyles.Top
         btn_ApmntDay.FlatStyle = FlatStyle.Flat
         btn_ApmntDay.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntDay.Location = New Point(11, 401)
+        btn_ApmntDay.Location = New Point(11, 375)
         btn_ApmntDay.Margin = New Padding(3, 2, 3, 2)
         btn_ApmntDay.Name = "btn_ApmntDay"
         btn_ApmntDay.Padding = New Padding(66, 0, 0, 0)
-        btn_ApmntDay.Size = New Size(308, 25)
+        btn_ApmntDay.Size = New Size(308, 30)
         btn_ApmntDay.TabIndex = 2
         btn_ApmntDay.Text = "> Today's Appointments"
         btn_ApmntDay.TextAlign = ContentAlignment.TopLeft
@@ -137,7 +137,7 @@ Partial Class AdminParent
         btn_AccReq.Margin = New Padding(3, 2, 3, 2)
         btn_AccReq.Name = "btn_AccReq"
         btn_AccReq.Padding = New Padding(66, 0, 0, 0)
-        btn_AccReq.Size = New Size(308, 25)
+        btn_AccReq.Size = New Size(308, 30)
         btn_AccReq.TabIndex = 2
         btn_AccReq.Text = "> Account Requests"
         btn_AccReq.TextAlign = ContentAlignment.MiddleLeft
