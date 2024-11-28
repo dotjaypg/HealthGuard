@@ -46,6 +46,7 @@ Partial Class Login
         ' 
         pnl_LoginPanel.BackColor = Color.White
         pnl_LoginPanel.BackgroundImage = My.Resources.Resources.CMS
+        pnl_LoginPanel.BackgroundImageLayout = ImageLayout.Zoom
         pnl_LoginPanel.ColumnCount = 3
         pnl_LoginPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 49.9999962F))
         pnl_LoginPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 621F))

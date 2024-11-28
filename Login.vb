@@ -59,4 +59,21 @@ Public Class Login
             dbConnection.Close()
         End Try
     End Sub
+
+    ' Prevent Enter key in txt_UserCred
+    Private Sub txt_UserCred_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_UserCred.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Prevent the Enter key from doing anything
+        End If
+    End Sub
+
+    ' Trigger Login button when Enter is pressed in txt_Password
+    Private Sub txt_Password_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_Password.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Prevent default behavior
+            btn_LoginButton.PerformClick() ' Simulate button click
+        End If
+    End Sub
 End Class
+
+

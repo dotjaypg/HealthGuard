@@ -82,7 +82,7 @@
             pnl_MainHeader.Location = New Point(0, 0)
             pnl_MainHeader.Margin = New Padding(3, 2, 3, 2)
             pnl_MainHeader.Name = "pnl_MainHeader"
-            pnl_MainHeader.Size = New Size(1232, 69)
+            pnl_MainHeader.Size = New Size(1232, 60)
             pnl_MainHeader.TabIndex = 2
             ' 
             ' lbl_DateTimeDisplay
@@ -132,7 +132,7 @@
             Panel1.Margin = New Padding(10)
             Panel1.Name = "Panel1"
             pnl_MainContent.SetRowSpan(Panel1, 2)
-            Panel1.Size = New Size(596, 710)
+            Panel1.Size = New Size(596, 719)
             Panel1.TabIndex = 3
             ' 
             ' Panel3
@@ -168,7 +168,7 @@
             Panel2.Location = New Point(616, 10)
             Panel2.Margin = New Padding(0, 10, 10, 5)
             Panel2.Name = "Panel2"
-            Panel2.Size = New Size(606, 350)
+            Panel2.Size = New Size(606, 354)
             Panel2.TabIndex = 3
             ' 
             ' Panel5
@@ -201,10 +201,10 @@
             Panel4.BorderStyle = BorderStyle.FixedSingle
             Panel4.Controls.Add(Panel6)
             Panel4.Dock = DockStyle.Fill
-            Panel4.Location = New Point(616, 370)
+            Panel4.Location = New Point(616, 374)
             Panel4.Margin = New Padding(0, 5, 10, 10)
             Panel4.Name = "Panel4"
-            Panel4.Size = New Size(606, 350)
+            Panel4.Size = New Size(606, 355)
             Panel4.TabIndex = 3
             ' 
             ' Panel6
@@ -240,12 +240,12 @@
             pnl_MainContent.Controls.Add(Panel4, 1, 1)
             pnl_MainContent.Controls.Add(Panel2, 1, 0)
             pnl_MainContent.Dock = DockStyle.Fill
-            pnl_MainContent.Location = New Point(0, 69)
+            pnl_MainContent.Location = New Point(0, 60)
             pnl_MainContent.Name = "pnl_MainContent"
             pnl_MainContent.RowCount = 2
             pnl_MainContent.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
             pnl_MainContent.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-            pnl_MainContent.Size = New Size(1232, 730)
+            pnl_MainContent.Size = New Size(1232, 739)
             pnl_MainContent.TabIndex = 4
             ' 
             ' cf_Home

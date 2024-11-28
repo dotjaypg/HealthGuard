@@ -248,48 +248,49 @@ Partial Class AdminParent
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Arial Unicode MS", 12F, FontStyle.Bold Or FontStyle.Underline, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold Or FontStyle.Underline, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.White
         Label2.Location = New Point(129, 7)
         Label2.Name = "Label2"
-        Label2.Size = New Size(179, 21)
+        Label2.Size = New Size(180, 20)
         Label2.TabIndex = 1
         Label2.Text = "System Administrator"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Arial Unicode MS", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.White
         Label3.Location = New Point(129, 156)
         Label3.Name = "Label3"
-        Label3.Size = New Size(0, 21)
+        Label3.Size = New Size(0, 20)
         Label3.TabIndex = 1
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Arial Unicode MS", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = Color.White
         Label4.Location = New Point(34, 138)
         Label4.Name = "Label4"
-        Label4.Size = New Size(241, 21)
+        Label4.Size = New Size(238, 20)
         Label4.TabIndex = 1
         Label4.Text = "One-rad Medical and X-ray Clinic"
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Arial Unicode MS", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.White
         Label1.Location = New Point(10, 7)
         Label1.Name = "Label1"
-        Label1.Size = New Size(105, 21)
+        Label1.Size = New Size(104, 20)
         Label1.TabIndex = 1
         Label1.Text = "Logged in as:"
         ' 
         ' pnl_MainPage
         ' 
+        pnl_MainPage.AutoSize = True
         pnl_MainPage.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
         pnl_MainPage.Dock = DockStyle.Fill
         pnl_MainPage.Location = New Point(336, 0)
@@ -314,6 +315,7 @@ Partial Class AdminParent
         pnl_NavHeader.PerformLayout()
         CType(pb_Logo, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents pnl_NavBar As Panel
