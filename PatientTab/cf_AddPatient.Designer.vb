@@ -1,6 +1,6 @@
 ﻿Namespace PatientTab
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class cf_Template
+    Partial Class cf_AddPatient
         Inherits System.Windows.Forms.Form
 
         'Form overrides dispose to clean up the component list.
@@ -25,11 +25,11 @@
         Private Sub InitializeComponent()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
-            Button1 = New Button()
-            btn_patientAddNew = New Button()
-            txt_homeSearch = New TextBox()
-            Label2 = New Label()
             Label6 = New Label()
+            btn_Back = New Button()
+            btn_AddPatient = New Button()
+            btn_patientAddNew = New Button()
+            Label2 = New Label()
             lbl_homeDateTime = New Label()
             pnl_MainHeader.SuspendLayout()
             SuspendLayout()
@@ -37,7 +37,7 @@
             ' Label1
             ' 
             Label1.AutoSize = True
-            Label1.Font = New Font("Segoe UI", 48.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            Label1.Font = New Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label1.Location = New Point(156, 322)
             Label1.Name = "Label1"
             Label1.Size = New Size(0, 86)
@@ -46,11 +46,11 @@
             ' pnl_MainHeader
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            pnl_MainHeader.Controls.Add(Button1)
-            pnl_MainHeader.Controls.Add(btn_patientAddNew)
-            pnl_MainHeader.Controls.Add(txt_homeSearch)
-            pnl_MainHeader.Controls.Add(Label2)
             pnl_MainHeader.Controls.Add(Label6)
+            pnl_MainHeader.Controls.Add(btn_Back)
+            pnl_MainHeader.Controls.Add(btn_AddPatient)
+            pnl_MainHeader.Controls.Add(btn_patientAddNew)
+            pnl_MainHeader.Controls.Add(Label2)
             pnl_MainHeader.Controls.Add(lbl_homeDateTime)
             pnl_MainHeader.Dock = DockStyle.Top
             pnl_MainHeader.Location = New Point(0, 0)
@@ -59,39 +59,54 @@
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 4
             ' 
-            ' Button1
+            ' Label6
             ' 
-            Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            Button1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Button1.Location = New Point(1029, 17)
-            Button1.Name = "Button1"
-            Button1.Size = New Size(186, 34)
-            Button1.TabIndex = 5
-            Button1.Text = "Add new appointment"
-            Button1.UseVisualStyleBackColor = True
+            Label6.AutoSize = True
+            Label6.FlatStyle = FlatStyle.Flat
+            Label6.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            Label6.ForeColor = Color.White
+            Label6.Location = New Point(232, 24)
+            Label6.Name = "Label6"
+            Label6.Size = New Size(118, 22)
+            Label6.TabIndex = 5
+            Label6.Text = "New Patient"
+            ' 
+            ' btn_Back
+            ' 
+            btn_Back.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_Back.BackColor = Color.FromArgb(CByte(71), CByte(102), CByte(59))
+            btn_Back.FlatAppearance.BorderSize = 0
+            btn_Back.FlatStyle = FlatStyle.Flat
+            btn_Back.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Back.ForeColor = Color.White
+            btn_Back.Location = New Point(22, 17)
+            btn_Back.Name = "btn_Back"
+            btn_Back.Size = New Size(186, 34)
+            btn_Back.TabIndex = 5
+            btn_Back.Text = "Back"
+            btn_Back.UseVisualStyleBackColor = False
+            ' 
+            ' btn_AddPatient
+            ' 
+            btn_AddPatient.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_AddPatient.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            btn_AddPatient.Location = New Point(1029, 17)
+            btn_AddPatient.Name = "btn_AddPatient"
+            btn_AddPatient.Size = New Size(186, 34)
+            btn_AddPatient.TabIndex = 5
+            btn_AddPatient.Text = "Add new appointment"
+            btn_AddPatient.UseVisualStyleBackColor = True
             ' 
             ' btn_patientAddNew
             ' 
             btn_patientAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_patientAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            btn_patientAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             btn_patientAddNew.Location = New Point(2087, 17)
             btn_patientAddNew.Name = "btn_patientAddNew"
             btn_patientAddNew.Size = New Size(160, 34)
             btn_patientAddNew.TabIndex = 4
             btn_patientAddNew.Text = "Add new patient"
             btn_patientAddNew.UseVisualStyleBackColor = True
-            ' 
-            ' txt_homeSearch
-            ' 
-            txt_homeSearch.Anchor = AnchorStyles.Top
-            txt_homeSearch.BorderStyle = BorderStyle.None
-            txt_homeSearch.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_homeSearch.Location = New Point(397, 20)
-            txt_homeSearch.Margin = New Padding(3, 2, 3, 2)
-            txt_homeSearch.Name = "txt_homeSearch"
-            txt_homeSearch.PlaceholderText = "Search for an appointment"
-            txt_homeSearch.Size = New Size(493, 29)
-            txt_homeSearch.TabIndex = 4
             ' 
             ' Label2
             ' 
@@ -105,17 +120,6 @@
             Label2.TabIndex = 3
             Label2.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
-            ' Label6
-            ' 
-            Label6.AutoSize = True
-            Label6.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            Label6.ForeColor = Color.White
-            Label6.Location = New Point(12, 21)
-            Label6.Name = "Label6"
-            Label6.Size = New Size(231, 22)
-            Label6.TabIndex = 1
-            Label6.Text = "Appointments this week"
-            ' 
             ' lbl_homeDateTime
             ' 
             lbl_homeDateTime.Anchor = AnchorStyles.Top Or AnchorStyles.Right
@@ -128,15 +132,15 @@
             lbl_homeDateTime.TabIndex = 1
             lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
-            ' cf_ApmntWeek
+            ' cf_AddPatient
             ' 
-            AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+            AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             ClientSize = New Size(1232, 799)
             Controls.Add(pnl_MainHeader)
             Controls.Add(Label1)
-            Name = "cf_ApmntWeek"
+            Name = "cf_AddPatient"
             Text = "cf_ApmntWeek"
             pnl_MainHeader.ResumeLayout(False)
             pnl_MainHeader.PerformLayout()
@@ -147,11 +151,11 @@
         Friend WithEvents Label1 As Label
         Friend WithEvents pnl_MainHeader As Panel
         Friend WithEvents btn_patientAddNew As Button
-        Friend WithEvents txt_homeSearch As TextBox
         Friend WithEvents Label2 As Label
-        Friend WithEvents Label6 As Label
         Friend WithEvents lbl_homeDateTime As Label
-        Friend WithEvents Button1 As Button
+        Friend WithEvents btn_AddPatient As Button
+        Friend WithEvents btn_Back As Button
+        Friend WithEvents Label6 As Label
     End Class
 
 End Namespace

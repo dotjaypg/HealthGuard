@@ -10,7 +10,6 @@ Namespace PatientTab
         Private Sub cf_PatientList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Load data into the existing DataGridView
             LoadPatientData()
-
         End Sub
 
         Private Sub LoadPatientData()
@@ -30,6 +29,15 @@ Namespace PatientTab
             Catch ex As Exception
                 MessageBox.Show($"Error loading patient data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+        End Sub
+
+        ' Switch to Add Patient form
+        Private Sub btn_AddPatient_Click(sender As Object, e As EventArgs) Handles btn_AddPatient.Click
+            ' Access the parent form and load the Add Patient form
+            Dim parentForm = CType(Me.MdiParent, AdminParent)
+            If parentForm IsNot Nothing Then
+                parentForm.ShowChildForm(New cf_AddPatient())
+            End If
         End Sub
     End Class
 End Namespace

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
@@ -39,7 +40,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="PatientTab\cf_Template.vb">
+    <Compile Update="PatientTab\cf_AddPatient.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ScheduleTab\cf_ApmntDay.vb" />
