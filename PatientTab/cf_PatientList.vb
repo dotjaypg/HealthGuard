@@ -33,11 +33,9 @@ Namespace PatientTab
 
         ' Switch to Add Patient form
         Private Sub btn_AddPatient_Click(sender As Object, e As EventArgs) Handles btn_AddPatient.Click
-            ' Access the parent form and load the Add Patient form
-            Dim parentForm = CType(Me.MdiParent, AdminParent)
-            If parentForm IsNot Nothing Then
-                parentForm.ShowChildForm(New cf_AddPatient())
-            End If
+            Dim addPatientForm As New cf_AddPatient()
+            addPatientForm.Show()
+            Me.Hide()
         End Sub
     End Class
 End Namespace
