@@ -25,9 +25,8 @@
         Private Sub InitializeComponent()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
-            Button1 = New Button()
             btn_patientAddNew = New Button()
-            txt_homeSearch = New TextBox()
+            txt_Search = New TextBox()
             Label2 = New Label()
             Label6 = New Label()
             lbl_homeDateTime = New Label()
@@ -46,9 +45,8 @@
             ' pnl_MainHeader
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            pnl_MainHeader.Controls.Add(Button1)
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
-            pnl_MainHeader.Controls.Add(txt_homeSearch)
+            pnl_MainHeader.Controls.Add(txt_Search)
             pnl_MainHeader.Controls.Add(Label2)
             pnl_MainHeader.Controls.Add(Label6)
             pnl_MainHeader.Controls.Add(lbl_homeDateTime)
@@ -58,17 +56,6 @@
             pnl_MainHeader.Name = "pnl_MainHeader"
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 4
-            ' 
-            ' Button1
-            ' 
-            Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            Button1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Button1.Location = New Point(1029, 17)
-            Button1.Name = "Button1"
-            Button1.Size = New Size(186, 34)
-            Button1.TabIndex = 5
-            Button1.Text = "Add new appointment"
-            Button1.UseVisualStyleBackColor = True
             ' 
             ' btn_patientAddNew
             ' 
@@ -81,17 +68,17 @@
             btn_patientAddNew.Text = "Add new patient"
             btn_patientAddNew.UseVisualStyleBackColor = True
             ' 
-            ' txt_homeSearch
+            ' txt_Search
             ' 
-            txt_homeSearch.Anchor = AnchorStyles.Top
-            txt_homeSearch.BorderStyle = BorderStyle.None
-            txt_homeSearch.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_homeSearch.Location = New Point(397, 20)
-            txt_homeSearch.Margin = New Padding(3, 2, 3, 2)
-            txt_homeSearch.Name = "txt_homeSearch"
-            txt_homeSearch.PlaceholderText = "Search for an appointment"
-            txt_homeSearch.Size = New Size(493, 29)
-            txt_homeSearch.TabIndex = 4
+            txt_Search.Anchor = AnchorStyles.Top
+            txt_Search.BorderStyle = BorderStyle.None
+            txt_Search.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_Search.Location = New Point(397, 20)
+            txt_Search.Margin = New Padding(3, 2, 3, 2)
+            txt_Search.Name = "txt_Search"
+            txt_Search.PlaceholderText = "Search for an appointment"
+            txt_Search.Size = New Size(493, 29)
+            txt_Search.TabIndex = 4
             ' 
             ' Label2
             ' 
@@ -147,10 +134,9 @@
         Friend WithEvents Label1 As Label
         Friend WithEvents pnl_MainHeader As Panel
         Friend WithEvents btn_patientAddNew As Button
-        Friend WithEvents txt_homeSearch As TextBox
+        Friend WithEvents txt_Search As TextBox
         Friend WithEvents Label2 As Label
         Friend WithEvents Label6 As Label
         Friend WithEvents lbl_homeDateTime As Label
-        Friend WithEvents Button1 As Button
     End Class
 End Namespace

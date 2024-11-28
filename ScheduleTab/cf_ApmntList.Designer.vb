@@ -23,75 +23,70 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
-            Button1 = New Button()
             btn_patientAddNew = New Button()
-            txt_homeSearch = New TextBox()
+            txt_Search = New TextBox()
             Label2 = New Label()
             Label6 = New Label()
             lbl_homeDateTime = New Label()
+            pnl_PatientList = New Panel()
+            dgv_ApmntTable = New DataGridView()
             pnl_MainHeader.SuspendLayout()
+            pnl_PatientList.SuspendLayout()
+            CType(dgv_ApmntTable, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' Label1
             ' 
             Label1.AutoSize = True
-            Label1.Font = New Font("Segoe UI", 48.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Label1.Location = New Point(178, 429)
+            Label1.Font = New Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            Label1.Location = New Point(156, 322)
             Label1.Name = "Label1"
-            Label1.Size = New Size(0, 106)
+            Label1.Size = New Size(0, 86)
             Label1.TabIndex = 0
             ' 
             ' pnl_MainHeader
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            pnl_MainHeader.Controls.Add(Button1)
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
-            pnl_MainHeader.Controls.Add(txt_homeSearch)
+            pnl_MainHeader.Controls.Add(txt_Search)
             pnl_MainHeader.Controls.Add(Label2)
             pnl_MainHeader.Controls.Add(Label6)
             pnl_MainHeader.Controls.Add(lbl_homeDateTime)
             pnl_MainHeader.Dock = DockStyle.Top
             pnl_MainHeader.Location = New Point(0, 0)
+            pnl_MainHeader.Margin = New Padding(3, 2, 3, 2)
             pnl_MainHeader.Name = "pnl_MainHeader"
-            pnl_MainHeader.Size = New Size(1408, 92)
+            pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 4
-            ' 
-            ' Button1
-            ' 
-            Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            Button1.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Button1.Location = New Point(1176, 23)
-            Button1.Margin = New Padding(3, 4, 3, 4)
-            Button1.Name = "Button1"
-            Button1.Size = New Size(213, 45)
-            Button1.TabIndex = 5
-            Button1.Text = "Add new appointment"
-            Button1.UseVisualStyleBackColor = True
             ' 
             ' btn_patientAddNew
             ' 
             btn_patientAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_patientAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            btn_patientAddNew.Location = New Point(2385, 23)
-            btn_patientAddNew.Margin = New Padding(3, 4, 3, 4)
+            btn_patientAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            btn_patientAddNew.Location = New Point(2087, 17)
             btn_patientAddNew.Name = "btn_patientAddNew"
-            btn_patientAddNew.Size = New Size(183, 45)
+            btn_patientAddNew.Size = New Size(160, 34)
             btn_patientAddNew.TabIndex = 4
             btn_patientAddNew.Text = "Add new patient"
             btn_patientAddNew.UseVisualStyleBackColor = True
             ' 
-            ' txt_homeSearch
+            ' txt_Search
             ' 
-            txt_homeSearch.Anchor = AnchorStyles.Top
-            txt_homeSearch.BorderStyle = BorderStyle.None
-            txt_homeSearch.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_homeSearch.Location = New Point(454, 27)
-            txt_homeSearch.Name = "txt_homeSearch"
-            txt_homeSearch.PlaceholderText = "Search for an appointment"
-            txt_homeSearch.Size = New Size(563, 36)
-            txt_homeSearch.TabIndex = 4
+            txt_Search.Anchor = AnchorStyles.Top
+            txt_Search.BorderStyle = BorderStyle.None
+            txt_Search.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_Search.Location = New Point(397, 20)
+            txt_Search.Margin = New Padding(3, 2, 3, 2)
+            txt_Search.Name = "txt_Search"
+            txt_Search.PlaceholderText = "Search for an appointment"
+            txt_Search.Size = New Size(493, 29)
+            txt_Search.TabIndex = 4
             ' 
             ' Label2
             ' 
@@ -99,9 +94,9 @@
             Label2.AutoSize = True
             Label2.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             Label2.ForeColor = Color.White
-            Label2.Location = New Point(3613, 19)
+            Label2.Location = New Point(3161, 14)
             Label2.Name = "Label2"
-            Label2.Size = New Size(126, 54)
+            Label2.Size = New Size(108, 44)
             Label2.TabIndex = 3
             Label2.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
@@ -110,9 +105,9 @@
             Label6.AutoSize = True
             Label6.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             Label6.ForeColor = Color.White
-            Label6.Location = New Point(14, 28)
+            Label6.Location = New Point(12, 21)
             Label6.Name = "Label6"
-            Label6.Size = New Size(217, 27)
+            Label6.Size = New Size(178, 22)
             Label6.TabIndex = 1
             Label6.Text = "Appointments List"
             ' 
@@ -122,25 +117,85 @@
             lbl_homeDateTime.AutoSize = True
             lbl_homeDateTime.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             lbl_homeDateTime.ForeColor = Color.White
-            lbl_homeDateTime.Location = New Point(4811, 19)
+            lbl_homeDateTime.Location = New Point(4210, 14)
             lbl_homeDateTime.Name = "lbl_homeDateTime"
-            lbl_homeDateTime.Size = New Size(126, 54)
+            lbl_homeDateTime.Size = New Size(108, 44)
             lbl_homeDateTime.TabIndex = 1
             lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
-            ' cf_AllApmnt
+            ' pnl_PatientList
             ' 
-            AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+            pnl_PatientList.Controls.Add(dgv_ApmntTable)
+            pnl_PatientList.Dock = DockStyle.Fill
+            pnl_PatientList.Location = New Point(0, 69)
+            pnl_PatientList.Name = "pnl_PatientList"
+            pnl_PatientList.Padding = New Padding(20)
+            pnl_PatientList.Size = New Size(1232, 727)
+            pnl_PatientList.TabIndex = 6
+            ' 
+            ' dgv_ApmntTable
+            ' 
+            dgv_ApmntTable.AllowUserToAddRows = False
+            dgv_ApmntTable.AllowUserToDeleteRows = False
+            dgv_ApmntTable.AllowUserToResizeColumns = False
+            dgv_ApmntTable.AllowUserToResizeRows = False
+            DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+            dgv_ApmntTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+            dgv_ApmntTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            dgv_ApmntTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            dgv_ApmntTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
+            dgv_ApmntTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
+            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle6.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+            dgv_ApmntTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+            dgv_ApmntTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+            DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle7.BackColor = SystemColors.Window
+            DataGridViewCellStyle7.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle7.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle7.Padding = New Padding(5)
+            DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
+            DataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle7.WrapMode = DataGridViewTriState.False
+            dgv_ApmntTable.DefaultCellStyle = DataGridViewCellStyle7
+            dgv_ApmntTable.Dock = DockStyle.Fill
+            dgv_ApmntTable.EditMode = DataGridViewEditMode.EditProgrammatically
+            dgv_ApmntTable.EnableHeadersVisualStyles = False
+            dgv_ApmntTable.Location = New Point(20, 20)
+            dgv_ApmntTable.Name = "dgv_ApmntTable"
+            dgv_ApmntTable.ReadOnly = True
+            DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle8.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle8.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle8.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
+            dgv_ApmntTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+            dgv_ApmntTable.RowTemplate.ReadOnly = True
+            dgv_ApmntTable.Size = New Size(1192, 687)
+            dgv_ApmntTable.TabIndex = 4
+            ' 
+            ' cf_ApmntList
+            ' 
+            AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
-            ClientSize = New Size(1408, 1065)
+            ClientSize = New Size(1232, 796)
+            Controls.Add(pnl_PatientList)
             Controls.Add(pnl_MainHeader)
             Controls.Add(Label1)
-            Margin = New Padding(3, 4, 3, 4)
-            Name = "cf_AllApmnt"
-            Text = "cf_ApmntCalendar"
+            Name = "cf_ApmntList"
+            Text = "cf_ApmntList"
             pnl_MainHeader.ResumeLayout(False)
             pnl_MainHeader.PerformLayout()
+            pnl_PatientList.ResumeLayout(False)
+            CType(dgv_ApmntTable, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -148,10 +203,11 @@
         Friend WithEvents Label1 As Label
         Friend WithEvents pnl_MainHeader As Panel
         Friend WithEvents btn_patientAddNew As Button
-        Friend WithEvents txt_homeSearch As TextBox
+        Friend WithEvents txt_Search As TextBox
         Friend WithEvents Label2 As Label
         Friend WithEvents Label6 As Label
         Friend WithEvents lbl_homeDateTime As Label
-        Friend WithEvents Button1 As Button
+        Friend WithEvents pnl_PatientList As Panel
+        Friend WithEvents dgv_ApmntTable As DataGridView
     End Class
 End Namespace
