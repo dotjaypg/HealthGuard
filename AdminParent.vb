@@ -29,7 +29,7 @@ Public Class AdminParent
 
 
     ' Method to handle button clicks and dynamically load forms
-    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btn_PatientList.Click, btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click, btn_ApmntDay.Click, btn_ApmntReq.Click
+    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btn_PatientList.Click, btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntDay.Click, btn_ApmntReq.Click
 
         ' If there is a previously pressed button, reset its background color
         If lastPressedButton IsNot Nothing Then
@@ -60,7 +60,6 @@ Public Class AdminParent
         btn_AccList.Tag = GetType(AccountTab.cf_AccList)
         btn_AccReq.Tag = GetType(AccountTab.cf_AccReq)
         btn_ApmntList.Tag = GetType(ScheduleTab.cf_ApmntList)
-        btn_ApmntWeek.Tag = GetType(ScheduleTab.cf_Template)
         btn_ApmntDay.Tag = GetType(ScheduleTab.cf_ApmntDay)
         btn_ApmntReq.Tag = GetType(ScheduleTab.cf_ApmntReq)
 

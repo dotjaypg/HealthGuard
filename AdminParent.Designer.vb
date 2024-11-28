@@ -28,7 +28,6 @@ Partial Class AdminParent
         btn_AccList = New Button()
         btn_ApmntReq = New Button()
         btn_ApmntDay = New Button()
-        btn_ApmntWeek = New Button()
         btn_AccReq = New Button()
         btn_PatientList = New Button()
         btn_Logout = New Button()
@@ -52,7 +51,6 @@ Partial Class AdminParent
         pnl_NavBar.Controls.Add(btn_AccList)
         pnl_NavBar.Controls.Add(btn_ApmntReq)
         pnl_NavBar.Controls.Add(btn_ApmntDay)
-        pnl_NavBar.Controls.Add(btn_ApmntWeek)
         pnl_NavBar.Controls.Add(btn_AccReq)
         pnl_NavBar.Controls.Add(btn_PatientList)
         pnl_NavBar.Controls.Add(btn_Logout)
@@ -129,22 +127,6 @@ Partial Class AdminParent
         btn_ApmntDay.TextAlign = ContentAlignment.TopLeft
         btn_ApmntDay.TextImageRelation = TextImageRelation.ImageBeforeText
         btn_ApmntDay.UseVisualStyleBackColor = True
-        ' 
-        ' btn_ApmntWeek
-        ' 
-        btn_ApmntWeek.Anchor = AnchorStyles.Top
-        btn_ApmntWeek.FlatStyle = FlatStyle.Flat
-        btn_ApmntWeek.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btn_ApmntWeek.Location = New Point(11, 371)
-        btn_ApmntWeek.Margin = New Padding(3, 2, 3, 2)
-        btn_ApmntWeek.Name = "btn_ApmntWeek"
-        btn_ApmntWeek.Padding = New Padding(66, 0, 0, 0)
-        btn_ApmntWeek.Size = New Size(308, 25)
-        btn_ApmntWeek.TabIndex = 2
-        btn_ApmntWeek.Text = "> Appointments This Week"
-        btn_ApmntWeek.TextAlign = ContentAlignment.TopLeft
-        btn_ApmntWeek.TextImageRelation = TextImageRelation.ImageBeforeText
-        btn_ApmntWeek.UseVisualStyleBackColor = True
         ' 
         ' btn_AccReq
         ' 
@@ -313,6 +295,5 @@ Partial Class AdminParent
     Friend WithEvents btn_AccReq As Button
     Friend WithEvents btn_ApmntReq As Button
     Friend WithEvents btn_ApmntDay As Button
-    Friend WithEvents btn_ApmntWeek As Button
 
 End Class

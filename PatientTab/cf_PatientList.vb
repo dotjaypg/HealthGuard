@@ -31,5 +31,8 @@ Namespace PatientTab
             End Try
         End Sub
 
+        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+
+        End Sub
     End Class
 End Namespace
