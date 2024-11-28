@@ -56,33 +56,6 @@ Namespace PatientTab
         End Sub
 
         ''' <summary>
-        ''' Filters the DataGridView based on the search input.
-        ''' </summary>
-        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
-            Dim searchTerm As String = txt_Search.Text.Trim().ToLower()
-
-            ' Show all rows if the search term is empty
-            If String.IsNullOrWhiteSpace(searchTerm) Then
-                dgv_PatientTable.DataSource = patientTable
-                Return
-            End If
-
-            ' Filter rows based on the search term
-            Dim filteredRows As DataRow() = patientTable.Select(
-                $"FirstName LIKE '%{searchTerm}%' OR " &
-                $"MiddleName LIKE '%{searchTerm}%' OR " &
-                $"LastName LIKE '%{searchTerm}%' OR " &
-                $"PatientId LIKE '%{searchTerm}%'")
-
-            ' Display the filtered results in the DataGridView
-            If filteredRows.Any() Then
-                dgv_PatientTable.DataSource = filteredRows.CopyToDataTable()
-            Else
-                dgv_PatientTable.DataSource = Nothing ' No matches found
-            End If
-        End Sub
-
-        ''' <summary>
         ''' Handles row selection in the DataGridView.
         ''' Updates the selectedPatientID variable with the ID of the selected row.
         ''' </summary>
@@ -96,11 +69,13 @@ Namespace PatientTab
         End Sub
 
         ''' <summary>
-        ''' Displays patient data of the selected row when the View button is clicked.
+        ''' Displays the cf_PatientData form with the selected PatientID.
         ''' </summary>
         Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
             If Not String.IsNullOrEmpty(selectedPatientID) Then
-                MessageBox.Show($"PATIENT DATA: {selectedPatientID}", "View Patient", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Dim patientDataForm As New cf_PatientData()
+                patientDataForm.lbl_PatientID.Text = selectedPatientID
+                patientDataForm.ShowDialog()
             Else
                 MessageBox.Show("No patient selected. Please select a patient to view.", "View Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If

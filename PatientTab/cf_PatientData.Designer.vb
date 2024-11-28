@@ -151,7 +151,6 @@
             ' 
             ' pnl_PatientData
             ' 
-            pnl_PatientData.BorderStyle = BorderStyle.FixedSingle
             pnl_PatientData.Dock = DockStyle.Fill
             pnl_PatientData.Location = New Point(0, 69)
             pnl_PatientData.Name = "pnl_PatientData"
