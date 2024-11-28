@@ -29,12 +29,12 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
-            pnl_Popup = New Panel()
             btn_AddPatient = New Button()
             txt_homeSearch = New TextBox()
             Label2 = New Label()
             Label6 = New Label()
             lbl_homeDateTime = New Label()
+            pnl_Popup = New Panel()
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
@@ -59,15 +59,6 @@
             pnl_MainHeader.Name = "pnl_MainHeader"
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 3
-            ' 
-            ' pnl_Popup
-            ' 
-            pnl_Popup.BackColor = Color.Transparent
-            pnl_Popup.Dock = DockStyle.Fill
-            pnl_Popup.Location = New Point(20, 20)
-            pnl_Popup.Name = "pnl_Popup"
-            pnl_Popup.Size = New Size(1192, 690)
-            pnl_Popup.TabIndex = 5
             ' 
             ' btn_AddPatient
             ' 
@@ -126,6 +117,15 @@
             lbl_homeDateTime.Size = New Size(108, 44)
             lbl_homeDateTime.TabIndex = 1
             lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
+            ' 
+            ' pnl_Popup
+            ' 
+            pnl_Popup.BackColor = Color.Transparent
+            pnl_Popup.Location = New Point(13, 17)
+            pnl_Popup.Name = "pnl_Popup"
+            pnl_Popup.Size = New Size(1207, 690)
+            pnl_Popup.TabIndex = 5
+            pnl_Popup.Visible = False
             ' 
             ' DBConnectionBindingSource
             ' 

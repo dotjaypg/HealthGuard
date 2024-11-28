@@ -10,7 +10,9 @@ Namespace PatientTab
         Private Sub cf_PatientList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Load data into the existing DataGridView
             LoadPatientData()
-            pnl_Popup.Visible = False ' Ensure the popup panel is hidden on load
+
+            ' Ensure the popup panel is hidden on form load
+            pnl_Popup.Visible = False
         End Sub
 
         Private Sub LoadPatientData()
@@ -32,13 +34,15 @@ Namespace PatientTab
             End Try
         End Sub
 
-        ' Switch to Add Patient form
+        ' Switch to Add Patient form when Add Patient button is clicked
         Private Sub btn_AddPatient_Click(sender As Object, e As EventArgs) Handles btn_AddPatient.Click
             ' Make the popup panel visible
             pnl_Popup.Visible = True
 
             ' Create and display Add Patient form inside the popup panel
             Dim addPatientForm As New cf_AddPatient()
+
+            ' Show the child form inside the popup panel
             ShowChildForm(addPatientForm, pnl_Popup)
         End Sub
 
