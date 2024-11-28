@@ -34,7 +34,6 @@
             Label2 = New Label()
             Label6 = New Label()
             lbl_homeDateTime = New Label()
-            pnl_Popup = New Panel()
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
@@ -118,15 +117,6 @@
             lbl_homeDateTime.TabIndex = 1
             lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
-            ' pnl_Popup
-            ' 
-            pnl_Popup.BackColor = Color.Transparent
-            pnl_Popup.Location = New Point(13, 17)
-            pnl_Popup.Name = "pnl_Popup"
-            pnl_Popup.Size = New Size(1207, 690)
-            pnl_Popup.TabIndex = 5
-            pnl_Popup.Visible = False
-            ' 
             ' DBConnectionBindingSource
             ' 
             DBConnectionBindingSource.DataSource = GetType(DBConnection)
@@ -181,7 +171,6 @@
             ' 
             ' pnl_PatientList
             ' 
-            pnl_PatientList.Controls.Add(pnl_Popup)
             pnl_PatientList.Controls.Add(dgv_PatientTable)
             pnl_PatientList.Dock = DockStyle.Fill
             pnl_PatientList.Location = New Point(0, 69)
@@ -217,6 +206,5 @@
         Friend WithEvents DBConnectionBindingSource As BindingSource
         Friend WithEvents dgv_PatientTable As DataGridView
         Friend WithEvents pnl_PatientList As Panel
-        Friend WithEvents pnl_Popup As Panel
     End Class
 End Namespace

@@ -27,19 +27,9 @@ Public Class AdminParent
         childForm.Show()
     End Sub
 
-    ' Timer tick event to update date and time
-    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
-        If pnl_MainPage.Controls.Count > 0 Then
-            Dim activeForm = pnl_MainPage.Controls(0)
-            If TypeOf activeForm Is HomeTab.cf_Home Then
-                Dim homeForm As HomeTab.cf_Home = CType(activeForm, HomeTab.cf_Home)
-                homeForm.UpdateDateTime()
-            End If
-        End If
-    End Sub
 
     ' Method to handle button clicks and dynamically load forms
-    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btn_Home.Click, btn_PatientList.Click, btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click, btn_ApmntDay.Click, btn_ApmntReq.Click
+    Private Sub Button_Click(sender As Object, e As EventArgs) Handles btn_PatientList.Click, btn_AccList.Click, btn_AccReq.Click, btn_ApmntList.Click, btn_ApmntWeek.Click, btn_ApmntDay.Click, btn_ApmntReq.Click
 
         ' If there is a previously pressed button, reset its background color
         If lastPressedButton IsNot Nothing Then
@@ -66,7 +56,6 @@ Public Class AdminParent
         Me.IsMdiContainer = True
 
         ' Assign child forms to button Tags
-        btn_Home.Tag = GetType(HomeTab.cf_Home)
         btn_PatientList.Tag = GetType(PatientTab.cf_PatientList)
         btn_AccList.Tag = GetType(AccountTab.cf_AccList)
         btn_AccReq.Tag = GetType(AccountTab.cf_AccReq)
@@ -79,10 +68,10 @@ Public Class AdminParent
         timer.Interval = 1000 ' 1 second
         timer.Start()
 
-        ' Initially set the first button (btn_Home) as "pressed"
-        btn_Home.BackColor = ColorTranslator.FromHtml("#2d9364") ' Set the pressed color
-        lastPressedButton = btn_Home ' Mark btn_Home as the last pressed button
-        ShowChildForm(New HomeTab.cf_Home()) ' Show the Home child form by default
+        ' Set the Patient List button as "pressed" initially
+        btn_PatientList.BackColor = ColorTranslator.FromHtml("#2d9364") ' Set the pressed color
+        lastPressedButton = btn_PatientList ' Mark btn_PatientList as the last pressed button
+        ShowChildForm(New PatientTab.cf_PatientList()) ' Show the Patient List child form by default
     End Sub
 
     ' Public method to switch forms programmatically
