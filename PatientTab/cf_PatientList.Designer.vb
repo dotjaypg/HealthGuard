@@ -29,6 +29,7 @@
             Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
+            pnl_Popup = New Panel()
             btn_AddPatient = New Button()
             txt_homeSearch = New TextBox()
             Label2 = New Label()
@@ -37,7 +38,6 @@
             DBConnectionBindingSource = New BindingSource(components)
             dgv_PatientTable = New DataGridView()
             pnl_PatientList = New Panel()
-            pnl_Popup = New Panel()
             pnl_MainHeader.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             CType(dgv_PatientTable, ComponentModel.ISupportInitialize).BeginInit()
@@ -59,6 +59,15 @@
             pnl_MainHeader.Name = "pnl_MainHeader"
             pnl_MainHeader.Size = New Size(1232, 69)
             pnl_MainHeader.TabIndex = 3
+            ' 
+            ' pnl_Popup
+            ' 
+            pnl_Popup.BackColor = Color.Transparent
+            pnl_Popup.Dock = DockStyle.Fill
+            pnl_Popup.Location = New Point(20, 20)
+            pnl_Popup.Name = "pnl_Popup"
+            pnl_Popup.Size = New Size(1192, 690)
+            pnl_Popup.TabIndex = 5
             ' 
             ' btn_AddPatient
             ' 
@@ -180,13 +189,6 @@
             pnl_PatientList.Padding = New Padding(20)
             pnl_PatientList.Size = New Size(1232, 730)
             pnl_PatientList.TabIndex = 5
-            ' 
-            ' pnl_Popup
-            ' 
-            pnl_Popup.Location = New Point(0, -69)
-            pnl_Popup.Name = "pnl_Popup"
-            pnl_Popup.Size = New Size(1232, 799)
-            pnl_Popup.TabIndex = 5
             ' 
             ' cf_PatientList
             ' 

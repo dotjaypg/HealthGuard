@@ -4,16 +4,17 @@
 
         ' Go back to Patient List form
         Private Sub btn_Back_Click(sender As Object, e As EventArgs) Handles btn_Back.Click
-            ' Access the parent form and return to the Patient List form
-            Dim parentForm = CType(Me.MdiParent, AdminParent)
-            If parentForm IsNot Nothing Then
-                parentForm.ShowChildForm(New cf_PatientList())
+            ' Hide the popup panel by accessing the parent form (cf_PatientList)
+            Dim parentForm = CType(Me.Parent, Panel)?.Parent
+            If TypeOf parentForm Is cf_PatientList Then
+                Dim patientListForm = CType(parentForm, cf_PatientList)
+                patientListForm.pnl_Popup.Visible = False
             End If
         End Sub
 
-        Private Sub btn_AddPatient_Click(sender As Object, e As EventArgs) Handles btn_AddPatient.Click
+        Private Sub btn_ClearFields_Click(sender As Object, e As EventArgs) Handles btn_ClearFields.Click
             ' Add patient logic here (e.g., saving data to the database)
-            MessageBox.Show("Patient added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Fields have been cleared", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Sub
     End Class
 End Namespace
