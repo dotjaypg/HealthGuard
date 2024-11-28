@@ -23,6 +23,10 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
             btn_patientAddNew = New Button()
@@ -30,7 +34,11 @@
             Label2 = New Label()
             Label6 = New Label()
             lbl_homeDateTime = New Label()
+            pnl_ApmtDay = New Panel()
+            dgv_ApmntTable = New DataGridView()
             pnl_MainHeader.SuspendLayout()
+            pnl_ApmtDay.SuspendLayout()
+            CType(dgv_ApmntTable, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
             ' Label1
@@ -115,18 +123,79 @@
             lbl_homeDateTime.TabIndex = 1
             lbl_homeDateTime.Text = "MM/DD/YY" & vbCrLf & "00:00 AM"
             ' 
+            ' pnl_ApmtDay
+            ' 
+            pnl_ApmtDay.Controls.Add(dgv_ApmntTable)
+            pnl_ApmtDay.Dock = DockStyle.Fill
+            pnl_ApmtDay.Location = New Point(0, 69)
+            pnl_ApmtDay.Name = "pnl_ApmtDay"
+            pnl_ApmtDay.Padding = New Padding(20)
+            pnl_ApmtDay.Size = New Size(1232, 730)
+            pnl_ApmtDay.TabIndex = 7
+            ' 
+            ' dgv_ApmntTable
+            ' 
+            dgv_ApmntTable.AllowUserToAddRows = False
+            dgv_ApmntTable.AllowUserToDeleteRows = False
+            dgv_ApmntTable.AllowUserToResizeColumns = False
+            dgv_ApmntTable.AllowUserToResizeRows = False
+            DataGridViewCellStyle1.BackColor = Color.WhiteSmoke
+            dgv_ApmntTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+            dgv_ApmntTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            dgv_ApmntTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            dgv_ApmntTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
+            dgv_ApmntTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            dgv_ApmntTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+            dgv_ApmntTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = SystemColors.Window
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle3.Padding = New Padding(5)
+            DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
+            DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+            dgv_ApmntTable.DefaultCellStyle = DataGridViewCellStyle3
+            dgv_ApmntTable.Dock = DockStyle.Fill
+            dgv_ApmntTable.EditMode = DataGridViewEditMode.EditProgrammatically
+            dgv_ApmntTable.EnableHeadersVisualStyles = False
+            dgv_ApmntTable.Location = New Point(20, 20)
+            dgv_ApmntTable.Name = "dgv_ApmntTable"
+            dgv_ApmntTable.ReadOnly = True
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            dgv_ApmntTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+            dgv_ApmntTable.RowTemplate.ReadOnly = True
+            dgv_ApmntTable.Size = New Size(1192, 690)
+            dgv_ApmntTable.TabIndex = 4
+            ' 
             ' cf_ApmntDay
             ' 
             AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             ClientSize = New Size(1232, 799)
+            Controls.Add(pnl_ApmtDay)
             Controls.Add(pnl_MainHeader)
             Controls.Add(Label1)
             Name = "cf_ApmntDay"
             Text = "cf_ApmntDay"
             pnl_MainHeader.ResumeLayout(False)
             pnl_MainHeader.PerformLayout()
+            pnl_ApmtDay.ResumeLayout(False)
+            CType(dgv_ApmntTable, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
             PerformLayout()
         End Sub
@@ -138,5 +207,7 @@
         Friend WithEvents Label2 As Label
         Friend WithEvents Label6 As Label
         Friend WithEvents lbl_homeDateTime As Label
+        Friend WithEvents pnl_ApmtDay As Panel
+        Friend WithEvents dgv_ApmntTable As DataGridView
     End Class
 End Namespace
