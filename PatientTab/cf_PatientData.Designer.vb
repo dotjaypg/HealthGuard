@@ -557,6 +557,7 @@
             txt_Phone.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             txt_Phone.Location = New Point(5, 5)
             txt_Phone.Margin = New Padding(3, 2, 3, 2)
+            txt_Phone.MaxLength = 12
             txt_Phone.Multiline = True
             txt_Phone.Name = "txt_Phone"
             txt_Phone.Size = New Size(391, 37)
