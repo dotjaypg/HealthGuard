@@ -4,7 +4,7 @@ Namespace PatientTab
     Public Class cf_PatientList
         Inherits Form
 
-        Private dbConnection As New DBConnection() ' Assuming DBConnection class manages connection
+        Private dbConnection As New DBConnection() ' DBConnection instance
         Private patientTable As DataTable
         Private selectedPatientID As String
 
@@ -18,23 +18,27 @@ Namespace PatientTab
         ''' </summary>
         Private Sub LoadPatientData()
             Try
-                ' Open connection using the DBConnection class
-                Using conn As MySqlConnection = dbConnection.Open() ' Assuming the Open() method returns MySqlConnection
-                    ' Define the query to fetch patient data
-                    Dim query As String = "SELECT PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth FROM patients"
-                    Dim cmd As New MySqlCommand(query, conn)
+                ' Open the connection (no Using block so the connection stays open)
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                    ' Fill the DataTable with query results
-                    Dim adapter As New MySqlDataAdapter(cmd)
-                    patientTable = New DataTable()
-                    adapter.Fill(patientTable)
+                ' Define the query to fetch patient data
+                Dim query As String = "SELECT PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth FROM patients"
+                Dim cmd As New MySqlCommand(query, conn)
 
-                    ' Bind the DataTable to the DataGridView
-                    dgv_PatientTable.DataSource = patientTable
+                ' Fill the DataTable with query results
+                Dim adapter As New MySqlDataAdapter(cmd)
+                patientTable = New DataTable()
+                adapter.Fill(patientTable)
 
-                    ' Set column headers for better readability
-                    SetColumnHeaders()
-                End Using
+                ' Bind the DataTable to the DataGridView
+                dgv_PatientTable.DataSource = patientTable
+
+                ' Set column headers for better readability
+                SetColumnHeaders()
+
+                ' Close the connection after use
+                dbConnection.Close()
+
             Catch ex As MySqlException
                 MessageBox.Show($"MySQL Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception
@@ -94,22 +98,26 @@ Namespace PatientTab
 
             Try
                 ' Perform deletion
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "DELETE FROM patients WHERE PatientId = @PatientId"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@PatientId", selectedPatientID)
-                        Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                Dim conn As MySqlConnection = dbConnection.Open() ' Open the connection manually
 
-                        If rowsAffected > 0 Then
-                            MessageBox.Show($"Patient {selectedPatientID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Else
-                            MessageBox.Show("No rows were deleted. The patient may not exist.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        End If
-                    End Using
+                Dim query As String = "DELETE FROM patients WHERE PatientId = @PatientId"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@PatientId", selectedPatientID)
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        MessageBox.Show($"Patient {selectedPatientID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No rows were deleted. The patient may not exist.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
                 End Using
+
+                ' Close the connection after the operation is complete
+                dbConnection.Close()
 
                 ' Refresh the data grid after deletion
                 LoadPatientData()
+
             Catch ex As Exception
                 MessageBox.Show($"Error deleting patient: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
