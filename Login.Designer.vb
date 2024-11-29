@@ -60,7 +60,7 @@ Partial Class Login
         pnl_LoginPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 49.9999962F))
         pnl_LoginPanel.RowStyles.Add(New RowStyle(SizeType.Absolute, 550F))
         pnl_LoginPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0000076F))
-        pnl_LoginPanel.Size = New Size(1584, 761)
+        pnl_LoginPanel.Size = New Size(1348, 761)
         pnl_LoginPanel.TabIndex = 1
         ' 
         ' Panel2
@@ -69,7 +69,7 @@ Partial Class Login
         Panel2.Controls.Add(tlp_LoginContainer)
         Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(PictureBox1)
-        Panel2.Location = New Point(484, 108)
+        Panel2.Location = New Point(366, 108)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(615, 544)
         Panel2.TabIndex = 0
@@ -207,7 +207,7 @@ Partial Class Login
         Label1.FlatStyle = FlatStyle.Flat
         Label1.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.FromArgb(CByte(124), CByte(208), CByte(137))
-        Label1.Location = New Point(695, 655)
+        Label1.Location = New Point(577, 655)
         Label1.Name = "Label1"
         Label1.Size = New Size(192, 20)
         Label1.TabIndex = 1
@@ -218,7 +218,7 @@ Partial Class Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1584, 761)
+        ClientSize = New Size(1348, 761)
         Controls.Add(pnl_LoginPanel)
         Name = "Login"
         StartPosition = FormStartPosition.CenterScreen
