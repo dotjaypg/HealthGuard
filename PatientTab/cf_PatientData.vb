@@ -52,7 +52,7 @@ Namespace PatientTab
                             txt_Sex.Text = reader("Sex").ToString()
                             dtp_DateOfBirth.Value = DateTime.Parse(reader("DateOfBirth").ToString())
                             txt_Age.Text = reader("Age").ToString()
-                            cmb_BloodType.Text = reader("BloodType").ToString()
+                            cmb_BloodType.SelectedItem = reader("BloodType").ToString()
                             txt_Phone.Text = reader("Phone").ToString()
                             txt_ParentGuardian.Text = reader("ParentGuardian").ToString()
                             txt_Email.Text = reader("Email").ToString()
@@ -73,7 +73,7 @@ Namespace PatientTab
         Private Sub btn_SaveData_Click(sender As Object, e As EventArgs) Handles btn_SaveData.Click
             If String.IsNullOrWhiteSpace(txt_FirstName.Text) OrElse
                String.IsNullOrWhiteSpace(txt_LastName.Text) OrElse
-               String.IsNullOrWhiteSpace(txt_Sex.Text) Then
+               String.IsNullOrWhiteSpace(txt_MiddleName.Text) Then
                 MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If

@@ -30,6 +30,7 @@
             Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             pnl_MainHeader = New Panel()
             btn_Delete = New Button()
+            btn_Refresh = New Button()
             btn_View = New Button()
             txt_Search = New TextBox()
             Label2 = New Label()
@@ -49,6 +50,7 @@
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             pnl_MainHeader.BorderStyle = BorderStyle.FixedSingle
             pnl_MainHeader.Controls.Add(btn_Delete)
+            pnl_MainHeader.Controls.Add(btn_Refresh)
             pnl_MainHeader.Controls.Add(btn_View)
             pnl_MainHeader.Controls.Add(txt_Search)
             pnl_MainHeader.Controls.Add(Label2)
@@ -74,6 +76,21 @@
             btn_Delete.TabIndex = 6
             btn_Delete.Text = "Delete"
             btn_Delete.UseVisualStyleBackColor = False
+            ' 
+            ' btn_Refresh
+            ' 
+            btn_Refresh.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_Refresh.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+            btn_Refresh.BackgroundImage = My.Resources.Resources.icon_refresh
+            btn_Refresh.BackgroundImageLayout = ImageLayout.Zoom
+            btn_Refresh.FlatAppearance.BorderColor = Color.White
+            btn_Refresh.FlatStyle = FlatStyle.Flat
+            btn_Refresh.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Refresh.Location = New Point(950, 16)
+            btn_Refresh.Name = "btn_Refresh"
+            btn_Refresh.Size = New Size(34, 34)
+            btn_Refresh.TabIndex = 6
+            btn_Refresh.UseVisualStyleBackColor = False
             ' 
             ' btn_View
             ' 
@@ -227,5 +244,6 @@
         Friend WithEvents pnl_PatientList As Panel
         Friend WithEvents btn_Delete As Button
         Friend WithEvents btn_View As Button
+        Friend WithEvents btn_Refresh As Button
     End Class
 End Namespace
