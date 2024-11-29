@@ -4,17 +4,11 @@ Namespace PatientTab
     Public Class cf_PatientList
         Inherits Form
 
-        ' Database connection utility
         Private dbConnection As New DBConnection()
-
-        ' The full DataTable to store all the patient data
         Private patientTable As DataTable
-
-        ' Stores the PatientID of the currently selected tuple
         Private selectedPatientID As String
 
         Private Sub cf_PatientList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            ' Load data into the DataGridView on form load
             LoadPatientData()
         End Sub
 
@@ -27,9 +21,9 @@ Namespace PatientTab
                     Dim query As String = "SELECT PatientId, FirstName, MiddleName, LastName, Sex, DateOfBirth FROM patients"
                     Dim cmd As New MySqlCommand(query, conn)
 
-                    ' Fill a DataTable with query results
+                    ' Fill the DataTable with query results
                     Dim adapter As New MySqlDataAdapter(cmd)
-                    patientTable = New DataTable() ' Initialize the DataTable
+                    patientTable = New DataTable()
                     adapter.Fill(patientTable)
 
                     ' Bind the DataTable to the DataGridView
@@ -74,7 +68,7 @@ Namespace PatientTab
         Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
             If Not String.IsNullOrEmpty(selectedPatientID) Then
                 Dim patientDataForm As New cf_PatientData()
-                patientDataForm.lbl_PatientID.Text = selectedPatientID
+                patientDataForm.PatientID = selectedPatientID ' Pass PatientID to cf_PatientData
                 patientDataForm.ShowDialog()
             Else
                 MessageBox.Show("No patient selected. Please select a patient to view.", "View Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -86,7 +80,23 @@ Namespace PatientTab
         ''' </summary>
         Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
             If Not String.IsNullOrEmpty(selectedPatientID) Then
-                MessageBox.Show($"DELETED DATA: {selectedPatientID}", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ' Confirmation before deletion
+                Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete patient {selectedPatientID}?",
+                                                              "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                If result = DialogResult.Yes Then
+                    Try
+                        Using conn As MySqlConnection = dbConnection.Open()
+                            Dim query As String = "DELETE FROM patients WHERE PatientId = @PatientId"
+                            Dim cmd As New MySqlCommand(query, conn)
+                            cmd.Parameters.AddWithValue("@PatientId", selectedPatientID)
+                            cmd.ExecuteNonQuery()
+                            MessageBox.Show($"Patient {selectedPatientID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            LoadPatientData() ' Refresh the data grid
+                        End Using
+                    Catch ex As Exception
+                        MessageBox.Show($"Error deleting patient: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
             Else
                 MessageBox.Show("No patient selected. Please select a patient to delete.", "Delete Patient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
