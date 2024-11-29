@@ -1,4 +1,4 @@
-﻿Namespace PatientTab
+﻿Namespace AccountTab
 
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class cf_AccData
@@ -678,7 +678,7 @@
             ' 
             DBConnectionBindingSource.DataSource = GetType(DBConnection)
             ' 
-            ' cf_PatientData
+            ' cf_AccData
             ' 
             AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
@@ -686,7 +686,7 @@
             ClientSize = New Size(596, 858)
             Controls.Add(pnl_PatientData)
             Controls.Add(pnl_MainHeader)
-            Name = "cf_PatientData"
+            Name = "cf_AccData"
             Text = "View Patient Data"
             TopMost = True
             pnl_MainHeader.ResumeLayout(False)

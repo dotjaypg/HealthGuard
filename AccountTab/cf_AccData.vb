@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Namespace PatientTab
+Namespace AccountTab
     Public Class cf_AccData
         Inherits Form
 
