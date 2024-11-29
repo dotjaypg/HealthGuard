@@ -178,9 +178,9 @@
             lbl_EditPatient.ImageAlign = ContentAlignment.MiddleLeft
             lbl_EditPatient.Location = New Point(65, 22)
             lbl_EditPatient.Name = "lbl_EditPatient"
-            lbl_EditPatient.Size = New Size(115, 22)
+            lbl_EditPatient.Size = New Size(127, 22)
             lbl_EditPatient.TabIndex = 1
-            lbl_EditPatient.Text = "Edit Patient"
+            lbl_EditPatient.Text = "Edit Account"
             ' 
             ' lbl_PatientID
             ' 
@@ -189,9 +189,9 @@
             lbl_PatientID.ForeColor = Color.White
             lbl_PatientID.Location = New Point(201, 18)
             lbl_PatientID.Name = "lbl_PatientID"
-            lbl_PatientID.Size = New Size(94, 29)
+            lbl_PatientID.Size = New Size(95, 29)
             lbl_PatientID.TabIndex = 1
-            lbl_PatientID.Text = "P00000"
+            lbl_PatientID.Text = "A00000"
             ' 
             ' lbl_homeDateTime
             ' 

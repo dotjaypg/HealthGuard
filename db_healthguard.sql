@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 03:41 PM
+-- Generation Time: Nov 29, 2024 at 04:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_healthguard`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GeneratePatientID` (OUT `NewPatientID` VARCHAR(6))   BEGIN
+    DECLARE next_id INT;
+    
+    -- Get the last used PatientID from ID_Tracker
+    SELECT LastID INTO next_id FROM ID_Tracker WHERE Entity = 'PatientID';
+    
+    -- Generate the new PatientID (prefix 'P' + the next number)
+    SET NewPatientID = CONCAT('P', next_id + 1);
+    
+    -- Update the ID_Tracker table with the new value
+    UPDATE ID_Tracker SET LastID = next_id + 1 WHERE Entity = 'PatientID';
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerateScheduleID` (OUT `NewScheduleID` VARCHAR(8))   BEGIN
+    DECLARE next_id INT;
+    
+    -- Get the last used ScheduleID from ID_Tracker
+    SELECT LastID INTO next_id FROM ID_Tracker WHERE Entity = 'ScheduleID';
+    
+    -- Generate the new ScheduleID (prefix 'S' + the next number)
+    SET NewScheduleID = CONCAT('S', next_id + 1);
+    
+    -- Update the ID_Tracker table with the new value
+    UPDATE ID_Tracker SET LastID = next_id + 1 WHERE Entity = 'ScheduleID';
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerateUserID` (OUT `NewUserID` VARCHAR(6))   BEGIN
+    DECLARE next_id INT;
+    
+    -- Get the last used UserID from ID_Tracker
+    SELECT LastID INTO next_id FROM ID_Tracker WHERE Entity = 'UserID';
+    
+    -- Generate the new UserID (prefix 'A' + the next number)
+    SET NewUserID = CONCAT('A', next_id + 1);
+    
+    -- Update the ID_Tracker table with the new value
+    UPDATE ID_Tracker SET LastID = next_id + 1 WHERE Entity = 'UserID';
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -48,9 +93,30 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`UserID`, `Role`, `FirstName`, `MiddleName`, `LastName`, `EmailUsername`, `Password`, `ContactNumber`, `Status`, `CreationDate`, `PatientID`, `AssignedDepartment`, `Specialization`) VALUES
-('', 'Admin', 'FirstName', 'MiddleName', 'LastName', 'test', 'test', NULL, 'Active', '2024-11-27 20:07:36', NULL, NULL, NULL),
-('A10001', 'Patient', 'Juan', 'Dela', 'Cruz', 'juan.cruz@gmail.com', 'HG#123@C', '09171234567', 'Active', '2024-11-27 20:02:54', 'P00001', NULL, NULL),
-('A10002', 'Doctor', 'Manuel', 'Luis', 'Santos', 'manuel.luis.santos@healthguard.com', 'HG#123@C', '09391234567', 'Active', '2024-11-27 20:02:54', NULL, 'Cardiology', 'Cardiologist');
+('A1', 'Admin', 'Ronald', 'Policher', 'Dycoco', 'test', 'test', '09947238473', 'Active', '2024-11-29 22:03:15', NULL, NULL, NULL),
+('A2', 'Patient', 'Juan', 'Dela', 'Cruz', 'juan.cruz@gmail.com', 'HG#123@C', '09171234567', 'Active', '2024-11-27 20:02:54', 'P1', NULL, NULL),
+('A3', 'Doctor', 'Manuel', 'Luis', 'Santos', 'manuel.luis.santos@healthguard.com', 'HG#123@C', '09391234567', 'Active', '2024-11-27 20:02:54', NULL, 'Cardiology', 'Cardiologist'),
+('A4', 'Doctor', 'Jundill Mhar', 'Pila', 'Reyes', 'jundill@gmail.com', 'jun123', '09123456789', 'Active', '2024-11-27 20:07:36', NULL, 'Surgery', 'Cardiology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `id_tracker`
+--
+
+CREATE TABLE `id_tracker` (
+  `Entity` varchar(50) NOT NULL,
+  `LastID` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `id_tracker`
+--
+
+INSERT INTO `id_tracker` (`Entity`, `LastID`) VALUES
+('PatientID', 1),
+('ScheduleID', 0),
+('UserID', 4);
 
 -- --------------------------------------------------------
 
@@ -68,14 +134,6 @@ CREATE TABLE `medicines` (
   `Instructions` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `medicines`
---
-
-INSERT INTO `medicines` (`MedicineID`, `PrescriptionID`, `MedicineName`, `Dosage`, `Frequency`, `Duration`, `Instructions`) VALUES
-(1, 1, 'Paracetamol', '500mg', 'Twice a day', '5 days', 'Take after meals'),
-(2, 2, 'Metformin', '850mg', 'Once a day', '30 days', 'Take with breakfast');
-
 -- --------------------------------------------------------
 
 --
@@ -90,12 +148,11 @@ CREATE TABLE `patients` (
   `Sex` enum('Male','Female','Other') DEFAULT NULL,
   `DateOfBirth` date NOT NULL,
   `Age` int(11) GENERATED ALWAYS AS (year(curdate()) - year(`DateOfBirth`)) VIRTUAL,
-  `BloodType` enum('A','B','AB','O') DEFAULT NULL,
+  `BloodType` enum('A+','A-','B+','B-','AB+','AB-','O+','O-') DEFAULT NULL,
   `Phone` varchar(15) DEFAULT NULL,
   `ParentGuardian` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Address` text DEFAULT NULL,
-  `Country` varchar(100) DEFAULT NULL,
   `PrimaryDiagnoses` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,9 +160,8 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`PatientID`, `FirstName`, `MiddleName`, `LastName`, `Sex`, `DateOfBirth`, `BloodType`, `Phone`, `ParentGuardian`, `Email`, `Address`, `Country`, `PrimaryDiagnoses`) VALUES
-('P00001', 'Juan', 'Dela', 'Cruz', 'Male', '1990-01-15', 'O', '09171234567', 'Maria Dela Cruz', 'juan.cruz@gmail.com', '123 Main St, QC', 'Philippines', 'Hypertension'),
-('P00002', 'Maria', 'Santos', 'Reyes', 'Female', '1985-03-22', 'A', '09281234567', 'Juan Reyes', 'maria.reyes@gmail.com', '456 Elm St, Pasig', 'Philippines', 'Diabetes');
+INSERT INTO `patients` (`PatientID`, `FirstName`, `MiddleName`, `LastName`, `Sex`, `DateOfBirth`, `BloodType`, `Phone`, `ParentGuardian`, `Email`, `Address`, `PrimaryDiagnoses`) VALUES
+('P1', 'Juan', 'Dela', 'Cruz', 'Male', '2005-01-04', 'B+', '09171234567', 'Maria Dela Cruz', 'juan.cruz@gmail.com', '123 Main St, QC', 'Hypertension');
 
 -- --------------------------------------------------------
 
@@ -118,14 +174,6 @@ CREATE TABLE `prescriptions` (
   `PatientID` char(6) NOT NULL,
   `DoctorID` char(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`PrescriptionID`, `PatientID`, `DoctorID`) VALUES
-(1, 'P00001', 'A10002'),
-(2, 'P00002', 'A10002');
 
 -- --------------------------------------------------------
 
@@ -147,15 +195,6 @@ CREATE TABLE `schedules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `schedules`
---
-
-INSERT INTO `schedules` (`ScheduleID`, `StartDate`, `EndDate`, `AllDay`, `StartTime`, `EndTime`, `PatientID`, `DoctorID`, `Status`, `RequestStatus`) VALUES
-('SCHED001', '2024-11-15', NULL, 0, '09:00:00', '10:00:00', 'P00001', 'A10002', 'Past', 'Accepted'),
-('SCHED002', '2024-11-28', NULL, 1, NULL, NULL, 'P00002', 'A10002', 'Requested', 'Accepted'),
-('SCHED003', '2024-12-10', NULL, 0, NULL, NULL, 'P00002', 'A10002', 'Scheduled', 'Accepted');
-
---
 -- Indexes for dumped tables
 --
 
@@ -166,6 +205,12 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`UserID`),
   ADD UNIQUE KEY `Email` (`EmailUsername`),
   ADD KEY `PatientID` (`PatientID`);
+
+--
+-- Indexes for table `id_tracker`
+--
+ALTER TABLE `id_tracker`
+  ADD PRIMARY KEY (`Entity`);
 
 --
 -- Indexes for table `medicines`
