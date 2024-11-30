@@ -28,9 +28,7 @@
 
   <ItemGroup>
     <Compile Update="AccountTab\cf_AccReq.vb" />
-    <Compile Update="AccountTab\cf_AccData.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="AccountTab\cf_AccData.vb" />
     <Compile Update="cf_Template.vb">
       <SubType>Form</SubType>
     </Compile>

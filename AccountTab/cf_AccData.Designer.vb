@@ -32,7 +32,7 @@
             btn_patientAddNew = New Button()
             Label2 = New Label()
             lbl_EditPatient = New Label()
-            lbl_PatientID = New Label()
+            lbl_UserID = New Label()
             lbl_homeDateTime = New Label()
             lbl_Name = New Label()
             pnl_FirstName = New Panel()
@@ -43,49 +43,49 @@
             Label3 = New Label()
             Panel3 = New Panel()
             txt_LastName = New TextBox()
-            Label4 = New Label()
+            label5 = New Label()
             Panel4 = New Panel()
-            txt_Sex = New TextBox()
-            Label5 = New Label()
-            Panel5 = New Panel()
-            dtp_DateOfBirth = New DateTimePicker()
+            txt_EmailUsername = New TextBox()
             Label6 = New Label()
             Panel6 = New Panel()
-            txt_Age = New TextBox()
+            txt_Password = New TextBox()
             pnl_PatientData = New Panel()
-            Label8 = New Label()
+            Label9 = New Label()
             Panel9 = New Panel()
-            txt_ParentGuardian = New TextBox()
-            Panel11 = New Panel()
-            txt_Address = New TextBox()
+            txt_PatientID = New TextBox()
+            Panel5 = New Panel()
+            txt_Specialization = New TextBox()
             Panel10 = New Panel()
-            txt_Email = New TextBox()
+            txt_AssignedDepartment = New TextBox()
             Panel8 = New Panel()
-            txt_Phone = New TextBox()
+            txt_CreationDate = New TextBox()
             Panel7 = New Panel()
-            cmb_BloodType = New ComboBox()
+            cmb_Status = New ComboBox()
+            Panel2 = New Panel()
+            txt_ContactNumber = New TextBox()
             lbl_Address = New Label()
-            lbl_ParentGuardian = New Label()
+            Label8 = New Label()
             lbl_Email = New Label()
             lbl_Phone = New Label()
             Label7 = New Label()
-            Panel2 = New Panel()
-            txt_PrimaryDiagnoses = New TextBox()
+            Label4 = New Label()
+            Panel11 = New Panel()
+            lbl_Role = New Label()
             DBConnectionBindingSource = New BindingSource(components)
             pnl_MainHeader.SuspendLayout()
             pnl_FirstName.SuspendLayout()
             Panel1.SuspendLayout()
             Panel3.SuspendLayout()
             Panel4.SuspendLayout()
-            Panel5.SuspendLayout()
             Panel6.SuspendLayout()
             pnl_PatientData.SuspendLayout()
             Panel9.SuspendLayout()
-            Panel11.SuspendLayout()
+            Panel5.SuspendLayout()
             Panel10.SuspendLayout()
             Panel8.SuspendLayout()
             Panel7.SuspendLayout()
             Panel2.SuspendLayout()
+            Panel11.SuspendLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).BeginInit()
             SuspendLayout()
             ' 
@@ -99,7 +99,7 @@
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
             pnl_MainHeader.Controls.Add(Label2)
             pnl_MainHeader.Controls.Add(lbl_EditPatient)
-            pnl_MainHeader.Controls.Add(lbl_PatientID)
+            pnl_MainHeader.Controls.Add(lbl_UserID)
             pnl_MainHeader.Controls.Add(lbl_homeDateTime)
             pnl_MainHeader.Dock = DockStyle.Top
             pnl_MainHeader.Location = New Point(0, 0)
@@ -182,16 +182,16 @@
             lbl_EditPatient.TabIndex = 1
             lbl_EditPatient.Text = "Edit Account"
             ' 
-            ' lbl_PatientID
+            ' lbl_UserID
             ' 
-            lbl_PatientID.AutoSize = True
-            lbl_PatientID.Font = New Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-            lbl_PatientID.ForeColor = Color.White
-            lbl_PatientID.Location = New Point(201, 18)
-            lbl_PatientID.Name = "lbl_PatientID"
-            lbl_PatientID.Size = New Size(95, 29)
-            lbl_PatientID.TabIndex = 1
-            lbl_PatientID.Text = "A00000"
+            lbl_UserID.AutoSize = True
+            lbl_UserID.Font = New Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            lbl_UserID.ForeColor = Color.White
+            lbl_UserID.Location = New Point(201, 18)
+            lbl_UserID.Name = "lbl_UserID"
+            lbl_UserID.Size = New Size(43, 29)
+            lbl_UserID.TabIndex = 1
+            lbl_UserID.Text = "A0"
             ' 
             ' lbl_homeDateTime
             ' 
@@ -211,7 +211,7 @@
             lbl_Name.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             lbl_Name.ForeColor = Color.Black
             lbl_Name.ImageAlign = ContentAlignment.MiddleLeft
-            lbl_Name.Location = New Point(25, 97)
+            lbl_Name.Location = New Point(22, 91)
             lbl_Name.Name = "lbl_Name"
             lbl_Name.Size = New Size(112, 24)
             lbl_Name.TabIndex = 5
@@ -222,7 +222,7 @@
             ' 
             pnl_FirstName.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             pnl_FirstName.Controls.Add(txt_FirstName)
-            pnl_FirstName.Location = New Point(168, 85)
+            pnl_FirstName.Location = New Point(165, 79)
             pnl_FirstName.Name = "pnl_FirstName"
             pnl_FirstName.Padding = New Padding(5)
             pnl_FirstName.Size = New Size(401, 47)
@@ -247,7 +247,7 @@
             Label1.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label1.ForeColor = Color.Black
             Label1.ImageAlign = ContentAlignment.MiddleLeft
-            Label1.Location = New Point(25, 159)
+            Label1.Location = New Point(22, 153)
             Label1.Name = "Label1"
             Label1.Size = New Size(130, 24)
             Label1.TabIndex = 5
@@ -258,7 +258,7 @@
             ' 
             Panel1.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             Panel1.Controls.Add(txt_MiddleName)
-            Panel1.Location = New Point(168, 147)
+            Panel1.Location = New Point(165, 141)
             Panel1.Name = "Panel1"
             Panel1.Padding = New Padding(5)
             Panel1.Size = New Size(401, 47)
@@ -283,7 +283,7 @@
             Label3.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label3.ForeColor = Color.Black
             Label3.ImageAlign = ContentAlignment.MiddleLeft
-            Label3.Location = New Point(25, 219)
+            Label3.Location = New Point(22, 213)
             Label3.Name = "Label3"
             Label3.Size = New Size(111, 24)
             Label3.TabIndex = 5
@@ -294,7 +294,7 @@
             ' 
             Panel3.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             Panel3.Controls.Add(txt_LastName)
-            Panel3.Location = New Point(168, 207)
+            Panel3.Location = New Point(165, 201)
             Panel3.Name = "Panel3"
             Panel3.Padding = New Padding(5)
             Panel3.Size = New Size(401, 47)
@@ -313,80 +313,41 @@
             txt_LastName.Size = New Size(391, 37)
             txt_LastName.TabIndex = 6
             ' 
-            ' Label4
+            ' label5
             ' 
-            Label4.AutoSize = True
-            Label4.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Label4.ForeColor = Color.Black
-            Label4.ImageAlign = ContentAlignment.MiddleLeft
-            Label4.Location = New Point(25, 279)
-            Label4.Name = "Label4"
-            Label4.Size = New Size(46, 24)
-            Label4.TabIndex = 5
-            Label4.Text = "Sex"
-            Label4.TextAlign = ContentAlignment.MiddleLeft
+            label5.AutoSize = True
+            label5.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            label5.ForeColor = Color.Black
+            label5.ImageAlign = ContentAlignment.MiddleLeft
+            label5.Location = New Point(22, 275)
+            label5.Name = "label5"
+            label5.Size = New Size(141, 19)
+            label5.TabIndex = 5
+            label5.Text = "Email / Username"
+            label5.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' Panel4
             ' 
             Panel4.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel4.Controls.Add(txt_Sex)
-            Panel4.Location = New Point(168, 267)
+            Panel4.Controls.Add(txt_EmailUsername)
+            Panel4.Location = New Point(165, 263)
             Panel4.Name = "Panel4"
             Panel4.Padding = New Padding(5)
             Panel4.Size = New Size(401, 47)
             Panel4.TabIndex = 7
             ' 
-            ' txt_Sex
+            ' txt_EmailUsername
             ' 
-            txt_Sex.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_Sex.BorderStyle = BorderStyle.None
-            txt_Sex.Dock = DockStyle.Fill
-            txt_Sex.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Sex.Location = New Point(5, 5)
-            txt_Sex.Margin = New Padding(3, 2, 3, 2)
-            txt_Sex.Multiline = True
-            txt_Sex.Name = "txt_Sex"
-            txt_Sex.Size = New Size(391, 37)
-            txt_Sex.TabIndex = 6
-            ' 
-            ' Label5
-            ' 
-            Label5.AutoSize = True
-            Label5.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Label5.ForeColor = Color.Black
-            Label5.ImageAlign = ContentAlignment.MiddleLeft
-            Label5.Location = New Point(25, 339)
-            Label5.Name = "Label5"
-            Label5.Size = New Size(128, 24)
-            Label5.TabIndex = 5
-            Label5.Text = "Date of Birth"
-            Label5.TextAlign = ContentAlignment.MiddleLeft
-            ' 
-            ' Panel5
-            ' 
-            Panel5.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel5.Controls.Add(dtp_DateOfBirth)
-            Panel5.Location = New Point(168, 327)
-            Panel5.Name = "Panel5"
-            Panel5.Padding = New Padding(5)
-            Panel5.Size = New Size(401, 47)
-            Panel5.TabIndex = 7
-            ' 
-            ' dtp_DateOfBirth
-            ' 
-            dtp_DateOfBirth.CalendarMonthBackground = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            dtp_DateOfBirth.CalendarTitleBackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            dtp_DateOfBirth.Checked = False
-            dtp_DateOfBirth.CustomFormat = "MM/DD/YYYY"
-            dtp_DateOfBirth.Dock = DockStyle.Fill
-            dtp_DateOfBirth.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            dtp_DateOfBirth.Format = DateTimePickerFormat.Short
-            dtp_DateOfBirth.Location = New Point(5, 5)
-            dtp_DateOfBirth.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
-            dtp_DateOfBirth.Name = "dtp_DateOfBirth"
-            dtp_DateOfBirth.Size = New Size(391, 35)
-            dtp_DateOfBirth.TabIndex = 9
-            dtp_DateOfBirth.Value = New Date(2024, 1, 1, 0, 0, 0, 0)
+            txt_EmailUsername.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_EmailUsername.BorderStyle = BorderStyle.None
+            txt_EmailUsername.Dock = DockStyle.Fill
+            txt_EmailUsername.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_EmailUsername.Location = New Point(5, 5)
+            txt_EmailUsername.Margin = New Padding(3, 2, 3, 2)
+            txt_EmailUsername.Multiline = True
+            txt_EmailUsername.Name = "txt_EmailUsername"
+            txt_EmailUsername.Size = New Size(391, 37)
+            txt_EmailUsername.TabIndex = 6
             ' 
             ' Label6
             ' 
@@ -394,197 +355,224 @@
             Label6.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label6.ForeColor = Color.Black
             Label6.ImageAlign = ContentAlignment.MiddleLeft
-            Label6.Location = New Point(26, 399)
+            Label6.Location = New Point(23, 335)
             Label6.Name = "Label6"
-            Label6.Size = New Size(46, 24)
+            Label6.Size = New Size(103, 24)
             Label6.TabIndex = 5
-            Label6.Text = "Age"
+            Label6.Text = "Password"
             Label6.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' Panel6
             ' 
             Panel6.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel6.Controls.Add(txt_Age)
-            Panel6.Location = New Point(168, 387)
+            Panel6.Controls.Add(txt_Password)
+            Panel6.Location = New Point(165, 323)
             Panel6.Name = "Panel6"
             Panel6.Padding = New Padding(5)
             Panel6.Size = New Size(401, 47)
             Panel6.TabIndex = 7
             ' 
-            ' txt_Age
+            ' txt_Password
             ' 
-            txt_Age.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_Age.BorderStyle = BorderStyle.None
-            txt_Age.Dock = DockStyle.Fill
-            txt_Age.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Age.Location = New Point(5, 5)
-            txt_Age.Margin = New Padding(3, 2, 3, 2)
-            txt_Age.Multiline = True
-            txt_Age.Name = "txt_Age"
-            txt_Age.ReadOnly = True
-            txt_Age.Size = New Size(391, 37)
-            txt_Age.TabIndex = 6
+            txt_Password.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_Password.BorderStyle = BorderStyle.None
+            txt_Password.Dock = DockStyle.Fill
+            txt_Password.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_Password.Location = New Point(5, 5)
+            txt_Password.Margin = New Padding(3, 2, 3, 2)
+            txt_Password.Multiline = True
+            txt_Password.Name = "txt_Password"
+            txt_Password.ReadOnly = True
+            txt_Password.Size = New Size(391, 37)
+            txt_Password.TabIndex = 6
             ' 
             ' pnl_PatientData
             ' 
-            pnl_PatientData.Controls.Add(Label8)
+            pnl_PatientData.Controls.Add(Label9)
             pnl_PatientData.Controls.Add(lbl_Name)
-            pnl_PatientData.Controls.Add(Panel5)
             pnl_PatientData.Controls.Add(Label1)
             pnl_PatientData.Controls.Add(Panel9)
-            pnl_PatientData.Controls.Add(Panel11)
+            pnl_PatientData.Controls.Add(Panel5)
             pnl_PatientData.Controls.Add(Panel10)
             pnl_PatientData.Controls.Add(Panel8)
             pnl_PatientData.Controls.Add(Panel7)
+            pnl_PatientData.Controls.Add(Panel2)
             pnl_PatientData.Controls.Add(Panel6)
             pnl_PatientData.Controls.Add(Label3)
             pnl_PatientData.Controls.Add(Panel4)
-            pnl_PatientData.Controls.Add(Label4)
+            pnl_PatientData.Controls.Add(label5)
             pnl_PatientData.Controls.Add(Panel3)
             pnl_PatientData.Controls.Add(lbl_Address)
-            pnl_PatientData.Controls.Add(lbl_ParentGuardian)
+            pnl_PatientData.Controls.Add(Label8)
             pnl_PatientData.Controls.Add(lbl_Email)
             pnl_PatientData.Controls.Add(lbl_Phone)
-            pnl_PatientData.Controls.Add(Label5)
             pnl_PatientData.Controls.Add(Label7)
+            pnl_PatientData.Controls.Add(Label4)
             pnl_PatientData.Controls.Add(Panel1)
-            pnl_PatientData.Controls.Add(Panel2)
             pnl_PatientData.Controls.Add(Label6)
+            pnl_PatientData.Controls.Add(Panel11)
             pnl_PatientData.Controls.Add(pnl_FirstName)
             pnl_PatientData.Dock = DockStyle.Fill
             pnl_PatientData.Location = New Point(0, 69)
             pnl_PatientData.Name = "pnl_PatientData"
-            pnl_PatientData.Size = New Size(596, 789)
+            pnl_PatientData.Size = New Size(596, 777)
             pnl_PatientData.TabIndex = 9
             ' 
-            ' Label8
+            ' Label9
             ' 
-            Label8.AutoSize = True
-            Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Label8.ForeColor = Color.Black
-            Label8.ImageAlign = ContentAlignment.MiddleLeft
-            Label8.Location = New Point(25, 36)
-            Label8.Name = "Label8"
-            Label8.Size = New Size(141, 18)
-            Label8.TabIndex = 5
-            Label8.Text = "Primary Diagnosis:"
-            Label8.TextAlign = ContentAlignment.MiddleLeft
+            Label9.AutoSize = True
+            Label9.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            Label9.ForeColor = Color.Black
+            Label9.ImageAlign = ContentAlignment.MiddleLeft
+            Label9.Location = New Point(22, 32)
+            Label9.Name = "Label9"
+            Label9.Size = New Size(53, 24)
+            Label9.TabIndex = 5
+            Label9.Text = "Role"
+            Label9.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' Panel9
             ' 
             Panel9.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel9.Controls.Add(txt_ParentGuardian)
-            Panel9.Location = New Point(168, 573)
+            Panel9.Controls.Add(txt_PatientID)
+            Panel9.Location = New Point(202, 587)
             Panel9.Name = "Panel9"
             Panel9.Padding = New Padding(5)
-            Panel9.Size = New Size(401, 47)
+            Panel9.Size = New Size(364, 47)
             Panel9.TabIndex = 7
             ' 
-            ' txt_ParentGuardian
+            ' txt_PatientID
             ' 
-            txt_ParentGuardian.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_ParentGuardian.BorderStyle = BorderStyle.None
-            txt_ParentGuardian.Dock = DockStyle.Fill
-            txt_ParentGuardian.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_ParentGuardian.Location = New Point(5, 5)
-            txt_ParentGuardian.Margin = New Padding(3, 2, 3, 2)
-            txt_ParentGuardian.Multiline = True
-            txt_ParentGuardian.Name = "txt_ParentGuardian"
-            txt_ParentGuardian.Size = New Size(391, 37)
-            txt_ParentGuardian.TabIndex = 6
+            txt_PatientID.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_PatientID.BorderStyle = BorderStyle.None
+            txt_PatientID.Dock = DockStyle.Fill
+            txt_PatientID.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_PatientID.Location = New Point(5, 5)
+            txt_PatientID.Margin = New Padding(3, 2, 3, 2)
+            txt_PatientID.Multiline = True
+            txt_PatientID.Name = "txt_PatientID"
+            txt_PatientID.ReadOnly = True
+            txt_PatientID.Size = New Size(354, 37)
+            txt_PatientID.TabIndex = 6
             ' 
-            ' Panel11
+            ' Panel5
             ' 
-            Panel11.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel11.Controls.Add(txt_Address)
-            Panel11.Location = New Point(168, 693)
-            Panel11.Name = "Panel11"
-            Panel11.Padding = New Padding(5)
-            Panel11.Size = New Size(401, 75)
-            Panel11.TabIndex = 7
+            Panel5.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            Panel5.Controls.Add(txt_Specialization)
+            Panel5.Location = New Point(202, 707)
+            Panel5.Name = "Panel5"
+            Panel5.Padding = New Padding(5)
+            Panel5.Size = New Size(364, 47)
+            Panel5.TabIndex = 7
             ' 
-            ' txt_Address
+            ' txt_Specialization
             ' 
-            txt_Address.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_Address.BorderStyle = BorderStyle.None
-            txt_Address.Dock = DockStyle.Fill
-            txt_Address.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Address.Location = New Point(5, 5)
-            txt_Address.Margin = New Padding(3, 2, 3, 2)
-            txt_Address.Multiline = True
-            txt_Address.Name = "txt_Address"
-            txt_Address.Size = New Size(391, 65)
-            txt_Address.TabIndex = 6
+            txt_Specialization.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_Specialization.BorderStyle = BorderStyle.None
+            txt_Specialization.Dock = DockStyle.Fill
+            txt_Specialization.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_Specialization.Location = New Point(5, 5)
+            txt_Specialization.Margin = New Padding(3, 2, 3, 2)
+            txt_Specialization.Multiline = True
+            txt_Specialization.Name = "txt_Specialization"
+            txt_Specialization.Size = New Size(354, 37)
+            txt_Specialization.TabIndex = 6
             ' 
             ' Panel10
             ' 
             Panel10.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel10.Controls.Add(txt_Email)
-            Panel10.Location = New Point(168, 633)
+            Panel10.Controls.Add(txt_AssignedDepartment)
+            Panel10.Location = New Point(202, 647)
             Panel10.Name = "Panel10"
             Panel10.Padding = New Padding(5)
-            Panel10.Size = New Size(401, 47)
+            Panel10.Size = New Size(364, 47)
             Panel10.TabIndex = 7
             ' 
-            ' txt_Email
+            ' txt_AssignedDepartment
             ' 
-            txt_Email.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_Email.BorderStyle = BorderStyle.None
-            txt_Email.Dock = DockStyle.Fill
-            txt_Email.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Email.Location = New Point(5, 5)
-            txt_Email.Margin = New Padding(3, 2, 3, 2)
-            txt_Email.Multiline = True
-            txt_Email.Name = "txt_Email"
-            txt_Email.Size = New Size(391, 37)
-            txt_Email.TabIndex = 6
+            txt_AssignedDepartment.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_AssignedDepartment.BorderStyle = BorderStyle.None
+            txt_AssignedDepartment.Dock = DockStyle.Fill
+            txt_AssignedDepartment.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_AssignedDepartment.Location = New Point(5, 5)
+            txt_AssignedDepartment.Margin = New Padding(3, 2, 3, 2)
+            txt_AssignedDepartment.Multiline = True
+            txt_AssignedDepartment.Name = "txt_AssignedDepartment"
+            txt_AssignedDepartment.Size = New Size(354, 37)
+            txt_AssignedDepartment.TabIndex = 6
             ' 
             ' Panel8
             ' 
-            Panel8.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel8.Controls.Add(txt_Phone)
-            Panel8.Location = New Point(168, 511)
+            Panel8.BackColor = Color.White
+            Panel8.BorderStyle = BorderStyle.FixedSingle
+            Panel8.Controls.Add(txt_CreationDate)
+            Panel8.Location = New Point(165, 503)
             Panel8.Name = "Panel8"
             Panel8.Padding = New Padding(5)
             Panel8.Size = New Size(401, 47)
             Panel8.TabIndex = 7
             ' 
-            ' txt_Phone
+            ' txt_CreationDate
             ' 
-            txt_Phone.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_Phone.BorderStyle = BorderStyle.None
-            txt_Phone.Dock = DockStyle.Fill
-            txt_Phone.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Phone.Location = New Point(5, 5)
-            txt_Phone.Margin = New Padding(3, 2, 3, 2)
-            txt_Phone.MaxLength = 12
-            txt_Phone.Multiline = True
-            txt_Phone.Name = "txt_Phone"
-            txt_Phone.Size = New Size(391, 37)
-            txt_Phone.TabIndex = 6
+            txt_CreationDate.BackColor = Color.White
+            txt_CreationDate.BorderStyle = BorderStyle.None
+            txt_CreationDate.Dock = DockStyle.Fill
+            txt_CreationDate.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_CreationDate.Location = New Point(5, 5)
+            txt_CreationDate.Margin = New Padding(3, 2, 3, 2)
+            txt_CreationDate.MaxLength = 12
+            txt_CreationDate.Multiline = True
+            txt_CreationDate.Name = "txt_CreationDate"
+            txt_CreationDate.ReadOnly = True
+            txt_CreationDate.Size = New Size(389, 35)
+            txt_CreationDate.TabIndex = 6
             ' 
             ' Panel7
             ' 
             Panel7.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel7.Controls.Add(cmb_BloodType)
-            Panel7.Location = New Point(168, 449)
+            Panel7.Controls.Add(cmb_Status)
+            Panel7.Location = New Point(165, 443)
             Panel7.Name = "Panel7"
             Panel7.Padding = New Padding(5)
             Panel7.Size = New Size(401, 47)
             Panel7.TabIndex = 7
             ' 
-            ' cmb_BloodType
+            ' cmb_Status
             ' 
-            cmb_BloodType.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            cmb_BloodType.Dock = DockStyle.Fill
-            cmb_BloodType.FlatStyle = FlatStyle.Flat
-            cmb_BloodType.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            cmb_BloodType.FormattingEnabled = True
-            cmb_BloodType.Items.AddRange(New Object() {"A+", "A -", "B+", "B -", "O+", "O -", "AB+", "AB -"})
-            cmb_BloodType.Location = New Point(5, 5)
-            cmb_BloodType.Name = "cmb_BloodType"
-            cmb_BloodType.Size = New Size(391, 38)
-            cmb_BloodType.TabIndex = 9
+            cmb_Status.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            cmb_Status.Dock = DockStyle.Fill
+            cmb_Status.FlatStyle = FlatStyle.Flat
+            cmb_Status.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            cmb_Status.FormattingEnabled = True
+            cmb_Status.Items.AddRange(New Object() {"Active", "Pending", "Disabled"})
+            cmb_Status.Location = New Point(5, 5)
+            cmb_Status.Name = "cmb_Status"
+            cmb_Status.Size = New Size(391, 38)
+            cmb_Status.TabIndex = 9
+            ' 
+            ' Panel2
+            ' 
+            Panel2.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            Panel2.Controls.Add(txt_ContactNumber)
+            Panel2.Location = New Point(165, 383)
+            Panel2.Name = "Panel2"
+            Panel2.Padding = New Padding(5)
+            Panel2.Size = New Size(401, 47)
+            Panel2.TabIndex = 7
+            ' 
+            ' txt_ContactNumber
+            ' 
+            txt_ContactNumber.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
+            txt_ContactNumber.BorderStyle = BorderStyle.None
+            txt_ContactNumber.Dock = DockStyle.Fill
+            txt_ContactNumber.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            txt_ContactNumber.Location = New Point(5, 5)
+            txt_ContactNumber.Margin = New Padding(3, 2, 3, 2)
+            txt_ContactNumber.Multiline = True
+            txt_ContactNumber.Name = "txt_ContactNumber"
+            txt_ContactNumber.ReadOnly = True
+            txt_ContactNumber.Size = New Size(391, 37)
+            txt_ContactNumber.TabIndex = 6
             ' 
             ' lbl_Address
             ' 
@@ -592,37 +580,37 @@
             lbl_Address.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             lbl_Address.ForeColor = Color.Black
             lbl_Address.ImageAlign = ContentAlignment.MiddleLeft
-            lbl_Address.Location = New Point(25, 705)
+            lbl_Address.Location = New Point(22, 719)
             lbl_Address.Name = "lbl_Address"
-            lbl_Address.Size = New Size(86, 24)
+            lbl_Address.Size = New Size(139, 24)
             lbl_Address.TabIndex = 5
-            lbl_Address.Text = "Address"
+            lbl_Address.Text = "Specialization"
             lbl_Address.TextAlign = ContentAlignment.MiddleLeft
             ' 
-            ' lbl_ParentGuardian
+            ' Label8
             ' 
-            lbl_ParentGuardian.AutoSize = True
-            lbl_ParentGuardian.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            lbl_ParentGuardian.ForeColor = Color.Black
-            lbl_ParentGuardian.ImageAlign = ContentAlignment.MiddleLeft
-            lbl_ParentGuardian.Location = New Point(26, 587)
-            lbl_ParentGuardian.Name = "lbl_ParentGuardian"
-            lbl_ParentGuardian.Size = New Size(130, 18)
-            lbl_ParentGuardian.TabIndex = 5
-            lbl_ParentGuardian.Text = "Parent / Guardian"
-            lbl_ParentGuardian.TextAlign = ContentAlignment.MiddleLeft
+            Label8.AutoSize = True
+            Label8.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            Label8.ForeColor = Color.Black
+            Label8.ImageAlign = ContentAlignment.MiddleLeft
+            Label8.Location = New Point(22, 598)
+            Label8.Name = "Label8"
+            Label8.Size = New Size(103, 24)
+            Label8.TabIndex = 5
+            Label8.Text = "Patient ID"
+            Label8.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' lbl_Email
             ' 
             lbl_Email.AutoSize = True
-            lbl_Email.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            lbl_Email.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             lbl_Email.ForeColor = Color.Black
             lbl_Email.ImageAlign = ContentAlignment.MiddleLeft
-            lbl_Email.Location = New Point(25, 645)
+            lbl_Email.Location = New Point(22, 660)
             lbl_Email.Name = "lbl_Email"
-            lbl_Email.Size = New Size(61, 24)
+            lbl_Email.Size = New Size(174, 19)
             lbl_Email.TabIndex = 5
-            lbl_Email.Text = "Email"
+            lbl_Email.Text = "Assigned Department"
             lbl_Email.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' lbl_Phone
@@ -631,11 +619,11 @@
             lbl_Phone.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             lbl_Phone.ForeColor = Color.Black
             lbl_Phone.ImageAlign = ContentAlignment.MiddleLeft
-            lbl_Phone.Location = New Point(25, 523)
+            lbl_Phone.Location = New Point(22, 515)
             lbl_Phone.Name = "lbl_Phone"
-            lbl_Phone.Size = New Size(70, 24)
+            lbl_Phone.Size = New Size(141, 24)
             lbl_Phone.TabIndex = 5
-            lbl_Phone.Text = "Phone"
+            lbl_Phone.Text = "Creation Date"
             lbl_Phone.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' Label7
@@ -644,35 +632,49 @@
             Label7.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label7.ForeColor = Color.Black
             Label7.ImageAlign = ContentAlignment.MiddleLeft
-            Label7.Location = New Point(25, 461)
+            Label7.Location = New Point(22, 455)
             Label7.Name = "Label7"
-            Label7.Size = New Size(114, 24)
+            Label7.Size = New Size(70, 24)
             Label7.TabIndex = 5
-            Label7.Text = "Blood Type"
+            Label7.Text = "Status"
             Label7.TextAlign = ContentAlignment.MiddleLeft
             ' 
-            ' Panel2
+            ' Label4
             ' 
-            Panel2.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel2.Controls.Add(txt_PrimaryDiagnoses)
-            Panel2.Location = New Point(168, 22)
-            Panel2.Name = "Panel2"
-            Panel2.Padding = New Padding(5)
-            Panel2.Size = New Size(401, 47)
-            Panel2.TabIndex = 7
+            Label4.AutoSize = True
+            Label4.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            Label4.ForeColor = Color.Black
+            Label4.ImageAlign = ContentAlignment.MiddleLeft
+            Label4.Location = New Point(23, 395)
+            Label4.Name = "Label4"
+            Label4.Size = New Size(134, 19)
+            Label4.TabIndex = 5
+            Label4.Text = "Contact Number"
+            Label4.TextAlign = ContentAlignment.MiddleLeft
             ' 
-            ' txt_PrimaryDiagnoses
+            ' Panel11
             ' 
-            txt_PrimaryDiagnoses.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_PrimaryDiagnoses.BorderStyle = BorderStyle.None
-            txt_PrimaryDiagnoses.Dock = DockStyle.Fill
-            txt_PrimaryDiagnoses.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_PrimaryDiagnoses.Location = New Point(5, 5)
-            txt_PrimaryDiagnoses.Margin = New Padding(3, 2, 3, 2)
-            txt_PrimaryDiagnoses.Multiline = True
-            txt_PrimaryDiagnoses.Name = "txt_PrimaryDiagnoses"
-            txt_PrimaryDiagnoses.Size = New Size(391, 37)
-            txt_PrimaryDiagnoses.TabIndex = 6
+            Panel11.BackColor = Color.White
+            Panel11.BorderStyle = BorderStyle.FixedSingle
+            Panel11.Controls.Add(lbl_Role)
+            Panel11.Location = New Point(165, 20)
+            Panel11.Name = "Panel11"
+            Panel11.Padding = New Padding(5)
+            Panel11.Size = New Size(98, 47)
+            Panel11.TabIndex = 7
+            ' 
+            ' lbl_Role
+            ' 
+            lbl_Role.AutoSize = True
+            lbl_Role.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            lbl_Role.ForeColor = Color.Black
+            lbl_Role.ImageAlign = ContentAlignment.MiddleLeft
+            lbl_Role.Location = New Point(12, 12)
+            lbl_Role.Name = "lbl_Role"
+            lbl_Role.Size = New Size(53, 24)
+            lbl_Role.TabIndex = 5
+            lbl_Role.Text = "Role"
+            lbl_Role.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' DBConnectionBindingSource
             ' 
@@ -683,7 +685,7 @@
             AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.White
-            ClientSize = New Size(596, 858)
+            ClientSize = New Size(596, 846)
             Controls.Add(pnl_PatientData)
             Controls.Add(pnl_MainHeader)
             Name = "cf_AccData"
@@ -699,15 +701,14 @@
             Panel3.PerformLayout()
             Panel4.ResumeLayout(False)
             Panel4.PerformLayout()
-            Panel5.ResumeLayout(False)
             Panel6.ResumeLayout(False)
             Panel6.PerformLayout()
             pnl_PatientData.ResumeLayout(False)
             pnl_PatientData.PerformLayout()
             Panel9.ResumeLayout(False)
             Panel9.PerformLayout()
-            Panel11.ResumeLayout(False)
-            Panel11.PerformLayout()
+            Panel5.ResumeLayout(False)
+            Panel5.PerformLayout()
             Panel10.ResumeLayout(False)
             Panel10.PerformLayout()
             Panel8.ResumeLayout(False)
@@ -715,13 +716,15 @@
             Panel7.ResumeLayout(False)
             Panel2.ResumeLayout(False)
             Panel2.PerformLayout()
+            Panel11.ResumeLayout(False)
+            Panel11.PerformLayout()
             CType(DBConnectionBindingSource, ComponentModel.ISupportInitialize).EndInit()
             ResumeLayout(False)
         End Sub
         Friend WithEvents pnl_MainHeader As Panel
         Friend WithEvents btn_patientAddNew As Button
         Friend WithEvents Label2 As Label
-        Friend WithEvents lbl_PatientID As Label
+        Friend WithEvents lbl_UserID As Label
         Friend WithEvents lbl_homeDateTime As Label
         Friend WithEvents btn_Back As Button
         Friend WithEvents btn_ResetData As Button
@@ -736,34 +739,34 @@
         Friend WithEvents Label3 As Label
         Friend WithEvents Panel3 As Panel
         Friend WithEvents txt_LastName As TextBox
-        Friend WithEvents Label4 As Label
+        Friend WithEvents label5 As Label
         Friend WithEvents Panel4 As Panel
-        Friend WithEvents txt_Sex As TextBox
-        Friend WithEvents Label5 As Label
-        Friend WithEvents Panel5 As Panel
-        Friend WithEvents dtp_DateOfBirth As DateTimePicker
+        Friend WithEvents txt_EmailUsername As TextBox
         Friend WithEvents Label6 As Label
         Friend WithEvents Panel6 As Panel
-        Friend WithEvents txt_Age As TextBox
+        Friend WithEvents txt_Password As TextBox
         Friend WithEvents pnl_PatientData As Panel
         Friend WithEvents Panel7 As Panel
         Friend WithEvents Label7 As Label
-        Friend WithEvents cmb_BloodType As ComboBox
+        Friend WithEvents cmb_Status As ComboBox
         Friend WithEvents DBConnectionBindingSource As BindingSource
         Friend WithEvents Panel8 As Panel
-        Friend WithEvents txt_Phone As TextBox
+        Friend WithEvents txt_CreationDate As TextBox
         Friend WithEvents lbl_Phone As Label
         Friend WithEvents Panel9 As Panel
-        Friend WithEvents txt_ParentGuardian As TextBox
-        Friend WithEvents lbl_ParentGuardian As Label
+        Friend WithEvents txt_PatientID As TextBox
         Friend WithEvents Panel10 As Panel
-        Friend WithEvents txt_Email As TextBox
+        Friend WithEvents txt_AssignedDepartment As TextBox
         Friend WithEvents lbl_Email As Label
-        Friend WithEvents Panel11 As Panel
-        Friend WithEvents txt_Address As TextBox
         Friend WithEvents lbl_Address As Label
-        Friend WithEvents Label8 As Label
         Friend WithEvents Panel2 As Panel
-        Friend WithEvents txt_PrimaryDiagnoses As TextBox
+        Friend WithEvents txt_ContactNumber As TextBox
+        Friend WithEvents Label4 As Label
+        Friend WithEvents Panel5 As Panel
+        Friend WithEvents txt_Specialization As TextBox
+        Friend WithEvents Label8 As Label
+        Friend WithEvents Label9 As Label
+        Friend WithEvents Panel11 As Panel
+        Friend WithEvents lbl_Role As Label
     End Class
 End Namespace

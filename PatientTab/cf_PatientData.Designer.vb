@@ -454,7 +454,7 @@
             pnl_PatientData.Dock = DockStyle.Fill
             pnl_PatientData.Location = New Point(0, 69)
             pnl_PatientData.Name = "pnl_PatientData"
-            pnl_PatientData.Size = New Size(596, 789)
+            pnl_PatientData.Size = New Size(596, 786)
             pnl_PatientData.TabIndex = 9
             ' 
             ' Label8
@@ -678,15 +678,15 @@
             ' 
             DBConnectionBindingSource.DataSource = GetType(DBConnection)
             ' 
-            ' cf_PatientData
+            ' cf_AccData
             ' 
             AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.White
-            ClientSize = New Size(596, 858)
+            ClientSize = New Size(596, 855)
             Controls.Add(pnl_PatientData)
             Controls.Add(pnl_MainHeader)
-            Name = "cf_PatientData"
+            Name = "cf_AccData"
             Text = "View Patient Data"
             TopMost = True
             pnl_MainHeader.ResumeLayout(False)

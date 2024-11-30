@@ -4,27 +4,27 @@ Namespace AccountTab
     Public Class cf_AccData
         Inherits Form
 
-        ' Property to receive PatientID from cf_PatientList
-        Public Property PatientID As String
+        ' Property to receive UserID from cf_AccList
+        Public Property UserID As String
 
         ' Declare the shared connection
         Private conn As MySqlConnection
         Private dbConnection As New DBConnection()
 
-        Private Sub cf_PatientData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Private Sub cf_AccData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             Me.StartPosition = FormStartPosition.CenterScreen
             Try
                 ' Initialize and open the shared connection
                 conn = dbConnection.Open()
-                If Not String.IsNullOrEmpty(PatientID) Then
-                    LoadPatientData(PatientID)
+                If Not String.IsNullOrEmpty(UserID) Then
+                    LoadAccountData(UserID)
                 End If
             Catch ex As Exception
                 MessageBox.Show($"Error initializing connection: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
 
-        Private Sub cf_PatientData_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Private Sub cf_AccData_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
             ' Close the shared connection when the form closes
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -32,89 +32,89 @@ Namespace AccountTab
         End Sub
 
         ''' <summary>
-        ''' Fetches patient data from the database based on PatientID and populates the textboxes.
+        ''' Fetches account data from the database based on UserID and populates the controls.
         ''' </summary>
-        Private Sub LoadPatientData(patientId As String)
+        Private Sub LoadAccountData(userId As String)
             Try
-                Dim query As String = "SELECT PatientID, PrimaryDiagnoses, FirstName, MiddleName, LastName, Sex, 
-                                       DateOfBirth, TIMESTAMPDIFF(YEAR, DateOfBirth, CURDATE()) AS Age, 
-                                       BloodType, Phone, ParentGuardian, Email, Address 
-                                       FROM patients WHERE PatientId = @PatientId"
+                Dim query As String = "SELECT UserID, Role, FirstName, MiddleName, LastName, EmailUsername, 
+                                       Password, ContactNumber, Status, CreationDate, PatientID, 
+                                       AssignedDepartment, Specialization 
+                                       FROM accounts WHERE UserID = @UserID"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@PatientId", patientId)
+                    cmd.Parameters.AddWithValue("@UserID", userId)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
-                            lbl_PatientID.Text = reader("PatientID").ToString()
-                            txt_PrimaryDiagnoses.Text = reader("PrimaryDiagnoses").ToString()
+                            lbl_UserID.Text = reader("UserID").ToString()
+                            lbl_Role.Text = reader("Role").ToString()
                             txt_FirstName.Text = reader("FirstName").ToString()
                             txt_MiddleName.Text = reader("MiddleName").ToString()
                             txt_LastName.Text = reader("LastName").ToString()
-                            txt_Sex.Text = reader("Sex").ToString()
-                            dtp_DateOfBirth.Value = DateTime.Parse(reader("DateOfBirth").ToString())
-                            txt_Age.Text = reader("Age").ToString()
-                            cmb_BloodType.SelectedItem = reader("BloodType").ToString()
-                            txt_Phone.Text = reader("Phone").ToString()
-                            txt_ParentGuardian.Text = reader("ParentGuardian").ToString()
-                            txt_Email.Text = reader("Email").ToString()
-                            txt_Address.Text = reader("Address").ToString()
+                            txt_EmailUsername.Text = reader("EmailUsername").ToString()
+                            txt_Password.Text = reader("Password").ToString()
+                            txt_ContactNumber.Text = reader("ContactNumber").ToString()
+                            cmb_Status.SelectedItem = reader("Status").ToString()
+                            txt_CreationDate.Text = reader("CreationDate").ToString()
+                            txt_PatientID.Text = reader("PatientID").ToString()
+                            txt_AssignedDepartment.Text = reader("AssignedDepartment").ToString()
+                            txt_Specialization.Text = reader("Specialization").ToString()
                         Else
-                            MessageBox.Show("No data found for the selected patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            MessageBox.Show("No data found for the selected user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         End If
                     End Using
                 End Using
             Catch ex As Exception
-                MessageBox.Show($"Error fetching patient data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show($"Error fetching account data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
 
         ''' <summary>
-        ''' Saves changes made to the patient data back to the database.
+        ''' Saves changes made to the account data back to the database.
         ''' </summary>
         Private Sub btn_SaveData_Click(sender As Object, e As EventArgs) Handles btn_SaveData.Click
             If String.IsNullOrWhiteSpace(txt_FirstName.Text) OrElse
                String.IsNullOrWhiteSpace(txt_LastName.Text) OrElse
-               String.IsNullOrWhiteSpace(txt_MiddleName.Text) Then
+               String.IsNullOrWhiteSpace(txt_EmailUsername.Text) Then
                 MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
 
             Try
-                Dim query As String = "UPDATE patients SET 
-                                        PrimaryDiagnoses = @PrimaryDiagnoses,
+                Dim query As String = "UPDATE accounts SET 
+                                        Role = @Role,
                                         FirstName = @FirstName,
                                         MiddleName = @MiddleName,
                                         LastName = @LastName,
-                                        Sex = @Sex,
-                                        DateOfBirth = @DateOfBirth,
-                                        BloodType = @BloodType,
-                                        Phone = @Phone,
-                                        ParentGuardian = @ParentGuardian,
-                                        Email = @Email,
-                                        Address = @Address
-                                       WHERE PatientID = @PatientID"
+                                        EmailUsername = @EmailUsername,
+                                        Password = @Password,
+                                        ContactNumber = @ContactNumber,
+                                        Status = @Status,
+                                        PatientID = @PatientID,
+                                        AssignedDepartment = @AssignedDepartment,
+                                        Specialization = @Specialization
+                                       WHERE UserID = @UserID"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@PrimaryDiagnoses", txt_PrimaryDiagnoses.Text)
+                    cmd.Parameters.AddWithValue("@Role", lbl_Role.Text)
                     cmd.Parameters.AddWithValue("@FirstName", txt_FirstName.Text)
                     cmd.Parameters.AddWithValue("@MiddleName", txt_MiddleName.Text)
                     cmd.Parameters.AddWithValue("@LastName", txt_LastName.Text)
-                    cmd.Parameters.AddWithValue("@Sex", txt_Sex.Text)
-                    cmd.Parameters.AddWithValue("@DateOfBirth", dtp_DateOfBirth.Value.ToString("yyyy-MM-dd"))
-                    cmd.Parameters.AddWithValue("@BloodType", cmb_BloodType.SelectedItem)
-                    cmd.Parameters.AddWithValue("@Phone", txt_Phone.Text)
-                    cmd.Parameters.AddWithValue("@ParentGuardian", txt_ParentGuardian.Text)
-                    cmd.Parameters.AddWithValue("@Email", txt_Email.Text)
-                    cmd.Parameters.AddWithValue("@Address", txt_Address.Text)
-                    cmd.Parameters.AddWithValue("@PatientID", PatientID)
+                    cmd.Parameters.AddWithValue("@EmailUsername", txt_EmailUsername.Text)
+                    cmd.Parameters.AddWithValue("@Password", txt_Password.Text)
+                    cmd.Parameters.AddWithValue("@ContactNumber", txt_ContactNumber.Text)
+                    cmd.Parameters.AddWithValue("@Status", cmb_Status.SelectedItem)
+                    cmd.Parameters.AddWithValue("@PatientID", txt_PatientID.Text)
+                    cmd.Parameters.AddWithValue("@AssignedDepartment", txt_AssignedDepartment.Text)
+                    cmd.Parameters.AddWithValue("@Specialization", txt_Specialization.Text)
+                    cmd.Parameters.AddWithValue("@UserID", UserID)
 
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected > 0 Then
-                        MessageBox.Show("Patient data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("Account data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Else
-                        MessageBox.Show("No changes were made to the patient data.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("No changes were made to the account data.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End Using
             Catch ex As Exception
-                MessageBox.Show($"Error updating patient data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show($"Error updating account data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
 
@@ -122,12 +122,13 @@ Namespace AccountTab
         ''' Resets the data in the form to the original values from the database.
         ''' </summary>
         Private Sub btn_ResetData_Click(sender As Object, e As EventArgs) Handles btn_ResetData.Click
-            If Not String.IsNullOrEmpty(PatientID) Then
-                LoadPatientData(PatientID)
+            If Not String.IsNullOrEmpty(UserID) Then
+                LoadAccountData(UserID)
             Else
-                MessageBox.Show("No patient data to reset.", "Reset Data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("No account data to reset.", "Reset Data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End Sub
+
         Private Sub btn_Back_Click(sender As Object, e As EventArgs) Handles btn_Back.Click
             Me.Close()
         End Sub

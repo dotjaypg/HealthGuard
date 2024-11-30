@@ -9,6 +9,7 @@ Namespace AccountTab
 
         ' The full DataTable to store all the account data
         Private accountTable As DataTable
+        Private selectedUserID As String
 
         ' Form Load Event
         Private Sub cf_AccList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -58,37 +59,28 @@ Namespace AccountTab
         End Sub
 
         ''' <summary>
-        ''' Handles text change in the search textbox.
-        ''' Filters the account data based on the search term.
+        ''' Handles row selection in the DataGridView.
+        ''' Updates the selectedUserID variable with the ID of the selected row.
         ''' </summary>
-        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
-            ' Get the search term from the text box
-            Dim searchTerm As String = txt_Search.Text.ToLower()
-
-            ' If the search term is empty, show all rows
-            If String.IsNullOrWhiteSpace(searchTerm) Then
-                dgv_AccTable.DataSource = accountTable
-                Return
-            End If
-
-            ' Create a DataView to filter the rows based on the search term
-            Dim filteredRows As DataRow() = accountTable.Select(
-                $"UserID LIKE '%{searchTerm}%' OR " &
-                $"Role LIKE '%{searchTerm}%' OR " &
-                $"FirstName LIKE '%{searchTerm}%' OR " &
-                $"MiddleName LIKE '%{searchTerm}%' OR " &
-                $"LastName LIKE '%{searchTerm}%' OR " &
-                $"EmailUsername LIKE '%{searchTerm}%' OR " &
-                $"Status LIKE '%{searchTerm}%' OR " &
-                $"CreationDate LIKE '%{searchTerm}%'")
-
-            ' If there are any matching rows, bind them to the DataGridView
-            If filteredRows.Length > 0 Then
-                Dim filteredTable As DataTable = filteredRows.CopyToDataTable()
-                dgv_AccTable.DataSource = filteredTable
+        Private Sub dgv_AccTable_SelectionChanged(sender As Object, e As EventArgs) Handles dgv_AccTable.SelectionChanged
+            If dgv_AccTable.CurrentRow IsNot Nothing AndAlso dgv_AccTable.CurrentRow.Index >= 0 Then
+                Dim row As DataGridViewRow = dgv_AccTable.CurrentRow
+                selectedUserID = row.Cells("UserID").Value.ToString()
             Else
-                ' If no matching rows, clear the DataGridView
-                dgv_AccTable.DataSource = Nothing
+                selectedUserID = Nothing ' No row selected
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Displays the cf_AccData form with the selected UserID.
+        ''' </summary>
+        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
+            If Not String.IsNullOrEmpty(selectedUserID) Then
+                Dim accDataForm As New cf_AccData
+                accDataForm.UserID = selectedUserID ' Pass UserID to cf_AccData
+                accDataForm.ShowDialog()
+            Else
+                MessageBox.Show("No account selected. Please select an account to view.", "View Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End Sub
 
@@ -109,13 +101,10 @@ Namespace AccountTab
         ''' Deletes the selected account when the Delete button is clicked.
         ''' </summary>
         Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
-            If dgv_AccTable.SelectedRows.Count = 0 Then
+            If String.IsNullOrEmpty(selectedUserID) Then
                 MessageBox.Show("No account selected. Please select an account to delete.", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
-
-            ' Get the selected UserID from the DataGridView
-            Dim selectedUserID As String = dgv_AccTable.SelectedRows(0).Cells("UserID").Value.ToString()
 
             ' Confirmation before deletion
             Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete account {selectedUserID}?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -143,6 +132,5 @@ Namespace AccountTab
                 MessageBox.Show($"Error deleting account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
-
     End Class
 End Namespace
