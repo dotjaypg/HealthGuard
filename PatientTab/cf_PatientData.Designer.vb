@@ -1,7 +1,7 @@
 ﻿Namespace PatientTab
 
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Class cf_AccData
+    Partial Class cf_PatientData
         Inherits System.Windows.Forms.Form
 
         'Form overrides dispose to clean up the component list.
@@ -113,7 +113,7 @@
             btn_ResetData.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             btn_ResetData.BackColor = Color.Silver
             btn_ResetData.FlatStyle = FlatStyle.Flat
-            btn_ResetData.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_ResetData.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             btn_ResetData.Location = New Point(517, 17)
             btn_ResetData.Name = "btn_ResetData"
             btn_ResetData.Size = New Size(65, 34)
@@ -126,7 +126,7 @@
             btn_SaveData.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             btn_SaveData.BackColor = Color.Silver
             btn_SaveData.FlatStyle = FlatStyle.Flat
-            btn_SaveData.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_SaveData.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             btn_SaveData.Location = New Point(370, 17)
             btn_SaveData.Name = "btn_SaveData"
             btn_SaveData.Size = New Size(132, 34)
@@ -138,7 +138,7 @@
             ' 
             btn_Back.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
             btn_Back.FlatStyle = FlatStyle.Flat
-            btn_Back.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Back.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             btn_Back.ForeColor = Color.Black
             btn_Back.Location = New Point(15, 16)
             btn_Back.Name = "btn_Back"
@@ -150,7 +150,7 @@
             ' btn_patientAddNew
             ' 
             btn_patientAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_patientAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            btn_patientAddNew.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             btn_patientAddNew.Location = New Point(1449, 17)
             btn_patientAddNew.Name = "btn_patientAddNew"
             btn_patientAddNew.Size = New Size(160, 34)
@@ -185,7 +185,7 @@
             ' lbl_PatientID
             ' 
             lbl_PatientID.AutoSize = True
-            lbl_PatientID.Font = New Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            lbl_PatientID.Font = New Font("Arial", 18.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             lbl_PatientID.ForeColor = Color.White
             lbl_PatientID.Location = New Point(201, 18)
             lbl_PatientID.Name = "lbl_PatientID"
@@ -460,7 +460,7 @@
             ' Label8
             ' 
             Label8.AutoSize = True
-            Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            Label8.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label8.ForeColor = Color.Black
             Label8.ImageAlign = ContentAlignment.MiddleLeft
             Label8.Location = New Point(25, 36)
@@ -602,7 +602,7 @@
             ' lbl_ParentGuardian
             ' 
             lbl_ParentGuardian.AutoSize = True
-            lbl_ParentGuardian.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            lbl_ParentGuardian.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             lbl_ParentGuardian.ForeColor = Color.Black
             lbl_ParentGuardian.ImageAlign = ContentAlignment.MiddleLeft
             lbl_ParentGuardian.Location = New Point(26, 587)
@@ -678,15 +678,15 @@
             ' 
             DBConnectionBindingSource.DataSource = GetType(DBConnection)
             ' 
-            ' cf_AccData
+            ' cf_PatientData
             ' 
-            AutoScaleDimensions = New SizeF(7F, 15F)
+            AutoScaleDimensions = New SizeF(7.0F, 15.0F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.White
             ClientSize = New Size(596, 855)
             Controls.Add(pnl_PatientData)
             Controls.Add(pnl_MainHeader)
-            Name = "cf_AccData"
+            Name = "cf_PatientData"
             Text = "View Patient Data"
             TopMost = True
             pnl_MainHeader.ResumeLayout(False)

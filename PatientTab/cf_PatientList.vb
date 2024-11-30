@@ -76,7 +76,7 @@ Namespace PatientTab
         ''' </summary>
         Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
             If Not String.IsNullOrEmpty(selectedPatientID) Then
-                Dim patientDataForm As New cf_AccData
+                Dim patientDataForm As New cf_PatientData
                 patientDataForm.PatientID = selectedPatientID ' Pass PatientID to cf_PatientData
                 patientDataForm.ShowDialog()
             Else
@@ -135,5 +135,27 @@ Namespace PatientTab
             End Try
         End Sub
 
+        ''' <summary>
+        ''' Handles the text change event of the search textbox to filter data in the DataGridView.
+        ''' </summary>
+        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+            Dim filterText As String = txt_Search.Text.Trim().ToLower()
+
+            If String.IsNullOrEmpty(filterText) Then
+                ' If the search bar is empty, show all rows
+                CType(dgv_PatientTable.DataSource, DataTable).DefaultView.RowFilter = String.Empty
+            Else
+                ' Prepare the filter string
+                Dim filterExpression As String = $"PatientId LIKE '%{filterText}%' OR " &
+                                                 $"FirstName LIKE '%{filterText}%' OR " &
+                                                 $"MiddleName LIKE '%{filterText}%' OR " &
+                                                 $"LastName LIKE '%{filterText}%' OR " &
+                                                 $"Sex LIKE '%{filterText}%' OR " &
+                                                 $"CONVERT(DateOfBirth, 'System.String') LIKE '%{filterText}%'"
+
+                ' Apply the filter
+                CType(dgv_PatientTable.DataSource, DataTable).DefaultView.RowFilter = filterExpression
+            End If
+        End Sub
     End Class
 End Namespace
