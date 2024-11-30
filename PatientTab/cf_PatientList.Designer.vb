@@ -47,6 +47,7 @@
             ' 
             ' pnl_MainHeader
             ' 
+            pnl_MainHeader.AutoSizeMode = AutoSizeMode.GrowAndShrink
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             pnl_MainHeader.BorderStyle = BorderStyle.FixedSingle
             pnl_MainHeader.Controls.Add(btn_Delete)
@@ -208,6 +209,8 @@
             ' 
             ' pnl_PatientList
             ' 
+            pnl_PatientList.AutoSize = True
+            pnl_PatientList.AutoSizeMode = AutoSizeMode.GrowAndShrink
             pnl_PatientList.Controls.Add(dgv_PatientTable)
             pnl_PatientList.Dock = DockStyle.Fill
             pnl_PatientList.Location = New Point(0, 69)
@@ -232,6 +235,7 @@
             CType(dgv_PatientTable, ComponentModel.ISupportInitialize).EndInit()
             pnl_PatientList.ResumeLayout(False)
             ResumeLayout(False)
+            PerformLayout()
         End Sub
 
         Friend WithEvents pnl_MainHeader As Panel

@@ -53,6 +53,7 @@
             ' pnl_MainHeader
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            pnl_MainHeader.BorderStyle = BorderStyle.FixedSingle
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
             pnl_MainHeader.Controls.Add(txt_Search)
             pnl_MainHeader.Controls.Add(Label2)
@@ -69,7 +70,7 @@
             ' 
             btn_patientAddNew.Anchor = AnchorStyles.Top Or AnchorStyles.Right
             btn_patientAddNew.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            btn_patientAddNew.Location = New Point(2087, 17)
+            btn_patientAddNew.Location = New Point(2085, 17)
             btn_patientAddNew.Name = "btn_patientAddNew"
             btn_patientAddNew.Size = New Size(160, 34)
             btn_patientAddNew.TabIndex = 4
@@ -81,7 +82,7 @@
             txt_Search.Anchor = AnchorStyles.Top
             txt_Search.BorderStyle = BorderStyle.None
             txt_Search.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_Search.Location = New Point(397, 20)
+            txt_Search.Location = New Point(396, 20)
             txt_Search.Margin = New Padding(3, 2, 3, 2)
             txt_Search.Name = "txt_Search"
             txt_Search.PlaceholderText = "Search for an appointment"
@@ -94,7 +95,7 @@
             Label2.AutoSize = True
             Label2.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             Label2.ForeColor = Color.White
-            Label2.Location = New Point(3161, 14)
+            Label2.Location = New Point(3159, 14)
             Label2.Name = "Label2"
             Label2.Size = New Size(108, 44)
             Label2.TabIndex = 3
@@ -117,7 +118,7 @@
             lbl_homeDateTime.AutoSize = True
             lbl_homeDateTime.Font = New Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
             lbl_homeDateTime.ForeColor = Color.White
-            lbl_homeDateTime.Location = New Point(4210, 14)
+            lbl_homeDateTime.Location = New Point(4208, 14)
             lbl_homeDateTime.Name = "lbl_homeDateTime"
             lbl_homeDateTime.Size = New Size(108, 44)
             lbl_homeDateTime.TabIndex = 1

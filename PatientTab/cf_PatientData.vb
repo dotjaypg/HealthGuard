@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Namespace PatientTab
-    Public Class cf_PatientData
+    Public Class cf_ApmntData
         Inherits Form
 
         ' Property to receive PatientID from cf_PatientList

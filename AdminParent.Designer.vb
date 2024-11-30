@@ -253,6 +253,7 @@ Partial Class AdminParent
         ' pnl_MainPage
         ' 
         pnl_MainPage.AutoSize = True
+        pnl_MainPage.AutoSizeMode = AutoSizeMode.GrowAndShrink
         pnl_MainPage.BackColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
         pnl_MainPage.Dock = DockStyle.Fill
         pnl_MainPage.Location = New Point(336, 0)

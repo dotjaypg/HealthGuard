@@ -76,7 +76,7 @@ Namespace PatientTab
         ''' </summary>
         Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
             If Not String.IsNullOrEmpty(selectedPatientID) Then
-                Dim patientDataForm As New cf_PatientData
+                Dim patientDataForm As New cf_ApmntData
                 patientDataForm.PatientID = selectedPatientID ' Pass PatientID to cf_PatientData
                 patientDataForm.ShowDialog()
             Else

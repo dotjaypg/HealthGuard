@@ -17,7 +17,7 @@ Public Class AdminParent
         ' Set the child form's properties to display within the panel
         childForm.TopLevel = False
         childForm.FormBorderStyle = FormBorderStyle.None
-        childForm.Dock = DockStyle.Fill
+        childForm.Dock = DockStyle.Fill  ' Make sure the form fills the panel
 
         ' Set the MDI parent relationship
         childForm.MdiParent = Me
@@ -76,6 +76,18 @@ Public Class AdminParent
     ' Public method to switch forms programmatically
     Public Sub SwitchToForm(childForm As Form)
         ShowChildForm(childForm)
+    End Sub
+
+    Private Sub btn_Logout_Click(sender As Object, e As EventArgs) Handles btn_Logout.Click
+        ' Hide the AdminParent form
+        Me.Hide()
+
+        ' Show the Login form
+        Dim loginForm As New Login() ' Replace with your actual Login form name
+        loginForm.Show()
+
+        ' Optionally, close the AdminParent form if you don't want it running in the background
+        ' Me.Close() ' Uncomment this line if you want to close the AdminParent form completely
     End Sub
 
 End Class
