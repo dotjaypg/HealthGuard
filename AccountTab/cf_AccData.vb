@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Text
+Imports MySql.Data.MySqlClient
 
 Namespace AccountTab
     Public Class cf_AccData
@@ -79,33 +80,45 @@ Namespace AccountTab
             End If
 
             Try
-                Dim query As String = "UPDATE accounts SET 
-                                        Role = @Role,
-                                        FirstName = @FirstName,
-                                        MiddleName = @MiddleName,
-                                        LastName = @LastName,
-                                        EmailUsername = @EmailUsername,
-                                        Password = @Password,
-                                        ContactNumber = @ContactNumber,
-                                        Status = @Status,
-                                        PatientID = @PatientID,
-                                        AssignedDepartment = @AssignedDepartment,
-                                        Specialization = @Specialization
-                                       WHERE UserID = @UserID"
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Role", lbl_Role.Text)
-                    cmd.Parameters.AddWithValue("@FirstName", txt_FirstName.Text)
-                    cmd.Parameters.AddWithValue("@MiddleName", txt_MiddleName.Text)
-                    cmd.Parameters.AddWithValue("@LastName", txt_LastName.Text)
-                    cmd.Parameters.AddWithValue("@EmailUsername", txt_EmailUsername.Text)
-                    cmd.Parameters.AddWithValue("@Password", txt_Password.Text)
-                    cmd.Parameters.AddWithValue("@ContactNumber", txt_ContactNumber.Text)
-                    cmd.Parameters.AddWithValue("@Status", cmb_Status.SelectedItem)
-                    cmd.Parameters.AddWithValue("@PatientID", txt_PatientID.Text)
-                    cmd.Parameters.AddWithValue("@AssignedDepartment", txt_AssignedDepartment.Text)
-                    cmd.Parameters.AddWithValue("@Specialization", txt_Specialization.Text)
-                    cmd.Parameters.AddWithValue("@UserID", UserID)
+                Dim query As New StringBuilder("UPDATE accounts SET ")
+                Dim parameters As New List(Of MySqlParameter)
 
+                query.Append("Role = @Role, ")
+                parameters.Add(New MySqlParameter("@Role", lbl_Role.Text))
+                query.Append("FirstName = @FirstName, ")
+                parameters.Add(New MySqlParameter("@FirstName", txt_FirstName.Text))
+                query.Append("MiddleName = @MiddleName, ")
+                parameters.Add(New MySqlParameter("@MiddleName", txt_MiddleName.Text))
+                query.Append("LastName = @LastName, ")
+                parameters.Add(New MySqlParameter("@LastName", txt_LastName.Text))
+                query.Append("EmailUsername = @EmailUsername, ")
+                parameters.Add(New MySqlParameter("@EmailUsername", txt_EmailUsername.Text))
+                query.Append("Password = @Password, ")
+                parameters.Add(New MySqlParameter("@Password", txt_Password.Text))
+                query.Append("ContactNumber = @ContactNumber, ")
+                parameters.Add(New MySqlParameter("@ContactNumber", txt_ContactNumber.Text))
+                query.Append("Status = @Status ")
+                parameters.Add(New MySqlParameter("@Status", cmb_Status.SelectedItem))
+
+                ' Append fields conditionally based on Role
+                If lbl_Role.Text <> "Patient" AndAlso lbl_Role.Text <> "Nurse" AndAlso lbl_Role.Text <> "Doctor" Then
+                    query.Append(", PatientID = @PatientID ")
+                    parameters.Add(New MySqlParameter("@PatientID", txt_PatientID.Text))
+                End If
+
+                If lbl_Role.Text <> "Patient" Then
+                    query.Append(", AssignedDepartment = @AssignedDepartment ")
+                    parameters.Add(New MySqlParameter("@AssignedDepartment", txt_AssignedDepartment.Text))
+                    query.Append(", Specialization = @Specialization ")
+                    parameters.Add(New MySqlParameter("@Specialization", txt_Specialization.Text))
+                End If
+
+                query.Append("WHERE UserID = @UserID")
+                parameters.Add(New MySqlParameter("@UserID", UserID))
+
+                ' Execute the dynamically built query
+                Using cmd As New MySqlCommand(query.ToString(), conn)
+                    cmd.Parameters.AddRange(parameters.ToArray())
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     If rowsAffected > 0 Then
                         MessageBox.Show("Account data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

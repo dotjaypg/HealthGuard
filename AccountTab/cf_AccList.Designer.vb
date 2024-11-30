@@ -197,7 +197,7 @@
             DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
             DataGridViewCellStyle3.Padding = New Padding(5)
-            DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(161), CByte(243), CByte(175))
+            DataGridViewCellStyle3.SelectionBackColor = Color.Silver
             DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
             DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
             dgv_AccTable.DefaultCellStyle = DataGridViewCellStyle3

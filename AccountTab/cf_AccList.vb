@@ -4,16 +4,12 @@ Namespace AccountTab
     Public Class cf_AccList
         Inherits Form
 
-        ' Database connection utility
-        Private dbConnection As New DBConnection()
-
-        ' The full DataTable to store all the account data
+        Private dbConnection As New DBConnection() ' DBConnection instance
         Private accountTable As DataTable
         Private selectedUserID As String
 
         ' Form Load Event
         Private Sub cf_AccList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            ' Load data into the existing DataGridView
             LoadAccountData()
         End Sub
 
@@ -22,23 +18,40 @@ Namespace AccountTab
         ''' </summary>
         Private Sub LoadAccountData()
             Try
-                ' Open connection using the DBConnection class
-                Using conn As MySqlConnection = dbConnection.Open()
-                    ' Define the query to fetch account data
-                    Dim query As String = "SELECT UserID, Role, FirstName, MiddleName, LastName, EmailUsername, Status, CreationDate FROM accounts"
-                    Dim cmd As New MySqlCommand(query, conn)
+                ' Open the connection manually
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                    ' Fill a DataTable with query results
-                    Dim adapter As New MySqlDataAdapter(cmd)
-                    accountTable = New DataTable() ' Store the full data
-                    adapter.Fill(accountTable)
+                ' Define the query to fetch account data
+                Dim query As String = "SELECT UserID, Role, FirstName, MiddleName, LastName, EmailUsername, Status, CreationDate FROM accounts"
+                Dim cmd As New MySqlCommand(query, conn)
 
-                    ' Bind the DataTable to the DataGridView
-                    dgv_AccTable.DataSource = accountTable
+                ' Fill the DataTable with query results
+                Dim adapter As New MySqlDataAdapter(cmd)
+                accountTable = New DataTable()
+                adapter.Fill(accountTable)
 
-                    ' Rename column headers
-                    SetColumnHeaders()
-                End Using
+                ' Add a new column for CreationDate as a string
+                accountTable.Columns.Add("CreationDateString", GetType(String))
+
+                ' Loop through rows to populate CreationDateString column with formatted date
+                For Each row As DataRow In accountTable.Rows
+                    row("CreationDateString") = Convert.ToDateTime(row("CreationDate")).ToString("yyyy-MM-dd HH:mm:ss")
+                Next
+
+                ' Bind the DataTable to the DataGridView
+                dgv_AccTable.DataSource = accountTable
+
+                ' Set column headers for better readability
+                SetColumnHeaders()
+
+                ' Apply custom styles after data binding is complete
+                ApplyCustomStyles()
+
+                ' Close the connection after use
+                dbConnection.Close()
+
+            Catch ex As MySqlException
+                MessageBox.Show($"MySQL Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception
                 MessageBox.Show($"Error loading account data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -56,6 +69,49 @@ Namespace AccountTab
             dgv_AccTable.Columns("EmailUsername").HeaderText = "Email/Username"
             dgv_AccTable.Columns("Status").HeaderText = "Status"
             dgv_AccTable.Columns("CreationDate").HeaderText = "Date of Creation"
+        End Sub
+
+        ''' <summary>
+        ''' Applies custom styles to DataGridView rows and cells.
+        ''' </summary>
+        Private Sub ApplyCustomStyles()
+            For Each row As DataGridViewRow In dgv_AccTable.Rows
+                ' Apply row color based on Role
+                Dim role As String = row.Cells("Role").Value.ToString()
+                Select Case role
+                    Case "Admin"
+                        row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#aaadc4")
+                    Case "Patient"
+                        row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#ffffff")
+                    Case "Nurse"
+                        row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#aef8bc")
+                    Case "Doctor"
+                        row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#afe9dd")
+                End Select
+
+                ' Apply font styles to the Status column
+                Dim statusCell As DataGridViewCell = row.Cells("Status")
+                Dim status As String = statusCell.Value.ToString()
+                Dim cellStyle As New DataGridViewCellStyle()
+
+                Select Case status.ToLower()
+                    Case "active"
+                        cellStyle.Font = New Font(dgv_AccTable.Font, FontStyle.Bold)
+                    Case "pending"
+                        cellStyle.Font = New Font(dgv_AccTable.Font, FontStyle.Underline)
+                    Case "disabled"
+                        cellStyle.ForeColor = Color.Red
+                End Select
+
+                statusCell.Style = cellStyle
+            Next
+        End Sub
+
+        ''' <summary>
+        ''' Handles the DataBindingComplete event to apply custom styles after data binding is complete.
+        ''' </summary>
+        Private Sub dgv_AccTable_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgv_AccTable.DataBindingComplete
+            ApplyCustomStyles()
         End Sub
 
         ''' <summary>
@@ -85,19 +141,6 @@ Namespace AccountTab
         End Sub
 
         ''' <summary>
-        ''' Refreshes the data in the DataGridView by reloading it from the database.
-        ''' </summary>
-        Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
-            Try
-                ' Reload account data from the database
-                LoadAccountData()
-                MessageBox.Show("Account data refreshed successfully.", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show($"Error refreshing account data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Sub
-
-        ''' <summary>
         ''' Deletes the selected account when the Delete button is clicked.
         ''' </summary>
         Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
@@ -106,31 +149,71 @@ Namespace AccountTab
                 Return
             End If
 
-            ' Confirmation before deletion
             Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete account {selectedUserID}?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
             If result <> DialogResult.Yes Then Return
 
             Try
-                ' Open connection for the delete operation
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "DELETE FROM accounts WHERE UserID = @UserID"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@UserID", selectedUserID)
-                        Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                ' Perform deletion
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                        If rowsAffected > 0 Then
-                            MessageBox.Show($"Account {selectedUserID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Else
-                            MessageBox.Show("No rows were deleted. The account may not exist.", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        End If
-                    End Using
+                Dim query As String = "DELETE FROM accounts WHERE UserID = @UserID"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@UserID", selectedUserID)
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        MessageBox.Show($"Account {selectedUserID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No rows were deleted. The account may not exist.", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
                 End Using
+
+                ' Close the connection after the operation is complete
+                dbConnection.Close()
 
                 ' Refresh the data grid after deletion
                 LoadAccountData()
+
             Catch ex As Exception
                 MessageBox.Show($"Error deleting account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+        End Sub
+
+        ''' <summary>
+        ''' Refreshes the data in the DataGridView by reloading it from the database.
+        ''' </summary>
+        Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
+            Try
+                LoadAccountData()
+                MessageBox.Show("Account data refreshed successfully.", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show($"Error refreshing account data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Handles the text change event of the search textbox to filter data in the DataGridView.
+        ''' </summary>
+        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+            Dim filterText As String = txt_Search.Text.Trim().ToLower()
+
+            If String.IsNullOrEmpty(filterText) Then
+                ' If the search bar is empty, show all rows
+                CType(dgv_AccTable.DataSource, DataTable).DefaultView.RowFilter = String.Empty
+            Else
+                ' Prepare the filter string with DateTime conversion to string
+                Dim filterExpression As String = $"UserID LIKE '%{filterText}%' OR " &
+                                                 $"Role LIKE '%{filterText}%' OR " &
+                                                 $"FirstName LIKE '%{filterText}%' OR " &
+                                                 $"MiddleName LIKE '%{filterText}%' OR " &
+                                                 $"LastName LIKE '%{filterText}%' OR " &
+                                                 $"EmailUsername LIKE '%{filterText}%' OR " &
+                                                 $"Status LIKE '%{filterText}%' OR " &
+                                                 $"CONVERT(CreationDate, 'System.String') LIKE '%{filterText}%'"
+
+                ' Apply the filter
+                CType(dgv_AccTable.DataSource, DataTable).DefaultView.RowFilter = filterExpression
+            End If
         End Sub
     End Class
 End Namespace
