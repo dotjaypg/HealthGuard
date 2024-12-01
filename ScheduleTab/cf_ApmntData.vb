@@ -53,7 +53,6 @@ Namespace ScheduleTab
                             txt_PatientName.Text = reader("PatientName").ToString()
                             txt_DoctorName.Text = reader("DoctorName").ToString()
                             dtp_StartDate.Value = Convert.ToDateTime(reader("StartDate"))
-                            dtp_EndDate.Value = If(IsDBNull(reader("EndDate")), Date.Now, Convert.ToDateTime(reader("EndDate")))
                             cbx_AllDay.Checked = Convert.ToBoolean(reader("AllDay"))
 
                             ' Handle StartTime and EndTime
@@ -89,11 +88,6 @@ Namespace ScheduleTab
 
                 query.Append("StartDate = @StartDate, ")
                 parameters.Add(New MySqlParameter("@StartDate", dtp_StartDate.Value))
-
-                If Not cbx_AllDay.Checked AndAlso Not dtp_EndDate.Value = Nothing Then
-                    query.Append("EndDate = @EndDate, ")
-                    parameters.Add(New MySqlParameter("@EndDate", dtp_EndDate.Value))
-                End If
 
                 If Not cbx_AllDay.Checked AndAlso dtp_StartTime.Checked Then
                     query.Append("StartTime = @StartTime, ")

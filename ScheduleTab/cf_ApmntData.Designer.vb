@@ -38,10 +38,6 @@
             pnl_FirstName = New Panel()
             dtp_StartDate = New DateTimePicker()
             txt_FirstName = New TextBox()
-            Label1 = New Label()
-            Panel1 = New Panel()
-            dtp_EndDate = New DateTimePicker()
-            txt_MiddleName = New TextBox()
             Label3 = New Label()
             Panel3 = New Panel()
             dtp_StartTime = New DateTimePicker()
@@ -67,7 +63,6 @@
             DBConnectionBindingSource = New BindingSource(components)
             pnl_MainHeader.SuspendLayout()
             pnl_FirstName.SuspendLayout()
-            Panel1.SuspendLayout()
             Panel3.SuspendLayout()
             Panel4.SuspendLayout()
             pnl_PatientData.SuspendLayout()
@@ -202,9 +197,9 @@
             lbl_Name.ImageAlign = ContentAlignment.MiddleLeft
             lbl_Name.Location = New Point(25, 156)
             lbl_Name.Name = "lbl_Name"
-            lbl_Name.Size = New Size(106, 24)
+            lbl_Name.Size = New Size(55, 24)
             lbl_Name.TabIndex = 5
-            lbl_Name.Text = "Start Date"
+            lbl_Name.Text = "Date"
             lbl_Name.TextAlign = ContentAlignment.MiddleLeft
             ' 
             ' pnl_FirstName
@@ -247,66 +242,13 @@
             txt_FirstName.Size = New Size(391, 37)
             txt_FirstName.TabIndex = 6
             ' 
-            ' Label1
-            ' 
-            Label1.AutoSize = True
-            Label1.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            Label1.ForeColor = Color.Black
-            Label1.ImageAlign = ContentAlignment.MiddleLeft
-            Label1.Location = New Point(25, 218)
-            Label1.Name = "Label1"
-            Label1.Size = New Size(97, 24)
-            Label1.TabIndex = 5
-            Label1.Text = "End Date"
-            Label1.TextAlign = ContentAlignment.MiddleLeft
-            ' 
-            ' Panel1
-            ' 
-            Panel1.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            Panel1.Controls.Add(dtp_EndDate)
-            Panel1.Controls.Add(txt_MiddleName)
-            Panel1.Location = New Point(168, 206)
-            Panel1.Name = "Panel1"
-            Panel1.Padding = New Padding(5)
-            Panel1.Size = New Size(401, 47)
-            Panel1.TabIndex = 7
-            ' 
-            ' dtp_EndDate
-            ' 
-            dtp_EndDate.CalendarMonthBackground = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            dtp_EndDate.CalendarTitleBackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            dtp_EndDate.Checked = False
-            dtp_EndDate.CustomFormat = "MM/DD/YYYY"
-            dtp_EndDate.Dock = DockStyle.Fill
-            dtp_EndDate.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            dtp_EndDate.Format = DateTimePickerFormat.Short
-            dtp_EndDate.Location = New Point(5, 5)
-            dtp_EndDate.MaxDate = New Date(2024, 12, 31, 0, 0, 0, 0)
-            dtp_EndDate.Name = "dtp_EndDate"
-            dtp_EndDate.Size = New Size(391, 35)
-            dtp_EndDate.TabIndex = 10
-            dtp_EndDate.Value = New Date(2024, 1, 1, 0, 0, 0, 0)
-            ' 
-            ' txt_MiddleName
-            ' 
-            txt_MiddleName.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
-            txt_MiddleName.BorderStyle = BorderStyle.None
-            txt_MiddleName.Dock = DockStyle.Fill
-            txt_MiddleName.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            txt_MiddleName.Location = New Point(5, 5)
-            txt_MiddleName.Margin = New Padding(3, 2, 3, 2)
-            txt_MiddleName.Multiline = True
-            txt_MiddleName.Name = "txt_MiddleName"
-            txt_MiddleName.Size = New Size(391, 37)
-            txt_MiddleName.TabIndex = 6
-            ' 
             ' Label3
             ' 
             Label3.AutoSize = True
             Label3.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label3.ForeColor = Color.Black
             Label3.ImageAlign = ContentAlignment.MiddleLeft
-            Label3.Location = New Point(25, 321)
+            Label3.Location = New Point(25, 258)
             Label3.Name = "Label3"
             Label3.Size = New Size(105, 24)
             Label3.TabIndex = 5
@@ -318,7 +260,7 @@
             Panel3.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             Panel3.Controls.Add(dtp_StartTime)
             Panel3.Controls.Add(txt_LastName)
-            Panel3.Location = New Point(168, 309)
+            Panel3.Location = New Point(168, 246)
             Panel3.Name = "Panel3"
             Panel3.Padding = New Padding(5)
             Panel3.Size = New Size(401, 47)
@@ -359,7 +301,7 @@
             Label4.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label4.ForeColor = Color.Black
             Label4.ImageAlign = ContentAlignment.MiddleLeft
-            Label4.Location = New Point(25, 381)
+            Label4.Location = New Point(25, 318)
             Label4.Name = "Label4"
             Label4.Size = New Size(96, 24)
             Label4.TabIndex = 5
@@ -371,7 +313,7 @@
             Panel4.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             Panel4.Controls.Add(dtp_EndTime)
             Panel4.Controls.Add(txt_Sex)
-            Panel4.Location = New Point(168, 369)
+            Panel4.Location = New Point(168, 306)
             Panel4.Name = "Panel4"
             Panel4.Padding = New Padding(5)
             Panel4.Size = New Size(401, 47)
@@ -414,7 +356,6 @@
             pnl_PatientData.Controls.Add(Label5)
             pnl_PatientData.Controls.Add(cbx_AllDay)
             pnl_PatientData.Controls.Add(lbl_Name)
-            pnl_PatientData.Controls.Add(Label1)
             pnl_PatientData.Controls.Add(Panel6)
             pnl_PatientData.Controls.Add(Panel7)
             pnl_PatientData.Controls.Add(Label3)
@@ -423,12 +364,11 @@
             pnl_PatientData.Controls.Add(Label8)
             pnl_PatientData.Controls.Add(Panel3)
             pnl_PatientData.Controls.Add(Label7)
-            pnl_PatientData.Controls.Add(Panel1)
             pnl_PatientData.Controls.Add(pnl_FirstName)
             pnl_PatientData.Dock = DockStyle.Fill
             pnl_PatientData.Location = New Point(0, 69)
             pnl_PatientData.Name = "pnl_PatientData"
-            pnl_PatientData.Size = New Size(596, 560)
+            pnl_PatientData.Size = New Size(596, 498)
             pnl_PatientData.TabIndex = 9
             ' 
             ' Panel5
@@ -511,7 +451,7 @@
             ' 
             cbx_AllDay.AutoSize = True
             cbx_AllDay.Font = New Font("Arial", 15.75F)
-            cbx_AllDay.Location = New Point(180, 269)
+            cbx_AllDay.Location = New Point(180, 206)
             cbx_AllDay.Name = "cbx_AllDay"
             cbx_AllDay.Size = New Size(94, 28)
             cbx_AllDay.TabIndex = 8
@@ -523,7 +463,7 @@
             Panel6.BackColor = Color.White
             Panel6.BorderStyle = BorderStyle.FixedSingle
             Panel6.Controls.Add(txt_Status)
-            Panel6.Location = New Point(168, 489)
+            Panel6.Location = New Point(168, 426)
             Panel6.Name = "Panel6"
             Panel6.Padding = New Padding(5)
             Panel6.Size = New Size(401, 47)
@@ -547,7 +487,7 @@
             ' 
             Panel7.BackColor = Color.FromArgb(CByte(191), CByte(251), CByte(200))
             Panel7.Controls.Add(cmb_RequestStatus)
-            Panel7.Location = New Point(168, 429)
+            Panel7.Location = New Point(168, 366)
             Panel7.Name = "Panel7"
             Panel7.Padding = New Padding(5)
             Panel7.Size = New Size(401, 47)
@@ -573,7 +513,7 @@
             Label8.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label8.ForeColor = Color.Black
             Label8.ImageAlign = ContentAlignment.MiddleLeft
-            Label8.Location = New Point(25, 501)
+            Label8.Location = New Point(25, 438)
             Label8.Name = "Label8"
             Label8.Size = New Size(70, 24)
             Label8.TabIndex = 5
@@ -586,7 +526,7 @@
             Label7.Font = New Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
             Label7.ForeColor = Color.Black
             Label7.ImageAlign = ContentAlignment.MiddleLeft
-            Label7.Location = New Point(25, 441)
+            Label7.Location = New Point(25, 378)
             Label7.Name = "Label7"
             Label7.Size = New Size(88, 24)
             Label7.TabIndex = 5
@@ -602,7 +542,7 @@
             AutoScaleDimensions = New SizeF(7F, 15F)
             AutoScaleMode = AutoScaleMode.Font
             BackColor = Color.White
-            ClientSize = New Size(596, 629)
+            ClientSize = New Size(596, 567)
             Controls.Add(pnl_PatientData)
             Controls.Add(pnl_MainHeader)
             Name = "cf_ApmntData"
@@ -612,8 +552,6 @@
             pnl_MainHeader.PerformLayout()
             pnl_FirstName.ResumeLayout(False)
             pnl_FirstName.PerformLayout()
-            Panel1.ResumeLayout(False)
-            Panel1.PerformLayout()
             Panel3.ResumeLayout(False)
             Panel3.PerformLayout()
             Panel4.ResumeLayout(False)
@@ -642,9 +580,6 @@
         Friend WithEvents lbl_Name As Label
         Friend WithEvents pnl_FirstName As Panel
         Friend WithEvents txt_FirstName As TextBox
-        Friend WithEvents Label1 As Label
-        Friend WithEvents Panel1 As Panel
-        Friend WithEvents txt_MiddleName As TextBox
         Friend WithEvents Label3 As Label
         Friend WithEvents Panel3 As Panel
         Friend WithEvents txt_LastName As TextBox
@@ -664,7 +599,6 @@
         Friend WithEvents txt_ParentGuardian As TextBox
         Friend WithEvents lbl_ParentGuardian As Label
         Friend WithEvents dtp_StartDate As DateTimePicker
-        Friend WithEvents dtp_EndDate As DateTimePicker
         Friend WithEvents dtp_StartTime As DateTimePicker
         Friend WithEvents dtp_EndTime As DateTimePicker
         Friend WithEvents cbx_AllDay As CheckBox

@@ -24,7 +24,7 @@ Namespace ScheduleTab
                 Dim query As String = "
                     SELECT 
                         s.ScheduleID,
-                        CASE 
+                            CASE 
                             WHEN EndDate IS NULL THEN StartDate
                             ELSE CONCAT(StartDate, ' - ', EndDate)
                         END AS 'Date',

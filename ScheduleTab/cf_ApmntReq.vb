@@ -22,34 +22,33 @@ Namespace ScheduleTab
         ''' </summary>
         Private Sub LoadAppointmentRequests()
             Try
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "
-                        SELECT 
-                            s.ScheduleID,
-                            CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'PatientName',
-                            CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'DoctorName',
-                            s.StartDate AS 'StartDate',
-                            s.StartTime AS 'StartTime',
-                            s.EndTime AS 'EndTime',
-                            s.RequestStatus
-                        FROM 
-                            schedules s
-                        INNER JOIN 
-                            patients p ON s.PatientID = p.PatientId
-                        INNER JOIN 
-                            accounts a ON s.DoctorID = a.UserID
-                        WHERE 
-                            s.RequestStatus = 'pending'"
+                Dim conn As MySqlConnection = dbConnection.Open()
+                Dim query As String = "
+                    SELECT 
+                        s.ScheduleID,
+                        CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'PatientName',
+                        CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'DoctorName',
+                        s.StartDate AS 'StartDate',
+                        s.StartTime AS 'StartTime',
+                        s.EndTime AS 'EndTime',
+                        s.RequestStatus
+                    FROM 
+                        schedules s
+                    INNER JOIN 
+                        patients p ON s.PatientID = p.PatientId
+                    INNER JOIN 
+                        accounts a ON s.DoctorID = a.UserID
+                    WHERE 
+                        s.RequestStatus = 'pending'"
 
-                    Dim cmd As New MySqlCommand(query, conn)
-                    ' Fill a DataTable with query results
-                    Dim adapter As New MySqlDataAdapter(cmd)
-                    appointmentRequestTable = New DataTable()
-                    adapter.Fill(appointmentRequestTable)
+                Dim cmd As New MySqlCommand(query, conn)
+                ' Fill a DataTable with query results
+                Dim adapter As New MySqlDataAdapter(cmd)
+                appointmentRequestTable = New DataTable()
+                adapter.Fill(appointmentRequestTable)
 
-                    ' Bind the DataTable to the DataGridView
-                    dgv_ApmntTable.DataSource = appointmentRequestTable
-                End Using
+                ' Bind the DataTable to the DataGridView
+                dgv_ApmntTable.DataSource = appointmentRequestTable
             Catch ex As Exception
                 Debug.WriteLine($"Error loading appointment requests: {ex.ToString()}")
                 MessageBox.Show($"Error loading appointment requests: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -111,15 +110,16 @@ Namespace ScheduleTab
             If result <> DialogResult.Yes Then Return
 
             Try
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "UPDATE schedules SET RequestStatus = 'approved' WHERE ScheduleID = @ScheduleID"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
-                        cmd.ExecuteNonQuery()
-                    End Using
-                End Using
+                ' Establish database connection
+                Dim conn As MySqlConnection = dbConnection.Open()
+                ' Update the status and requeststatus when approving the request
+                Dim query As String = "UPDATE schedules SET RequestStatus = 'accepted', Status = 'scheduled' WHERE ScheduleID = @ScheduleID"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
+                cmd.ExecuteNonQuery()
+
                 LoadAppointmentRequests() ' Refresh the data after approval
-                MessageBox.Show($"Appointment request {selectedScheduleID} has been approved.", "Approve Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show($"Appointment request {selectedScheduleID} has been approved and scheduled.", "Approve Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 Debug.WriteLine($"Error approving appointment request: {ex.ToString()}")
                 MessageBox.Show($"Error approving appointment request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -139,20 +139,22 @@ Namespace ScheduleTab
             If result <> DialogResult.Yes Then Return
 
             Try
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "UPDATE schedules SET RequestStatus = 'rejected' WHERE ScheduleID = @ScheduleID"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
-                        cmd.ExecuteNonQuery()
-                    End Using
-                End Using
+                ' Establish database connection
+                Dim conn As MySqlConnection = dbConnection.Open()
+                ' Update the status and requeststatus when rejecting the request
+                Dim query As String = "UPDATE schedules SET RequestStatus = 'declined', Status = 'declined' WHERE ScheduleID = @ScheduleID"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
+                cmd.ExecuteNonQuery()
+
                 LoadAppointmentRequests() ' Refresh the data after rejection
-                MessageBox.Show($"Appointment request {selectedScheduleID} has been rejected.", "Reject Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show($"Appointment request {selectedScheduleID} has been rejected and declined.", "Reject Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 Debug.WriteLine($"Error rejecting appointment request: {ex.ToString()}")
                 MessageBox.Show($"Error rejecting appointment request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
+
 
         ''' <summary>
         ''' Refreshes the data in the DataGridView by reloading it from the database.

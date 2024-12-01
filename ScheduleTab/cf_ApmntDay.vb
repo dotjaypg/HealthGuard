@@ -24,45 +24,53 @@ Namespace ScheduleTab
                 ' Get today's date in the format 'YYYY-MM-DD'
                 Dim today As String = DateTime.Now.ToString("yyyy-MM-dd")
 
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "
-                        SELECT 
-                            CASE 
-                                WHEN EndDate IS NULL THEN StartDate
-                                ELSE CONCAT(StartDate, ' - ', EndDate)
-                            END AS 'Date',
-                            CASE 
-                                WHEN AllDay = '1' THEN 'All Day'
-                                WHEN EndTime IS NULL THEN StartTime
-                                ELSE CONCAT(StartTime, ' - ', EndTime)
-                            END AS 'Time',
-                            CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'Name',
-                            s.Status AS 'Status',
-                            CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'Doctor'
-                        FROM 
-                            schedules s
-                        INNER JOIN 
-                            patients p ON s.PatientID = p.PatientId
-                        INNER JOIN 
-                            accounts a ON s.DoctorID = a.UserID
-                        WHERE 
-                            s.StartDate = @Today"
+                ' Open the connection manually
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                    Dim cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Today", today)
+                Dim query As String = "
+                    SELECT 
+                        s.ScheduleID,  -- Add ScheduleID here
+                        CASE 
+                            WHEN s.EndDate IS NULL THEN s.StartDate
+                            ELSE CONCAT(s.StartDate, ' - ', s.EndDate)
+                        END AS 'Date',
+                        CASE 
+                            WHEN s.AllDay = '1' THEN 'All Day'
+                            WHEN s.EndTime IS NULL THEN s.StartTime
+                            ELSE CONCAT(s.StartTime, ' - ', s.EndTime)
+                        END AS 'Time',
+                        CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'Name',
+                        s.Status AS 'Status',
+                        CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'Doctor'
+                    FROM 
+                        schedules s
+                    INNER JOIN 
+                        patients p ON s.PatientID = p.PatientId
+                    INNER JOIN 
+                        accounts a ON s.DoctorID = a.UserID
+                    WHERE 
+                        s.StartDate = @Today"
 
-                    ' Fill a DataTable with query results
-                    Dim adapter As New MySqlDataAdapter(cmd)
-                    appointmentTable = New DataTable()
-                    adapter.Fill(appointmentTable)
+                ' Create a MySQL command
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@Today", today)
 
-                    ' Bind the DataTable to the DataGridView
-                    dgv_ApmntTable.DataSource = appointmentTable
-                End Using
+                ' Fill a DataTable with query results
+                Dim adapter As New MySqlDataAdapter(cmd)
+                appointmentTable = New DataTable()
+                adapter.Fill(appointmentTable)
+
+                ' Bind the DataTable to the DataGridView
+                dgv_ApmntTable.DataSource = appointmentTable
+
+                ' Close the connection
+                conn.Close()
+
             Catch ex As Exception
                 MessageBox.Show($"Error loading today's appointment data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Sub
+
 
         ''' <summary>
         ''' Filters the appointments displayed in the DataGridView based on the search text.
