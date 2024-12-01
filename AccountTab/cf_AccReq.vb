@@ -142,45 +142,6 @@ Namespace AccountTab
         End Sub
 
         ''' <summary>
-        ''' Deletes the selected account when the Delete button is clicked.
-        ''' </summary>
-        Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
-            If String.IsNullOrEmpty(selectedUserID) Then
-                MessageBox.Show("No account selected. Please select an account to delete.", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete account {selectedUserID}?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-            If result <> DialogResult.Yes Then Return
-
-            Try
-                ' Perform deletion
-                Dim conn As MySqlConnection = dbConnection.Open()
-
-                Dim query As String = "DELETE FROM accounts WHERE UserID = @UserID"
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@UserID", selectedUserID)
-                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-
-                    If rowsAffected > 0 Then
-                        MessageBox.Show($"Account {selectedUserID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        MessageBox.Show("No rows were deleted. The account may not exist.", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    End If
-                End Using
-
-                ' Close the connection after the operation is complete
-                dbConnection.Close()
-
-                ' Refresh the data grid after deletion
-                LoadAccountData()
-
-            Catch ex As Exception
-                MessageBox.Show($"Error deleting account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Sub
-
-        ''' <summary>
         ''' Refreshes the data in the DataGridView by reloading it from the database.
         ''' </summary>
         Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
@@ -216,5 +177,64 @@ Namespace AccountTab
                 CType(dgv_AccTable.DataSource, DataTable).DefaultView.RowFilter = filterExpression
             End If
         End Sub
+
+        ''' <summary>
+        ''' Approves the selected account request.
+        ''' </summary>
+        Private Sub btn_Approve_Click(sender As Object, e As EventArgs) Handles btn_Approve.Click
+            If String.IsNullOrEmpty(selectedUserID) Then
+                MessageBox.Show("No account request selected. Please select an account request to approve.", "Approve Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim result As DialogResult = MessageBox.Show($"Are you sure you want to approve the account request for UserID {selectedUserID}?", "Approve Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            If result <> DialogResult.Yes Then Return
+
+            Try
+                ' Establish database connection
+                Dim conn As MySqlConnection = dbConnection.Open()
+                ' Update the status when approving the account
+                Dim query As String = "UPDATE accounts SET Status = 'active' WHERE UserID = @UserID"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@UserID", selectedUserID)
+                cmd.ExecuteNonQuery()
+
+                LoadAccountData() ' Refresh the data after approval
+                MessageBox.Show($"Account request for UserID {selectedUserID} has been approved and activated.", "Approve Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                Debug.WriteLine($"Error approving account request: {ex.ToString()}")
+                MessageBox.Show($"Error approving account request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Rejects the selected account request.
+        ''' </summary>
+        Private Sub btn_Reject_Click(sender As Object, e As EventArgs) Handles btn_Reject.Click
+            If String.IsNullOrEmpty(selectedUserID) Then
+                MessageBox.Show("No account request selected. Please select an account request to reject.", "Reject Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim result As DialogResult = MessageBox.Show($"Are you sure you want to reject the account request for UserID {selectedUserID}?", "Reject Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If result <> DialogResult.Yes Then Return
+
+            Try
+                ' Establish database connection
+                Dim conn As MySqlConnection = dbConnection.Open()
+                ' Update the status when rejecting the account
+                Dim query As String = "UPDATE accounts SET Status = 'disabled' WHERE UserID = @UserID"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@UserID", selectedUserID)
+                cmd.ExecuteNonQuery()
+
+                LoadAccountData() ' Refresh the data after rejection
+                MessageBox.Show($"Account request for UserID {selectedUserID} has been rejected and disabled.", "Reject Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                Debug.WriteLine($"Error rejecting account request: {ex.ToString()}")
+                MessageBox.Show($"Error rejecting account request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
     End Class
 End Namespace
