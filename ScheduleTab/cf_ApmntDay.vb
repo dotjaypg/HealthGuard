@@ -9,6 +9,7 @@ Namespace ScheduleTab
 
         ' Full DataTable to store all today's appointment data
         Private appointmentTable As DataTable
+        Private selectedScheduleID As String
 
         Private Sub cf_ApmntDay_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             ' Load today's appointment data into the DataGridView
@@ -94,10 +95,73 @@ Namespace ScheduleTab
         End Sub
 
         ''' <summary>
-        ''' Handles the event when a cell in the DataGridView is clicked (optional for additional functionality).
+        ''' Handles row selection in the DataGridView.
+        ''' Updates the selectedScheduleID variable with the ID of the selected row.
         ''' </summary>
-        Private Sub dgv_ApmntTable_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_ApmntTable.CellContentClick
-            ' Optional: Add functionality if needed, such as opening an appointment details view
+        Private Sub dgv_ApmntTable_SelectionChanged(sender As Object, e As EventArgs) Handles dgv_ApmntTable.SelectionChanged
+            If dgv_ApmntTable.CurrentRow IsNot Nothing AndAlso dgv_ApmntTable.CurrentRow.Index >= 0 Then
+                Dim row As DataGridViewRow = dgv_ApmntTable.CurrentRow
+                selectedScheduleID = row.Cells("ScheduleID").Value.ToString()
+            Else
+                selectedScheduleID = Nothing ' No row selected
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Deletes the selected appointment when the Delete button is clicked.
+        ''' </summary>
+        Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
+            If String.IsNullOrEmpty(selectedScheduleID) Then
+                MessageBox.Show("No appointment selected. Please select an appointment to delete.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim result As DialogResult = MessageBox.Show($"Are you sure you want to delete appointment {selectedScheduleID}?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If result <> DialogResult.Yes Then Return
+
+            Try
+                Using conn As MySqlConnection = dbConnection.Open()
+                    Dim query As String = "DELETE FROM schedules WHERE ScheduleID = @ScheduleID"
+                    Using cmd As New MySqlCommand(query, conn)
+                        cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
+                        Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+                        If rowsAffected > 0 Then
+                            MessageBox.Show($"Appointment {selectedScheduleID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Else
+                            MessageBox.Show("No rows were deleted. The appointment may not exist.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+                    End Using
+                End Using
+                LoadAppointmentData()
+            Catch ex As Exception
+                MessageBox.Show($"Error deleting appointment: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Refreshes the data in the DataGridView by reloading it from the database.
+        ''' </summary>
+        Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
+            Try
+                LoadAppointmentData()
+                MessageBox.Show("Appointment data refreshed successfully.", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show($"Error refreshing appointment data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Displays the cf_ApmntData form with the selected ScheduleID.
+        ''' </summary>
+        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
+            If Not String.IsNullOrEmpty(selectedScheduleID) Then
+                Dim apmntDataForm As New cf_ApmntData
+                apmntDataForm.ScheduleID = selectedScheduleID ' Pass ScheduleID to cf_ApmntData
+                apmntDataForm.ShowDialog()
+            Else
+                MessageBox.Show("No appointment selected. Please select an appointment to view.", "View Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         End Sub
     End Class
 End Namespace

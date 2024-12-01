@@ -30,14 +30,6 @@ Namespace AccountTab
                 accountTable = New DataTable()
                 adapter.Fill(accountTable)
 
-                ' Add a new column for CreationDate as a string
-                accountTable.Columns.Add("CreationDateString", GetType(String))
-
-                ' Loop through rows to populate CreationDateString column with formatted date
-                For Each row As DataRow In accountTable.Rows
-                    row("CreationDateString") = Convert.ToDateTime(row("CreationDate")).ToString("yyyy-MM-dd HH:mm:ss")
-                Next
-
                 ' Bind the DataTable to the DataGridView
                 dgv_AccTable.DataSource = accountTable
 
@@ -201,7 +193,7 @@ Namespace AccountTab
                 ' If the search bar is empty, show all rows
                 CType(dgv_AccTable.DataSource, DataTable).DefaultView.RowFilter = String.Empty
             Else
-                ' Prepare the filter string with DateTime conversion to string
+                ' Prepare the filter string
                 Dim filterExpression As String = $"UserID LIKE '%{filterText}%' OR " &
                                                  $"Role LIKE '%{filterText}%' OR " &
                                                  $"FirstName LIKE '%{filterText}%' OR " &

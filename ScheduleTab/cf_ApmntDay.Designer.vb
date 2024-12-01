@@ -36,6 +36,9 @@
             lbl_homeDateTime = New Label()
             pnl_ApmtDay = New Panel()
             dgv_ApmntTable = New DataGridView()
+            btn_Delete = New Button()
+            btn_Refresh = New Button()
+            btn_View = New Button()
             pnl_MainHeader.SuspendLayout()
             pnl_ApmtDay.SuspendLayout()
             CType(dgv_ApmntTable, ComponentModel.ISupportInitialize).BeginInit()
@@ -54,6 +57,9 @@
             ' 
             pnl_MainHeader.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
             pnl_MainHeader.BorderStyle = BorderStyle.FixedSingle
+            pnl_MainHeader.Controls.Add(btn_Delete)
+            pnl_MainHeader.Controls.Add(btn_Refresh)
+            pnl_MainHeader.Controls.Add(btn_View)
             pnl_MainHeader.Controls.Add(btn_patientAddNew)
             pnl_MainHeader.Controls.Add(txt_Search)
             pnl_MainHeader.Controls.Add(Label2)
@@ -182,6 +188,49 @@
             dgv_ApmntTable.Size = New Size(1192, 690)
             dgv_ApmntTable.TabIndex = 4
             ' 
+            ' btn_Delete
+            ' 
+            btn_Delete.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_Delete.BackColor = Color.FromArgb(CByte(255), CByte(137), CByte(140))
+            btn_Delete.FlatAppearance.BorderColor = Color.White
+            btn_Delete.FlatStyle = FlatStyle.Flat
+            btn_Delete.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Delete.Location = New Point(1111, 14)
+            btn_Delete.Name = "btn_Delete"
+            btn_Delete.Size = New Size(101, 34)
+            btn_Delete.TabIndex = 10
+            btn_Delete.Text = "Delete"
+            btn_Delete.UseVisualStyleBackColor = False
+            ' 
+            ' btn_Refresh
+            ' 
+            btn_Refresh.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_Refresh.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+            btn_Refresh.BackgroundImage = My.Resources.Resources.icon_refresh
+            btn_Refresh.BackgroundImageLayout = ImageLayout.Zoom
+            btn_Refresh.FlatAppearance.BorderColor = Color.White
+            btn_Refresh.FlatStyle = FlatStyle.Flat
+            btn_Refresh.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_Refresh.Location = New Point(946, 14)
+            btn_Refresh.Name = "btn_Refresh"
+            btn_Refresh.Size = New Size(34, 34)
+            btn_Refresh.TabIndex = 11
+            btn_Refresh.UseVisualStyleBackColor = False
+            ' 
+            ' btn_View
+            ' 
+            btn_View.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+            btn_View.BackColor = Color.Silver
+            btn_View.FlatAppearance.BorderColor = Color.White
+            btn_View.FlatStyle = FlatStyle.Flat
+            btn_View.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+            btn_View.Location = New Point(996, 14)
+            btn_View.Name = "btn_View"
+            btn_View.Size = New Size(101, 34)
+            btn_View.TabIndex = 12
+            btn_View.Text = "View"
+            btn_View.UseVisualStyleBackColor = False
+            ' 
             ' cf_ApmntDay
             ' 
             AutoScaleDimensions = New SizeF(7F, 15F)
@@ -210,5 +259,8 @@
         Friend WithEvents lbl_homeDateTime As Label
         Friend WithEvents pnl_ApmtDay As Panel
         Friend WithEvents dgv_ApmntTable As DataGridView
+        Friend WithEvents btn_Delete As Button
+        Friend WithEvents btn_Refresh As Button
+        Friend WithEvents btn_View As Button
     End Class
 End Namespace

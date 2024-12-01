@@ -4,16 +4,11 @@ Namespace ScheduleTab
     Public Class cf_ApmntList
         Inherits Form
 
-        ' Database connection utility
-        Private dbConnection As New DBConnection()
-
-        ' DataTable to store all appointment data
+        Private dbConnection As New DBConnection() ' DBConnection instance
         Private appointmentTable As DataTable
         Private selectedScheduleID As String
 
-        ''' <summary>
-        ''' Form Load Event
-        ''' </summary>
+        ' Form Load Event
         Private Sub cf_ApmntList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             LoadAppointmentData()
         End Sub
@@ -23,39 +18,48 @@ Namespace ScheduleTab
         ''' </summary>
         Private Sub LoadAppointmentData()
             Try
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "
-                        SELECT 
-                            s.ScheduleID,
-                            CASE 
-                                WHEN EndDate IS NULL THEN StartDate
-                                ELSE CONCAT(StartDate, ' - ', EndDate)
-                            END AS 'Date',
-                            CASE 
-                                WHEN AllDay = '1' THEN 'All Day'
-                                WHEN EndTime IS NULL THEN StartTime
-                                ELSE CONCAT(StartTime, ' - ', EndTime)
-                            END AS 'Time',
-                            CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'Name',
-                            s.Status AS 'Status',
-                            CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'Doctor'
-                        FROM 
-                            schedules s
-                        INNER JOIN 
-                            patients p ON s.PatientID = p.PatientId
-                        INNER JOIN 
-                            accounts a ON s.DoctorID = a.UserID"
-                    Dim cmd As New MySqlCommand(query, conn)
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                    Dim adapter As New MySqlDataAdapter(cmd)
-                    appointmentTable = New DataTable()
-                    adapter.Fill(appointmentTable)
+                ' Define the query to fetch appointment data
+                Dim query As String = "
+                    SELECT 
+                        s.ScheduleID,
+                        CASE 
+                            WHEN EndDate IS NULL THEN StartDate
+                            ELSE CONCAT(StartDate, ' - ', EndDate)
+                        END AS 'Date',
+                        CASE 
+                            WHEN AllDay = '1' THEN 'All Day'
+                            WHEN EndTime IS NULL THEN StartTime
+                            ELSE CONCAT(StartTime, ' - ', EndTime)
+                        END AS 'Time',
+                        CONCAT(p.FirstName, ' ', p.MiddleName, ' ', p.LastName) AS 'Name',
+                        s.Status AS 'Status',
+                        CONCAT('Dr. ', a.FirstName, ' ', a.MiddleName, ' ', a.LastName) AS 'Doctor'
+                    FROM 
+                        schedules s
+                    INNER JOIN 
+                        patients p ON s.PatientID = p.PatientId
+                    INNER JOIN 
+                        accounts a ON s.DoctorID = a.UserID"
 
-                    dgv_ApmntTable.DataSource = appointmentTable
+                Dim cmd As New MySqlCommand(query, conn)
+                Dim adapter As New MySqlDataAdapter(cmd)
 
-                    ' Set custom headers
-                    SetColumnHeaders()
-                End Using
+                ' Fill the DataTable with query results
+                appointmentTable = New DataTable()
+                adapter.Fill(appointmentTable)
+
+                ' Bind the DataTable to the DataGridView
+                dgv_ApmntTable.DataSource = appointmentTable
+
+                ' Set column headers for better readability
+                SetColumnHeaders()
+
+                ' Close the connection
+                dbConnection.Close()
+            Catch ex As MySqlException
+                MessageBox.Show($"MySQL Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception
                 MessageBox.Show($"Error loading appointment data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -87,20 +91,7 @@ Namespace ScheduleTab
         End Sub
 
         ''' <summary>
-        ''' Displays the cf_ApmntData form with the selected ScheduleID.
-        ''' </summary>
-        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
-            If Not String.IsNullOrEmpty(selectedScheduleID) Then
-                Dim apmntDataForm As New cf_ApmntData()
-                apmntDataForm.ScheduleID = selectedScheduleID ' Pass ScheduleID to cf_ApmntData
-                apmntDataForm.ShowDialog()
-            Else
-                MessageBox.Show("No appointment selected. Please select an appointment to view.", "View Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-        End Sub
-
-        ''' <summary>
-        ''' Deletes appointment data of the selected row when the Delete button is clicked.
+        ''' Deletes the selected appointment when the Delete button is clicked.
         ''' </summary>
         Private Sub btn_Delete_Click(sender As Object, e As EventArgs) Handles btn_Delete.Click
             If String.IsNullOrEmpty(selectedScheduleID) Then
@@ -112,23 +103,22 @@ Namespace ScheduleTab
             If result <> DialogResult.Yes Then Return
 
             Try
-                Using conn As MySqlConnection = dbConnection.Open()
-                    Dim query As String = "DELETE FROM schedules WHERE ScheduleID = @ScheduleID"
-                    Using cmd As New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
-                        Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                Dim conn As MySqlConnection = dbConnection.Open()
 
-                        If rowsAffected > 0 Then
-                            MessageBox.Show($"Appointment {selectedScheduleID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Else
-                            MessageBox.Show("No rows were deleted. The appointment may not exist.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        End If
-                    End Using
+                Dim query As String = "DELETE FROM schedules WHERE ScheduleID = @ScheduleID"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@ScheduleID", selectedScheduleID)
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        MessageBox.Show($"Appointment {selectedScheduleID} has been deleted.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No rows were deleted. The appointment may not exist.", "Delete Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
                 End Using
 
-                ' Refresh the data grid after deletion
+                dbConnection.Close()
                 LoadAppointmentData()
-
             Catch ex As Exception
                 MessageBox.Show($"Error deleting appointment: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -139,11 +129,39 @@ Namespace ScheduleTab
         ''' </summary>
         Private Sub btn_Refresh_Click(sender As Object, e As EventArgs) Handles btn_Refresh.Click
             Try
-                LoadAppointmentData() ' Reload appointment data from the database
+                LoadAppointmentData()
                 MessageBox.Show("Appointment data refreshed successfully.", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show($"Error refreshing appointment data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+        End Sub
+
+        ''' <summary>
+        ''' Handles the text change event of the search textbox to filter data in the DataGridView.
+        ''' </summary>
+        Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+            Try
+                Dim filterText As String = txt_Search.Text.Trim()
+                If appointmentTable IsNot Nothing Then
+                    Dim filter As String = $"Name LIKE '%{filterText}%' OR Doctor LIKE '%{filterText}%' OR Status LIKE '%{filterText}%'  OR Date LIKE '%{filterText}%' OR Time LIKE '%{filterText}%'"
+                    appointmentTable.DefaultView.RowFilter = filter
+                End If
+            Catch ex As Exception
+                MessageBox.Show($"Error filtering appointments: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Sub
+
+        ''' <summary>
+        ''' Displays the cf_ApmntData form with the selected ScheduleID.
+        ''' </summary>
+        Private Sub btn_View_Click(sender As Object, e As EventArgs) Handles btn_View.Click
+            If Not String.IsNullOrEmpty(selectedScheduleID) Then
+                Dim apmntDataForm As New cf_ApmntData
+                apmntDataForm.ScheduleID = selectedScheduleID ' Pass ScheduleID to cf_ApmntData
+                apmntDataForm.ShowDialog()
+            Else
+                MessageBox.Show("No appointment selected. Please select an appointment to view.", "View Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         End Sub
     End Class
 End Namespace
