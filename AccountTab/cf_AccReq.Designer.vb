@@ -23,10 +23,10 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
-            Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+            Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
             Label1 = New Label()
             pnl_MainHeader = New Panel()
             btn_Reject = New Button()
@@ -91,7 +91,7 @@
             ' btn_Approve
             ' 
             btn_Approve.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-            btn_Approve.BackColor = Color.Silver
+            btn_Approve.BackColor = Color.PaleGreen
             btn_Approve.FlatAppearance.BorderColor = Color.White
             btn_Approve.FlatStyle = FlatStyle.Flat
             btn_Approve.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -193,44 +193,44 @@
             ' 
             dgv_AccTable.AllowUserToAddRows = False
             dgv_AccTable.AllowUserToDeleteRows = False
-            DataGridViewCellStyle9.BackColor = Color.WhiteSmoke
-            dgv_AccTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+            DataGridViewCellStyle1.BackColor = Color.WhiteSmoke
+            dgv_AccTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
             dgv_AccTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             dgv_AccTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
             dgv_AccTable.BackgroundColor = Color.FromArgb(CByte(219), CByte(252), CByte(224))
             dgv_AccTable.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable
-            DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle10.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle10.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle10.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle10.SelectionBackColor = Color.DimGray
-            DataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
-            dgv_AccTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+            DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle2.SelectionBackColor = Color.DimGray
+            DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+            dgv_AccTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
             dgv_AccTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle11.BackColor = SystemColors.Window
-            DataGridViewCellStyle11.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-            DataGridViewCellStyle11.ForeColor = SystemColors.ControlText
-            DataGridViewCellStyle11.Padding = New Padding(5)
-            DataGridViewCellStyle11.SelectionBackColor = Color.Silver
-            DataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle11.WrapMode = DataGridViewTriState.False
-            dgv_AccTable.DefaultCellStyle = DataGridViewCellStyle11
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle3.BackColor = SystemColors.Window
+            DataGridViewCellStyle3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+            DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+            DataGridViewCellStyle3.Padding = New Padding(5)
+            DataGridViewCellStyle3.SelectionBackColor = Color.Silver
+            DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+            dgv_AccTable.DefaultCellStyle = DataGridViewCellStyle3
             dgv_AccTable.Dock = DockStyle.Fill
             dgv_AccTable.EditMode = DataGridViewEditMode.EditProgrammatically
             dgv_AccTable.EnableHeadersVisualStyles = False
             dgv_AccTable.Location = New Point(20, 20)
             dgv_AccTable.Name = "dgv_AccTable"
             dgv_AccTable.ReadOnly = True
-            DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle12.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
-            DataGridViewCellStyle12.Font = New Font("Segoe UI", 9F)
-            DataGridViewCellStyle12.ForeColor = SystemColors.WindowText
-            DataGridViewCellStyle12.SelectionBackColor = Color.Transparent
-            DataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText
-            DataGridViewCellStyle12.WrapMode = DataGridViewTriState.True
-            dgv_AccTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(19), CByte(193), CByte(142))
+            DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+            DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+            DataGridViewCellStyle4.SelectionBackColor = Color.Transparent
+            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+            dgv_AccTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
             dgv_AccTable.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
             dgv_AccTable.RowTemplate.ReadOnly = True
             dgv_AccTable.Size = New Size(1192, 690)
