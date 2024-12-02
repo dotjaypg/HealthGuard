@@ -58,10 +58,6 @@ Namespace PatientTab
             dgv_PatientTable.Columns("DateOfBirth").HeaderText = "Date of Birth"
         End Sub
 
-        ''' <summary>
-        ''' Handles row selection in the DataGridView.
-        ''' Updates the selectedPatientID variable with the ID of the selected row.
-        ''' </summary>
         Private Sub dgv_PatientTable_SelectionChanged(sender As Object, e As EventArgs) Handles dgv_PatientTable.SelectionChanged
             If dgv_PatientTable.CurrentRow IsNot Nothing AndAlso dgv_PatientTable.CurrentRow.Index >= 0 Then
                 Dim row As DataGridViewRow = dgv_PatientTable.CurrentRow
